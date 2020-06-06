@@ -1,0 +1,173 @@
+<view class="page">
+    <view class="pageHeader">
+
+        <image class="bgImage" src='http://www.qy58.cn/upload/secondbgimage.jpg'></image>
+        <span class=" same detaileng">{{english}}</span>
+        <span class=" same detailchina">{{bigtitle}}</span>
+        <span class=" same detailchinas"></span>
+        <span>{{}}</span>
+        <span class="historyNotice">垃圾等事件上传</span>
+    </view>
+    <view>
+        <image class="bgImages" src='../../image/jifen.jpg'></image>
+    </view>
+    <view>
+        <!-- 垃圾分类 -->
+        <view>
+            <form class="formStyle" catchsubmit="formSubmit" catchreset="formReset">
+                <!-- <view class="allInput">
+                    <span class="titlebEeizhu">上传日期</span>
+                    <span class="most">*</span>
+                    <view class="section">
+                        <picker name="data" mode="date" value="{{date}}" start="2015-09-01" end="2030-09-01"
+                            bindchange="bindDateChange">
+                            <view class="picker weui-input packers">
+                                请输入 {{date}}
+                            </view>
+                        </picker>
+                    </view>
+                </view> -->
+                <view>
+                    <span class="titlebEeizhu">请输入所在位置</span>
+                    <span class="most">*</span>
+                    <input placeholder="请输入您的位置" class="weui-input" name="location" />
+                </view>
+                <!-- <view>
+                    <span class="titlebEeizhu">详细位置</span>
+                    <span class="most">*</span>
+                    <input class="weui-input" name="bbb" placeholder="请输入您的详细位置" />
+                </view> -->
+                <view>
+                    <span class="titlebEeizhu">请输入您的联系电话</span>
+                    <span class="most">*</span>
+                    <input maxlength="11" class="weui-input" bindblur='watchPhotoNumber' name="phoneNumber"
+                        placeholder="请输入您的联系电话" />
+                </view>
+                <view>
+                    <span class="titlebEeizhu">详细问题描述(最多输入300字)</span>
+                    <span class="most">*</span>
+                    <textarea class="miaoshu" maxlength="300" name="describes" id=""
+                        placeholder="请输入大件垃圾问题描述(电瓶、煤气罐剧毒或其他大件垃圾)" cols="20" rows="10"></textarea>
+                </view>
+                <span class="flright">带<span class="most mostend">*</span>为必填项</span>
+                <!-- <textarea class="weui-input" name="aaa" focus  placeholder="请输入大件垃圾问题描述(电瓶、煤气罐剧毒或其他大件垃圾"/> -->
+                <view class="weui-uploader">
+                    <!-- <view class="weui-uploader__hd">
+                        <view class="titlebEeizhu">图片上传</view>
+                    </view> -->
+                    <view class="weui-uploader__bd">
+                        <block wx:for="{{imagesList}}" wx:key="*this">
+                            <view class="weui-uploader__file">
+                                <image name="imgall" class="weui-uploader__img" src="{{item}}"></image>
+                            </view>
+                        </block>
+                        <view class="weui-uploader__input-box">
+                            <view class="weui-uploader__input js_file" type="file"
+                                accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" bindtap='uploader'
+                                name="imagesList"></view>
+                        </view>
+                    </view>
+                </view>
+                <view>
+                    <button class="margintop" type="warn" formType="submit">立即上传</button>
+                </view>
+            </form>
+
+            <!-- <view class="largeTxt">
+                <span class="historyNotice timees">顷倒垃圾信息</span>
+            </view>
+
+            <view class="largelist">
+                <text>市城管局高山中队组织区环卫中心清扫保洁人员，
+                    对镇区主要道路两侧的生活垃圾及建筑垃圾进行集中清理整治。{{text}}</text>
+                <span class="iconRed">日期1111111111111111111{{}}</span>
+            </view> -->
+        </view>
+        <!-- 报修 -->
+        <!-- <view>
+            <form class="formStyle" catchsubmit="formSubmit" catchreset="formReset">
+                <view class="allInput">
+                    <span class="titlebEeizhu">上传日期</span>
+                    <span class="most">*</span>
+                    <view class="section">
+                        <picker name="data" mode="date" value="{{date}}" start="2015-09-01" end="2030-09-01"
+                            bindchange="bindDateChange">
+                            <view class="picker weui-input packers">
+                                请输入 {{date}}
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+                <view>
+                    <span class="titlebEeizhu">请输入门牌号</span>
+                    <span class="most">*</span>
+                    <input class="weui-input" name="bbb" />
+                </view>
+                <view>
+                    <span class="titlebEeizhu">详细位置</span>
+                    <span class="most">*</span>
+                    <input class="weui-input" name="bbb" placeholder="请输入您的详细位置" />
+                </view>
+                <view>
+                    <span class="titlebEeizhu">联系电话</span>
+                    <span class="most">*</span>
+                    <input maxlength="11" class="weui-input" bindblur='watchPhotoNumber' name="ccc"
+                        placeholder="请输入您的联系电话" />
+                </view>
+                <view>
+                    <span class="titlebEeizhu">详细问题描述(最多输入300字)</span>
+                    <span class="most">*</span>
+                    <textarea class="miaoshu" maxlength="300" name="miaoshu" id=""
+                        placeholder="请输入大件垃圾问题描述(电瓶、煤气罐剧毒或其他大件垃圾)" cols="20" rows="10"></textarea>
+                </view>
+                <view class="page__bd">
+                    <mp-cells>
+                        <mp-cell>
+                            <mp-uploader bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}"
+                                upload="{{uplaodFile}}" files="{{files}}" max-count="5" title="图片上传" tips="图片上传提示">
+                            </mp-uploader>
+                        </mp-cell>
+                    </mp-cells>
+                </view>
+                <span class="flright">带<span class="most mostend">*</span>为必填项</span>
+                <view class="weui-uploader">
+                    <view class="weui-uploader__hd">
+                        <view class="titlebEeizhu">图片上传</view>
+                    </view>
+                    <view class="weui-uploader__bd">
+                        <block wx:for="{{imagesList}}" wx:key="*this">
+                            <view class="weui-uploader__file">
+                                <image name="imgall" class="weui-uploader__img" src="{{item}}"></image>
+                            </view>
+                        </block>
+                        <view class="weui-uploader__input-box">
+                            <input class="weui-uploader__input js_file" type="file"
+                                accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" bindtap='uploader'
+                                name="images"></input>
+                        </view>
+                    </view>
+                </view>
+                <view>
+                    <button type="warn" formType="submit">立即上传</button>
+                </view>
+            </form>
+
+            <view class="largeTxt">
+                <span class="historyNotice timees">顷倒垃圾信息</span>
+            </view>
+
+            <view class="largelist">
+                <text>市城管局高山中队组织区环卫中心清扫保洁人员，
+                    对镇区主要道路两侧的生活垃圾及建筑垃圾进行集中清理整治。{{text}}</text>
+                <span class="iconRed">日期1111111111111111111{{}}</span>
+            </view>
+        </view> -->
+    </view>
+    <!-- <view class='list'>
+        <view class='li' wx:for='{{list}}' wx:key=''>{{item}}</view>
+    </view>
+    <view class='placeholder-view'></view>
+    <view class='btn-view'>
+        <button class='btn'>底部按钮</button>
+    </view> -->
+</view>

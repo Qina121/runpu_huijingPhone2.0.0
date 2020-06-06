@@ -1,0 +1,52 @@
+<view class="page">
+    <view class="pageHeader">
+        <image class="bgImage" src='http://www.qy58.cn/upload/secondbgimage.jpg'></image>
+        <span class=" same detaileng">ANNOUNCEMENT{{}}</span>
+        <span class=" same detailchina">通 知 公 告{{}}</span>
+        <span class=" same detailchinas"></span>
+    </view>
+    <view class="pagecenter">
+        <view class="pagecenterTop">
+            <span class="newNotice">最新公告
+                <image class="inline" src='../../image/inline.png'></image>
+            </span>
+
+            <view class="pagecenters">
+                <image class="sectionImage" src='../../image/noticesImg.png'></image>
+            </view>
+            <view class="pagecenterBottom">
+                <textarea name="" id="" cols="30" rows="10">
+                {{textareatext}}
+            </textarea>
+            </view>
+            <view class="pagecenterEnd">
+                <!-- <navigator  url="/pages/notice/noticelist/noticelist"> -->
+                <span bindtap="lookdetail" class="newNotice noticess">点击查看公告详情</span>
+                <!-- </navigator> -->
+            </view>
+        </view>
+    </view>
+    <view class="pagefooter">
+        <span class="historyNotice">历史通知公告</span>
+        <view wx:for="{{historylist}}" class="allText">
+            <navigator url="/pages/notice/noticelist/noticelist?id=1">
+            <span class="styleBlock titleStyle">
+                {{item.title}}
+            </span>
+            </navigator>
+            <span class="styleBlock textEee">
+                {{item.textareatext}}
+            </span>
+            <span class="styleBlock ">
+                <view type="text-box">
+                    <span class="iconfont icon-rili iconColor"></span>
+                    <span class="texts">2020/05/20</span>
+                    <span class="iconfont icon-youjiantou iconColorright"></span>
+                </view>
+            </span>
+        </view>
+
+
+    </view>
+
+</view>

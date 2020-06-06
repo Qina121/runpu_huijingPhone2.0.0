@@ -1,0 +1,45 @@
+<view class="page">
+<view class="pageHeader">
+    <image class="backGroundBox" src='{{bgimgurl}}'></image>
+    <span class="bigNumber">564{{}}</span>
+    <image class="smallbox" src='../../image/nowjifen.png'></image>
+</view>
+<view class="containers">
+    <view class='titlestyle'>
+        <span class='titlestyle sss'>积分详情</span>
+        <span class='titlestyle linestyle'></span>
+    </view>
+    <view class="addjifen">
+        <view class="smallBoxs">
+            <span class='iconfont icon-jifen'></span>
+            <span>积分+5{{}}</span>
+        </view>
+        <span class="stylered">沙发等大件垃圾</span>
+        <span class="styleblod">2020-5-20</span>
+    </view>
+    <view class="addjifen">
+        <view class="smallBoxs">
+            <span class='iconfont icon-jifen'></span>
+            <span>积分+5{{}}</span>
+        </view>
+        <span class="stylered">沙发等大件垃圾</span>
+        <span class="styleblod">2020-5-20</span>
+    </view>
+    <view class="addjifen">
+        <view class="smallBoxs">
+            <span class='iconfont icon-jifen'></span>
+            <span>积分+5{{}}</span>
+        </view>
+        <span class="stylered">沙发等大件垃圾</span>
+        <span class="styleblod">2020-5-20</span>
+    </view>
+    <view class="addjifen">
+        <view class="smallBoxs">
+            <span class='iconfont icon-jifen'></span>
+            <span>积分+5{{}}</span>
+        </view>
+        <span class="stylered">沙发等大件垃圾</span>
+        <span class="styleblod">2020-5-20</span>
+    </view>
+</view>
+</view>

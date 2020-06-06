@@ -1,0 +1,17 @@
+<view class="page">
+    <view class="pageHeader">
+        <image class="bgImage" src='http://www.qy58.cn/upload/bgi.png'></image>
+    </view>
+    <view>
+        <view class="widths">
+            <navigator url="/pages/mine/minedizhi/minedizhi?detailxinxi=phonenumber&id=1&minephone={{minephone}}">
+                <view class=" paddinga xiangxi">
+                    <text class="mines">联系电话{{}}</text>
+                    <span class="iconfont icon-arrowRight-fill  iconright"></span>
+                    <span name="minephone" class="flright">{{minephone}}</span>
+                </view>
+            </navigator>
+            
+        </view>
+    </view>
+</view>

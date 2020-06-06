@@ -1,0 +1,104 @@
+<view class='page'>
+    <view>
+        <span class="historyNotice">图片上传</span>
+        <view class="weui-uploader">
+            <view class="weui-uploader__bd">
+                <block wx:for="{{imagesList}}" wx:key="*this">
+                    <view class="weui-uploader__file">
+                        <image name="imgall" class="weui-uploader__img" src="{{item}}"></image>
+                    </view>
+                </block>
+                <view class="weui-uploader__input-box">
+                    <input class="weui-uploader__input js_file" type="file"
+                        accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" bindtap='uploader'
+                        name="images"></input>
+                </view>
+            </view>
+        </view>
+        <view>
+            <button class="margintop" type="warn" formType="submit">立即上传</button>
+        </view>
+    </view>
+    <view>
+        <span class="historyNotice">事件描述</span>
+        <textarea class="miaoshu" maxlength="300" name="miaoshu" id="" placeholder="请输入事件描述(电瓶、煤气罐剧毒或其他大件垃圾,最多输入300字)"
+            cols="20" rows="10"></textarea>
+    </view>
+    <view wx:if="{{showsrfid}}">
+        <span class="historyNotice">RFID信息</span>
+        <textarea class="alltext" bindblur="bindTextAreaBlur" auto-height placeholder="您的RFID信息" />
+        </view>
+    <!-- 车辆 -->
+    <span wx:if="{{showsform}}" class="historyNotice">{{smalltitle}}</span>
+    <form  class="formStyle" catchsubmit="formSubmit" catchreset="formReset">
+        <span wx:if="{{showsjifen}}" class="historyNotice">垃圾分类评分</span>
+        <view  wx:if="{{showsjifen}}" class="jifendetail">
+            您的评分
+            <view class="flright">
+                <span bindtap="editintegral" class=" circular jifenup">-</span>
+                <span class=" margins jifennow">{{userintegral}}</span>
+                <span bindtap="addintegral" class=" circular jifendown">+</span>
+            </view>
+        </view>
+        <view wx:if="{{showsform}}">
+            <span class="titlebEeizhu">姓名</span>
+            <span class="most">*</span>
+            <input class="weui-input" name="username" placeholder="请输入申请人" />
+        </view>
+        <view wx:if="{{showsform}}"> 
+            <span class="titlebEeizhu">联系电话</span>
+            <span class="most">*</span>
+            <input maxlength="11" class="weui-input" bindblur='watchPhotoNumber' name="userphone"
+                placeholder="请输入您的联系电话" />
+        </view>
+        <view wx:if="{{showsform}}" >
+            <span class="titlebEeizhu">您的车牌</span>
+            <span class="most">*</span>
+            <input maxlength="8" class="weui-input"  name="userlicense "
+                placeholder="请输入车牌号" />
+        </view>
+        <view wx:if="{{showsform}}" class="allInput">
+            <span class="titlebEeizhu">起止时间</span>
+            <span class="most">*</span>
+            <view class="section">
+                <picker  mode="date" value="{{date}}" start="2015-09-01" end="2030-09-01"
+                    bindchange="bindDateChange">
+                    <view name="startdata" class="picker weui-input packers">
+                        {{startdata}}
+                    </view>
+                </picker>
+            </view>
+        </view>
+        <view wx:if="{{showsform}}" class="allInput">
+            <span class="titlebEeizhu">结束时间</span>
+            <span class="most">*</span>
+            <view class="section">
+                <picker  mode="date" value="{{data}}" start="2015-09-01" end="2030-09-01"
+                    bindchange="bindDateChangeend">
+                    <view  name="enddata" class="picker weui-input packers">
+                         {{enddata}}
+                    </view>
+                </picker>
+            </view>
+        </view>
+        <view wx:if="{{showsforms}}">
+            <view>
+                <span class="titlebEeizhu">您的位置</span>
+                <span class="most">*</span>
+                <input class="weui-input" name="userlocation" placeholder="请输入您的位置"/>
+            </view>
+            <view>
+                <span class="titlebEeizhu">联系电话</span>
+                <span class="most">*</span>
+                <input maxlength="11" class="weui-input" bindblur='watchPhotoNumber' name="userphones"
+                    placeholder="请输入您的联系电话" />
+            </view>
+        </view>
+        <view >
+            <button class="margintop" type="warn" formType="submit">立即提交</button>
+        </view>
+    </form>
+    
+
+
+</view>

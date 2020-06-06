@@ -1,0 +1,30 @@
+<view class="page">
+    <view class="pageHeader">
+        <image class="bgImage" src='http://www.qy58.cn/upload/secondbgimage.jpg'></image>
+        <span class=" same detaileng">{{english}}</span>
+        <span class=" same detailchina">{{titles}}</span>
+        <span class=" same detailchinas"></span>
+    </view>
+    <view  wx:for="{{historylist}}" class="pageCenter">
+        <view class='titleOne'>
+            {{item.title}}
+        </view>
+        <view class='titleNote'>
+            <span style="padding-right:10rpx">发布时间:{{item.date}}</span>
+            <!-- <span style="padding-right:10rpx">浏览次数:{{browse}}</span> -->
+            <span style="padding-right:10rpx">作者:{{item.user}}</span>
+        </view> 
+        <view class="containner">
+            {{item.textareatext}}
+        </view>
+        <image class="noticeImage" :src='{{artileimg}}'></image>
+    </view>
+    <view class="pageFooter">
+        <view class="noticeUP" bindtap="firstbut">
+            上一篇:小区东面垃圾房开展生活垃圾分类工作{{firstartile}}
+        </view>
+        <view class="noticeUP colorRed" bindtap="secondbut">
+            下一篇:小区东面垃圾房开展生活垃圾分类工作{{endarticle}}
+        </view>
+    </view>
+</view>

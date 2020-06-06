@@ -1,0 +1,90 @@
+.page {
+    background-color: #fafafa;
+}
+.pageHeader {
+    height: 350rpx;
+    width: 100%;
+    position: relative;
+}
+.backGroundBox {
+    width: 100%;
+    height: 350rpx;
+}
+.bigNumber {
+    font-size:100rpx;
+    font-family:Impact;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    position: absolute;
+    top:40rpx;
+    text-align: center;
+    display: block;
+    width: 100%;
+    height: 81rpx;
+    text-shadow:0rpx 0rpx 9rpx rgba(0, 0, 0, 0.3);
+}
+.smallbox {
+    width: 300rpx;
+    height: 60rpx;
+    bottom:80rpx;
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+}
+.titlestyle {
+    height:100rpx;
+    line-height: 100rpx;
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    text-align: center;
+    color:rgba(166,0,1,1);
+    padding-bottom: 20rpx
+}
+.containers {
+    padding:0rpx;
+    border-bottom: 0rpx solid #a60001;
+}
+.sss {
+    border-bottom: 4rpx solid #a60001;
+    box-sizing: border-box;
+}
+.linestyle {
+    display: block;
+    width: 100%;
+    border-top: 1rpx solid #E4E4E4;
+    margin-top:-8rpx
+}
+.addjifen {
+    width: 100%;
+    height: 110rpx;
+    padding:30rpx;
+    position: relative;
+    font-size: 24rpx;
+    box-sizing: border-box;
+}
+.smallBoxs {
+    width: 20%;
+    height: 50rpx;
+    float: left;
+    background-color: #A60001;
+    color:#fff;
+    border-radius: 50rpx;
+    text-align: center;
+}
+.stylered {
+    width: 60%;
+    height: 50rpx;
+    line-height: 50rpx;
+    color:#a60001;
+    font-size: 26rpx;
+    text-align: center;
+    float: left;
+}
+.styleblod {
+    font-family:Impact;
+    font-size: 26rpx;
+    width: 20%;
+    float: right;
+    text-align: center;
+}

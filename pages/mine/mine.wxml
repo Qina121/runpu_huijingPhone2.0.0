@@ -1,0 +1,91 @@
+<view class="pages">
+    <view class="page-header">
+        <view class="logoImage">
+            <image class="backGround-box" src='http://www.qy58.cn/upload/header.png'></image>
+            <image class="center-box" src='http://www.qy58.cn/upload/minebg.png'></image>
+            <view class="styles">
+                <image bindtap="changeimg" value="{{imgUrls}}" name="userimg" class="userimgbox" src="{{imgUrls}}">
+                </image>
+                <span class="disablesd">王志远{{}}</span>
+                <span class="disablesd twods">管理者{{}}</span>
+                <image class="mini-boxs" src='{{userimg}}'></image>
+            </view>
+            <!-- 头像 -->
+        </view>
+        <view>
+            <view class="widths">
+                <!-- <view class="page-section-spacing">
+                    <view class="allbox">
+                        <view class="smallbox">
+                            <span class="examination ">35{{}}</span>
+                            <view class=" showThree boxOne"> 我的审批</view>
+                            <span class="showinline">1</span>
+                        </view>
+                        <view class="smallbox ">
+                            <span class="examination boxtwo">500{{}}</span>
+                            <view class=" showThree boxtwo">我的积分</view>
+                            <span class="showinline">1</span>
+                        </view>
+                        <view class="smallbox ">
+                            <span class="examination boxThree">142{{}}</span>
+                            <view class=" showThree boxThree ">我的申请</view>
+                        </view>
+                    </view>
+                </view> -->
+                <!-- 信息 -->
+                <navigator url="/pages/mine/mineupdate/mineupdate">
+                    <view class=" paddings xiangxi">
+                        <span class="iconfont icon-xinxi iconColor"></span>
+                        <text class="mines">编辑个人信息:{{}}</text>
+                        <span class="iconfont icon-youjiantou  iconright"></span>
+                    </view>
+                </navigator>
+                <navigator url="/pages/approval/approval?detailxinxi=showsshenpi">
+                    <view class=" paddinga xiangxi">
+                        <span class="iconfont icon-shenpi iconColor"></span>
+                        <text class="mines">我的审批:{{}}</text>
+                        <span class="iconfont icon-youjiantou  iconright"></span>
+                    </view>
+                </navigator>
+                <navigator url="/pages/approval/approval?detailxinxi=showsshenqing">
+                    <view class=" paddinga xiangxi">
+                        <span class="iconfont icon-shenqing iconColor"></span>
+                        <text class="mines">我的申请:{{}}</text>
+                        <span class="iconfont icon-youjiantou  iconright"></span>
+                    </view>
+                </navigator>
+                <navigator url="/pages/approval/approval?detailxinxi=showsrapair">
+                    <view class=" paddinga xiangxi">
+                        <span class="iconfont icon-baoxiu1 iconColor"></span>
+                        <text class="mines">我的报修:{{}}</text>
+                        <span class="iconfont icon-youjiantou  iconright"></span>
+                    </view>
+                </navigator>
+                <navigator url="/pages/approval/approval?detailxinxi=showscheliang">
+                    <view class=" paddinga xiangxi marginBottom">
+                        <span class="iconfont icon-cheliangxinxi iconColor"></span>
+                        <text class="mines">车辆管理:{{}}</text>
+                        <span class="iconfont icon-youjiantou  iconright"></span>
+                    </view>
+                </navigator>
+                <navigator url="/pages/mine/minedizhi/minedizhi?detailxinxi=dizhi">
+                    <view class=" paddinga xiangxi marginBottom">
+                        <span class="iconfont icon-dingwei iconColor"></span>
+                        <text class="mines">常用地址:{{}}</text>
+                        <span class="iconfont icon-youjiantou  iconright"></span>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+        <navigator url="/pages/mine/mineset/mineset?detailxinxi=dizhi">
+            <view class="xiangxi">
+                <span class="iconfont icon-weibiaoti-_huaban iconColor"></span>
+                <text class="mines">用户设置:{{}}</text>
+                <span class="iconfont icon-youjiantou  iconright"></span>
+            </view>
+        </navigator>
+    </view>
+    <view>
+
+    </view>
+</view>

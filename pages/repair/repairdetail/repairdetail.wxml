@@ -1,0 +1,128 @@
+<view class="page">
+    <view class="pageHeader">
+        <image class="bgImage" src='http://www.qy58.cn/upload/secondbgimage.jpg'></image>
+        <span class=" same detaileng">{{englishTitle}}</span>
+        <span class=" same detailchina">{{titlebig}}</span>
+        <span class=" same detailchinas"></span>
+    </view>
+    <!-- 报修详情 -->
+    <view wx:if="{{showsbaoxiu}}" class="pageCenter">
+        <view class='titleOne'>
+            王志远报修详情
+        </view>
+        <view class='titleNote'>
+            <span style="padding-right:10rpx">发布时间:{{date}}</span>
+            <span style="padding-right:10rpx">浏览次数:{{browse}}</span>
+            <span style="padding-right:10rpx">作者:{{user}}</span>
+        </view> 
+        <view class="containner">
+            <view class="repairdetail">
+                真实姓名:
+                <span class="username">王志远{{}}</span>
+            </view>
+            <view class="repairdetail">
+                报修地址:
+                <span class="username">北京市大兴区新立村{{}}</span>
+            </view>
+            <view class="repairdetail">
+                联系电话：
+                <span class="username">15394598336{{}}</span>
+            </view>
+            <view class="repairdetail heightd">
+                问题描述:
+                <span class="username">问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述...{{}}</span>
+            </view>
+        </view>
+        <image class="noticeImage" src='../../../image/noticebanner.png'></image>
+    </view>
+    <!-- 审批详情 -->
+    <view wx:if="{{showsshenpi}}" class="pageCenter">
+        <view class='titleOne'>
+            王志远审批详情
+        </view>
+        <view class='titleNote'>
+            <span style="padding-right:10rpx">发布时间:{{date}}</span>
+            <span style="padding-right:10rpx">浏览次数:{{browse}}</span>
+            <span style="padding-right:10rpx">作者:{{user}}</span>
+        </view> 
+        <view class="containner">
+            <view class="repairdetail">
+                真实姓名:
+                <span class="username">王志远{{}}</span>
+            </view>
+            <view class="repairdetail">
+                报修地址:
+                <span class="username">北京市大兴区新立村{{}}</span>
+            </view>
+            <view class="repairdetail">
+                联系电话：
+                <span class="username">15394598336{{}}</span>
+            </view>
+            <view class="repairdetail heightd">
+                问题描述:
+                <span class="username">问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述...{{}}</span>
+            </view>
+        </view>
+        <image class="noticeImage" src='../../../image/noticebanner.png'></image>
+    </view>
+    <!-- 车辆详情 -->
+    <view wx:if="{{showscar}}" class="pageCenter">
+        <view class='titleOne'>
+            王志远车辆详情
+        </view>
+        <view class='titleNote'>
+            <span style="padding-right:10rpx">发布时间:{{date}}</span>
+            <span style="padding-right:10rpx">浏览次数:{{browse}}</span>
+            <span style="padding-right:10rpx">作者:{{user}}</span>
+        </view> 
+        <view class="containner">
+            <view class="repairdetail">
+                真实姓名:
+                <span class="username">王志远{{}}</span>
+            </view>
+            <view class="repairdetail">
+                报修地址:
+                <span class="username">北京市大兴区新立村{{}}</span>
+            </view>
+            <view class="repairdetail">
+                联系电话：
+                <span class="username">15394598336{{}}</span>
+            </view>
+            <view class="repairdetail heightd">
+                问题描述:
+                <span class="username">问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述...{{}}</span>
+            </view>
+        </view>
+        <image class="noticeImage" src='../../../image/noticebanner.png'></image>
+    </view>
+    <!-- 申请详情 -->
+    <view wx:if="{{showsshenqing}}" class="pageCenter">
+        <view class='titleOne'>
+            王志远申请详情
+        </view>
+        <view class='titleNote'>
+            <span style="padding-right:10rpx">发布时间:{{date}}</span>
+            <span style="padding-right:10rpx">浏览次数:{{browse}}</span>
+            <span style="padding-right:10rpx">作者:{{user}}</span>
+        </view> 
+        <view class="containner">
+            <view class="repairdetail">
+                真实姓名:
+                <span class="username">王志远{{}}</span>
+            </view>
+            <view class="repairdetail">
+                报修地址:
+                <span class="username">北京市大兴区新立村{{}}</span>
+            </view>
+            <view class="repairdetail">
+                联系电话：
+                <span class="username">15394598336{{}}</span>
+            </view>
+            <view class="repairdetail heightd">
+                问题描述:
+                <span class="username">问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述...{{}}</span>
+            </view>
+        </view>
+        <image class="noticeImage" src='../../../image/noticebanner.png'></image>
+    </view>
+</view>

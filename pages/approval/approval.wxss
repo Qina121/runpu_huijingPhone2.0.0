@@ -1,0 +1,92 @@
+.page {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+}
+.bgImage {
+    width:750rpx;
+    height:280rpx;
+}
+.pagefooter {
+    width: 100%;
+}
+.historyNotice {
+    display: block;
+    width:750rpx;
+    height:30rpx;
+    font-size:30rpx;
+    font-weight:bold;
+    color:rgba(166,0,1,1);
+    line-height:40rpx;
+    border-left: 6rpx solid #A70304;
+    box-sizing: border-box;
+    margin: 40rpx 40rpx;
+    line-height: 30rpx;
+    padding-left: 20rpx;
+}
+.text-box {
+    position: relative;
+    width: 40%;
+    height: 24rpx;
+}
+.texts {
+    font-size:24rpx;
+    font-weight:400;
+    height: 40rpx;
+    color:rgba(221,221,221,1);
+    line-height:40rpx;
+    float: left;
+    box-sizing: border-box;
+    padding-left: 10rpx;
+    font-family:Impact;
+}
+.allText {
+    margin: 40rpx;
+    width: 90%;
+    box-sizing: border-box;
+    height: 160rpx;
+    background-color: #fff;
+    border:1rpx solid #EEEEEE;
+    border-radius:20rpx;
+
+}
+.styleBlock {
+    display: block;
+    width: 100%;
+    height: 200rpx;
+    position: relative;
+}
+.textEee {
+    width:598rpx;
+    height:70rpx;
+    font-size:24rpx;
+    font-weight:400;
+    color:rgba(136,136,136,1);
+    padding: 10rpx 35rpx;
+    line-height:34rpx;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis
+}
+.passbut {
+    position: absolute;
+    width: 160rpx;
+    height: 45rpx;
+    border-radius: 45rpx;
+    right: 20rpx;
+    background-color: #A60001;
+    font-size: 20rpx;
+    text-align: center;
+    line-height: 45rpx;
+    color:#fff
+}
+.redstyle {
+    color: #A60001;
+    margin-left: 10rpx;
+}
+.colorss {
+    background-color: #47A025;
+}

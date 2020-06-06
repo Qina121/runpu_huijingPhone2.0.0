@@ -1,0 +1,46 @@
+<view class="page">
+    <view class="pageHeader">
+        <image class="bgImage" src='http://www.qy58.cn/upload/bgi.png'></image>
+    </view>
+
+    <view>
+        <view>
+        <form class="style-form " catchsubmit="formSubmit" catchreset="formReset">
+            
+                <view wx:if="{{showtable}}">
+                    <span class="historyNotice">常用地址</span>
+                    <view class=" paddings xiangxi">
+                        <text class="mines">所在地区{{}}</text>
+                        <!-- <span class="iconfont icon-arrowRight-fill  iconright"></span> -->
+                        <input maxlength="20" name="maindizhi" value="{{maindizhi}}" class="flright cssleft" />
+                    </view>
+                    <view class=" paddinga xiangxi ">
+                        <text class="mines paddinga">详细地址{{}}</text>
+                        <textarea name="xiangxi" value="{{xiangxi}}"  cols="20" rows="10"
+                            placeholder="请输入详细地址信息，如街道、门牌号、小区、楼栋号、单 元室等。"  height="120rpx"
+                            class=" paddingas"></textarea>
+                    </view>
+                </view>
+                <span wx:if="{{showsphone}}" class="historyNotice">更换手机号</span>
+                <view wx:if="{{showsphone}}" class="borderbo xiangxi">
+                    <text class="mines">当前手机号</text>
+                    <span class="iconfont icon-arrowRight-fill  iconright"></span>
+                    <input bindblur='watchPhotoNumber' name="phones" maxlength="11" value="{{updateminephone}}"
+                        class="flright" />
+                </view>
+                <view wx:if="{{showsphone}}" class="borderbo xiangxi">
+                    <text class="mines guding">请获取验证码{{}}
+                    </text>
+                    <button class="sendcode" bindtap="sendCode" disabled="{{smsFlag}}">{{sendTime}}</button>
+                </view>
+                <view wx:if="{{showsphone}}" class="borderbo xiangxi ">
+                    <text class="mines">请输入验证码{{}}</text>
+                    <input name="yanzhengma" maxlength="6" value="" class="flright centers" />
+                </view>
+                    <button class="showsubmit" type="error" formType="submit">保存更改</button>
+                    <button class="showsubmit huise" type="none" formType="submit">取消</button>
+        </form>
+    </view>
+</view>
+
+</view>

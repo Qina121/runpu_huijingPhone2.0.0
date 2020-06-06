@@ -1,0 +1,217 @@
+.backGround-box {
+    position: absolute;
+    width:100%;
+    height: 400rpx;
+    top: -50rpx;
+}
+.center-box {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translateX(-50%);
+    width: 240rpx;
+    height: 240rpx;
+    border-radius:30rpx;
+}
+.logoImage {
+    width: 100%;
+    height: 400rpx;
+    position: relative;
+}
+.borderbo {
+    border-bottom: 1rpx solid #E5E5E5;
+    margin-bottom: 20rpx;
+}
+.xiangxi {
+    width: 100%;
+    text-indent: 1rem;
+    font-size: 28rpx;
+    height: 80rpx;
+    position: relative;
+}
+.mines {
+    display: block;
+    width: 100%;
+    font-size:28rpx;
+    font-weight:400;
+    color:#333;
+    line-height:80rpx;
+    background-color: #fff;
+    height: 80rpx;
+}
+.guding {
+    position: relative;
+    width: 100%;
+    height: 60rpx;
+}
+.sendcode {
+    position: absolute;
+    top:0rpx;
+    right:5%;
+    margin-right:4rpx;
+    z-index: 100;
+    width: 34% !important;
+    font-size: 26rpx;
+    background-color: #A60001;
+    height: 60rpx;
+    margin-top:2rpx;
+    border-radius: 40rpx;
+    box-sizing: border-box;
+}
+.usertableOne {
+    position: relative;
+    width: 100%;
+    padding:5%;
+    box-sizing: border-box;
+}
+.page-section {
+    width: 100%;
+    position: relative;
+    height: 60rpx;
+}
+.allradio {
+    width: 100%;
+}
+.fr {
+    float: right;
+    margin-left: 20rpx;
+    font-size: 32rpx;
+}
+.fl {
+    float: left;
+}
+.he {
+    height: 65rpx;
+    position: relative;
+    padding-left:10%;
+}
+
+
+radio .wx-radio-input {
+    width: 30rpx;
+    height: 30rpx;
+    border: 4rpx solid rgba(204,204,204,1);
+    border-radius: 100%;
+    background: #eee;
+  }
+  /*单选按钮选中后内部样式*/
+
+  radio .wx-radio-input.wx-radio-input-checked::before {
+    width: 30rpx;
+    height: 30rpx;
+    background: #A60001;
+    border-radius: 100%;
+    content: '';
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+
+  }
+  radio.disabled .wx-radio-input {
+    width: 32rpx;
+    height: 32rpx;
+    border: 4rpx solid #eee;
+    border-radius: 100%;
+    background: none;
+  }
+  radio .wx-radio-input.wx-radio-input-checked {
+    border: 4rpx solid #eee!important;
+  }
+  .style-form {
+    height: 390rpx;
+    width: 100%;
+    position: relative;
+    display: block;
+    margin-top: 30rpx;
+}
+.weui-input:hover {
+    border:1px solid #A60001;
+}
+.weui-input {
+    position: relative;
+    width:90%;
+    border:1px solid #C7C7CC;
+    margin-left: 5%;
+    border-radius:33rpx;
+    margin-bottom: 40rpx;
+    box-sizing: border-box;
+    height: 65rpx;
+    line-height: 65rpx;
+    font-size: 26rpx;
+    padding-left: 5%;
+    overflow: hidden;
+}
+.submit-login{
+    background-color: #A60001 !important;
+    color: white;
+    margin: 5% ;
+    margin-top: 60rpx;
+    border-radius: 40rpx;
+    margin-bottom: 50rpx;
+    box-shadow:0rpx 10rpx 27rpx 3rpx rgba(166,0,1,0.3);
+    width:90% !important;
+    height: 65rpx;
+    font-size: 30rpx;
+    box-sizing: border-box;
+}
+.inputWidth {
+    width: 28%;
+    float: left;
+}
+.flleft {
+    float: left;
+    width:15%;
+    text-align: center;
+    display: block;
+    height: 65rpx;
+    line-height: 65rpx;
+    font-size: 26rpx;
+    color:#333;
+}
+.yanzheng {
+    display: block;
+    width: 200rpx;
+    height: 65rpx;
+    background-color: #A60001;
+    position: absolute;
+    right: 0rpx;
+    line-height:65rpx;
+    z-index: 20;
+    color:#fff;
+    top:0rpx;
+    font-size: 24rpx;
+    text-align: center;
+}
+.po {
+    width: 96%;
+    position: relative;
+    overflow: hidden;
+    border-radius:33rpx;
+    height: 65rpx;
+    box-sizing: border-box;
+}
+.iconColor {
+    font-size: 38rpx;
+    position: absolute;
+    top:2rpx;
+    right:8%;
+    color:#A60001;
+    width: 60rpx;
+    height:60rpx;
+    z-index: 21;
+}
+.moren {
+    width: 100%;
+    margin-bottom: 20rpx;
+    height: 65rpx;
+    position: relative;
+}
+.hiddenAll {
+    width: 100%;
+    height: 210rpx;
+}
+.showdis {
+    background-color: #8E8E93;
+}
+.heightSss {
+    margin-top: 10rpx;
+}

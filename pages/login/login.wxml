@@ -1,0 +1,40 @@
+<view>
+    <view class="page-header">
+        <view class="logoImage">
+            <image class="backGround-box" src='{{loginbg}}'></image>
+            <image class="center-box" src='../../image/logo.png'></image>
+        </view>
+        <form class="style-form " catchsubmit="formSubmit" catchreset="formReset">
+            <view class="moren">
+                <input class="weui-input" name="username" placeholder="请输入您的真实姓名" />
+                <span class="iconfont icon-wode iconColor"></span></view>
+            <view class="moren">
+                <input class="weui-input" maxlength="11" bindblur='watchPhotoNumber' name="userphone"
+                    placeholder="请输入手机号" />
+                <span class="iconfont icon-shouji iconColor"></span>
+            </view>
+            <!-- 登录授权 -->
+            <view wx:if='{{isShow}}'>
+                <view wx:if='{{canIuse}}'>
+                    <button open-type="getUserInfo" bindgetuserinfo='getUserInfo'>获取头像昵称 </button>
+                </view>
+                <view wx:else>请升级微信版本</view>
+            </view>
+            <!-- 内容显示--头像 -->
+            <view class='userinfo' wx:else>
+                <view class="avatarUrl">
+                    <image src='{{userInfo.avatarUrl}}'></image>
+                </view>
+                <text class='nickName'>{{userInfo.nickName}}</text>
+            </view>
+            <button open-type="getUserInfo" bindgetuserinfo='getUserInfo'>获取头像昵称 </button>
+            <button class="submit-login" bindgetUserInfo="getUserInfo" open-type="getUserInfo" type="primary"
+                formType="submit">登录</button>
+            <navigator url="/pages/registered/registered">
+                <view class="boso">
+                    <span class="newUser">注册新用户</span>
+                </view>
+            </navigator>
+        </form>
+    </view>
+</view>

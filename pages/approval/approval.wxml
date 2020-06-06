@@ -1,0 +1,26 @@
+<view class="page-body">
+    <view class="pageHeader">
+        <image class="bgImage" src='http://www.qy58.cn/upload/bgi.png'></image>
+    </view>
+    <!-- 审批 -->
+    <view wx:if="{{showsshenpi}}" class="pagefooter">
+        <span class="historyNotice">我的{{smalllefttitle}}</span>
+
+        <view wx:for="{{historylist}}" class="allText">
+            <!-- <navigator url="/pages/repair/repairdetail/repairdetail?detailxinxi="> -->
+            <view bindtap="jumpxinxi">
+                <span class="styleBlock textEee">
+                    {{item.title}}
+                </span>
+                <span class="styleBlock">
+                    <view type="text-box">
+                        <span class="iconfont icon-rili texts redstyle"></span>
+                        <span class="texts">{{item.dates}}</span>
+                        <span wx:if="{{showsmall}}" class="passbut">点击通过</span>
+                        <!-- <span class="passbut colorss">已通过</span> -->
+                    </view>
+                </span>
+            </view>
+        </view>
+    </view>
+</view>

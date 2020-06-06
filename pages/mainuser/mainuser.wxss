@@ -1,0 +1,35 @@
+.pageHeader {
+    position: relative;
+}
+.bgImage {
+    width:750rpx;
+    height:280rpx;
+}
+.same {
+    color:#018E42;
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top:10%;
+    font-size: 24rpx;
+}
+.detailchina {
+    top:20%;
+    font-size: 50rpx;
+    font-weight: 700;
+}
+.detailchinas {
+    top:50%;
+    width: 8%;
+    border: 2rpx solid #018E42;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.managers {
+    width: 90%;
+    margin-left: 5%;
+    height: 260rpx;
+    border-radius:20rpx;
+    margin-top: 40rpx
+}

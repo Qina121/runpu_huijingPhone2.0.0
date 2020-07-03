@@ -1,0 +1,7 @@
+<view class="page">
+
+		<view class="btn" bindtap="goLogin">
+			<text class="btnText">欢迎使用</text>
+		</view>
+
+</view>

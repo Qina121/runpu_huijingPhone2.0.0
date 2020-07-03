@@ -1,7 +1,7 @@
 <view class="page">
     <view class="pageHeader">
 
-        <image class="bgImage" src='http://www.qy58.cn/upload/secondbgimage.jpg'></image>
+        <image class="bgImage" src='https://www.qy58.cn/upload/secondbgimage.jpg'></image>
         <span class=" same detaileng">REPAIR{{}}</span>
         <span class=" same detailchina">{{bigtitle}}</span>
         <span class=" same detailchinas"></span>
@@ -19,34 +19,34 @@
                 <view>
                     <span class="titlebEeizhu">申请人</span>
                     <span class="most">*</span>
-                    <input class="weui-input" name="username" placeholder="请输入申请人" />
+                    <input class="weui-input" value="{{applyUser}}" name="applyUser" placeholder="请输入申请人" />
                 </view>
                 <view>
                     <span class="titlebEeizhu">联系电话</span>
                     <span class="most">*</span>
-                    <input maxlength="11" class="weui-input" bindblur='watchPhotoNumber' name="userphone"
-                        placeholder="请输入您的联系电话" />
+                    <input maxlength="11" class="weui-input" bindblur='watchPhotoNumber' name="phoneNumber"
+                       value="{{phoneNumber}}" placeholder="请输入您的联系电话" />
                 </view>
                 <view>
                     <span class="titlebEeizhu">门牌号</span>
                     <span class="most">*</span>
-                    <input maxlength="11" class="weui-input" bindblur='watchPhotoNumber' name="userHouse"
-                        placeholder="请输入门牌号" />
+                    <input maxlength="11" class="weui-input" bindblur='watchPhotoNumber' name="houseNumber"
+                      value="{{houseNumber}}"  placeholder="请输入门牌号" />
                 </view>
                 <view>
                     <span class="titlebEeizhu">停车车牌</span>
                     <span class="most">*</span>
-                    <input maxlength="8" class="weui-input" bindblur='watchPhotoNumber' name="userlicense"
-                        placeholder="请输入停车车牌" />
+                    <input maxlength="8" class="weui-input" bindblur='watchPhotoNumber' name="plateNumber"
+                      value="{{plateNumber}}"  placeholder="请输入停车车牌" />
                 </view>
                 <view class="allInput">
                     <span class="titlebEeizhu">起止时间</span>
                     <span class="most">*</span>
                     <view class="section">
-                        <picker name="startdata" mode="date" value="{{date}}" start="2015-09-01" end="2030-09-01"
+                        <picker name="statrtTime" mode="date" value="{{date}}" start="2015-09-01" end="2030-09-01"
                             bindchange="bindDateChange">
                             <view class="picker weui-input packers">
-                                 {{startdata}}
+                                 {{statrtTime}}
                             </view>
                         </picker>
                     </view>
@@ -55,10 +55,10 @@
                     <span class="titlebEeizhu">结束时间</span>
                     <span class="most">*</span>
                     <view class="section">
-                        <picker name="enddata" mode="date" value="{{date}}" start="2015-09-01" end="2030-09-01"
+                        <picker name="endTime" mode="date" value="{{date}}" start="2015-09-01" end="2030-09-01"
                             bindchange="bindDateChangeend">
                             <view class="picker weui-input packers">
-                                {{enddata}}
+                                {{endTime}}
                             </view>
                         </picker>
                     </view>
@@ -77,42 +77,17 @@
                 <view>
                     <span class="titlebEeizhu">申请说明(最多输入300字)</span>
                     <span class="most">*</span>
-                    <textarea class="miaoshu" maxlength="300" name="miaoshu" id=""
-                        placeholder="请输入大件垃圾问题描述(电瓶、煤气罐剧毒或其他大件垃圾)" cols="20" rows="10"></textarea>
+                    <textarea class="miaoshu" maxlength="300" name="applyDesc" id=""
+                        placeholder="请输入问题描述" cols="20" rows="10">
+                        </textarea>
                 </view>
-                <view class="page__bd">
-                    <mp-cells>
-                        <mp-cell>
-                            <mp-uploader bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}"
-                                upload="{{uplaodFile}}" files="{{files}}" max-count="5" title="图片上传" tips="图片上传提示">
-                            </mp-uploader>
-                        </mp-cell>
-                    </mp-cells>
-                </view>
+                <!-- <uploadImages bindmyevent="myEventListener" count='{{countPic}}' showUrl="{{showImgUrl}}"
+                    uploadUrl="{{uploadImgUrl}}"></uploadImages> -->
                 <span class="flright">带<span class="most mostend">*</span>为必填项</span>
-                <!-- <textarea class="weui-input" name="aaa" focus  placeholder="请输入大件垃圾问题描述(电瓶、煤气罐剧毒或其他大件垃圾"/> -->
-                <view class="weui-uploader">
-                    <!-- <view class="weui-uploader__hd">
-                        <view class="titlebEeizhu">图片上传</view>
-                    </view> -->
-                    <view class="weui-uploader__bd">
-                        <block wx:for="{{imagesList}}" wx:key="*this">
-                            <view class="weui-uploader__file">
-                                <image name="imgall" class="weui-uploader__img" src="{{item}}"></image>
-                            </view>
-                        </block>
-                        <view class="weui-uploader__input-box">
-                            <view class="weui-uploader__input js_file" type="file"
-                                accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" bindtap='uploader'
-                                name="images"></view>
-                        </view>
-                    </view>
-                </view>
                 <view>
                     <button class="margintop" type="warn" formType="submit">立即申请</button>
                 </view>
             </form>
-
             <!-- <view class="largeTxt">
                 <span class="historyNotice timees">顷倒垃圾信息</span>
             </view>

@@ -1,0 +1,24 @@
+<!--pages/shopping/personalOrder/personalOrder.wxml-->
+<!-- <text>pages/shopping/personalOrder/personalOrder.wxml</text> -->
+<view class="orderContainer">
+  <!--
+   注: 1、设置uncloseable为true时点击按钮不能关闭,必须联合toggle来实现
+       2、如果传递action的话必须传递width来设置每个按钮的宽度
+ -->
+
+  <swipe-action actions="{{actions}}" toggle="{{toggle}}" unclosable="{{true}}" bindchange="handlerCloseButton" wx:for="{{dataList}}" wx:key="index" params="{{item}}">
+    <view slot="content">
+      <navigator url="../orderDetail/orderDetail?orderDetail={{item.id}}">
+        <view class="list-item">
+            <image src="/image/mall/product/{{item.img}}.jpg" class="item-img"></image>
+            <view class="item-box">
+              <view class="item-title">{{item.title}}</view>
+              <view class="item-time">2019-06-01</view>
+            </view>
+        </view>
+      </navigator>
+    </view>
+  </swipe-action>
+
+
+</view>

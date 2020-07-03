@@ -18,17 +18,20 @@
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+		"useIsolateContext": true,
 		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"enhance": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.1",
-	"appid": "wxd77d39b042322f4d",
+	"appid": "wxe09ab78e32c1cde1",
 	"projectname": "large-scale",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -45,13 +48,98 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"gamePlugin": {
 			"current": -1,
 			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/shopping/shopping",
+					"pathName": "pages/shopping/shopping",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/shopping/shoppingDetail/shoppingDetail",
+					"pathName": "pages/shopping/shoppingDetail/shoppingDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/repair/repair",
+					"pathName": "pages/repair/repair",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/shopping/shoppingDetail/shoppingDetail",
+					"pathName": "pages/shopping/shoppingDetail/shoppingDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/mine",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/shopping/shoppingDetail/shoppingDetail",
+					"pathName": "pages/shopping/shoppingDetail/shoppingDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/shopping/confirmPayment/confirmPayment",
+					"pathName": "pages/shopping/confirmPayment/confirmPayment",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/shopping/paymentSucceeded/paymentSucceeded",
+					"pathName": "pages/shopping/paymentSucceeded/paymentSucceeded",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/shopping/personalOrder/personalOrder",
+					"pathName": "pages/shopping/personalOrder/personalOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/secondpage/secondpage",
+					"pathName": "pages/secondpage/secondpage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mainuser/mainuser",
+					"pathName": "pages/mainuser/mainuser",
+					"scene": null
+				}
+			]
 		}
 	}
 }

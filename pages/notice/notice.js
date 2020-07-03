@@ -24,6 +24,28 @@ Page({
     onLoad:function(options){
         // 生命周期函数--监听页面加载
         wx.setNavigationBarTitle({ title:'通知公告'})
+
+        //通知公告请求
+        var that = this;
+        wx.request({
+            url: 'https://api.huijingwuye6688.com/notice/selectAllNotice',
+            method: "get",
+            data: {
+                // id: options.id
+            },
+            header: {
+                'Content-Type': 'application/json'
+            },
+            success: function (res) {
+                console.log(res.data)
+                that.setData({
+                    historylist: res.data.data,
+                    
+                })
+                console.log(that.historylist)
+
+            }
+        })
     },
     onReady:function(){
         // 生命周期函数--监听页面初次渲染完成
@@ -87,4 +109,20 @@ Page({
 
 
     },
+    goDetail: function(e) {
+        console.log('单击列表到详情页')
+        const  item = e.currentTarget.dataset.item
+        wx.navigateTo({
+            url: '/pages/notice/noticelist/noticelist?id=' + item.id,
+            success: function(res){
+                // success
+            },
+            fail: function() {
+                // fail
+            },
+            complete: function() {
+                // complete
+            }
+        })
+    }
 })

@@ -1,10 +1,44 @@
 Page({
     data:{
-        bgimgurl:"http://www.qy58.cn/upload/blingbling.png"
+        bgimgurl:"../../image/Integration-background.png",
+        jifenDataList: [],
+        totalPoints: 0,
     },
     onLoad:function(options){
         wx.setNavigationBarTitle({ title:'我的积分'})
         // 生命周期函数--监听页面加载
+        const that = this
+        console.log(wx.getStorageSync('realNameone'))
+        const realNameone = wx.getStorageSync('realNameone')
+        console.log(realNameone.userOwnerId)
+        wx.request({
+            url: 'https://api.huijingwuye6688.com/scoreLogs/selectScoredById',
+            method: "get",
+            data: {
+                userId: realNameone.userOwnerId
+            },
+            header: {
+                'Content-Type': 'application/json'
+            },
+            success: function (res) {
+                console.log(res)
+                that.setData({
+                    jifenDataList: res.data.data,
+    
+                })
+                let score = 0
+                for(let i = 0; i<that.data.jifenDataList.length; i++) {
+                    score += that.data.jifenDataList[i].score
+                }
+                that.setData({
+                    totalPoints: score,
+        
+                })
+
+            }
+        })
+
+      
     },
     onReady:function(){
         // 生命周期函数--监听页面初次渲染完成

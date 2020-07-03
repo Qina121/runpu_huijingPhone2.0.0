@@ -1,0 +1,51 @@
+<view class="page">
+    <view class="page-header">
+        <view class="logoImage">
+            <image class="backGround-box" src='https://www.qy58.cn/upload/header.png'></image>
+            <!-- <image class="center-box" src='../../image/logo.png'></image> -->
+        </view>
+        <view class="pageCenter">
+            <swiper class="boxHeight" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"
+                duration="{{duration}}" circular="true">
+                <view wx:for="{{imgUrls}}">
+                    <swiper-item>
+                        <navigator url="{{item.link}}" hover-class="navigator-hover">
+                            <image mode='aspectFit' src="{{item.url}}" class="slide-image" height="300px" />
+                        </navigator>
+                    </swiper-item>
+                </view>
+            </swiper>
+        </view>
+    </view>
+    <view class="pageContainer">
+        <view bindtap="garbage">
+            <view class="big-box">
+                <image class="bgImage" src='{{smallimgurl}}'></image>
+                <span class="iconfont icon-lajitong iconColor"></span>
+                <span class="boxColor">垃圾分类</span>
+            </view>
+        </view>
+        <view bindtap="notice">
+            <view class="big-box">
+                <image class="bgImage" src='{{smallimgurl}}'></image>
+                <span class="iconfont icon-tongzhi iconColor"></span>
+                <span class="boxColor">通知公告</span>
+            </view>
+        </view>
+        <view bindtap="serviceApplication">
+            <view class="big-box">
+                <image class="bgImage" src='{{smallimgurl}}'></image>
+                <span class="iconfont icon-baoxiu iconColor"></span>
+                <span class="boxColor">服务申办</span>
+            </view>
+        </view>
+        <view bindtap="vehicleManagement">
+            <view class="big-box">
+                <image class="bgImage" src='{{smallimgurl}}'></image>
+                <span class="iconfont icon-cheliangdaiban iconColor"></span>
+                <span class="boxColor">车辆管理</span>
+            </view>
+        </view>
+        <!-- <button open-type="getUserInfo" bindgetuserinfo="getPerson">获取用户信息</button> -->
+    </view>
+</view>

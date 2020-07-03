@@ -49,7 +49,6 @@
 .noticeImage {
     width: 100%;
     margin-top: 30rpx;
-    height: 350rpx;
 }
 .pageFooter {
     width: 90%;

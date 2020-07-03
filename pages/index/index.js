@@ -5,17 +5,17 @@ Page({
     show: true,
     plain: false,
     openid:"",
-    smallimgurl:"http://www.qy58.cn/upload/box.png",
+    smallimgurl:"https://www.qy58.cn/upload/box.png",
     imgUrls: [
       {
         link: '/pages/index/index',
-        url: 'http://www.qy58.cn/upload/lunboone.png'
+        url: 'https://www.qy58.cn/upload/lunboone.png'
       }, {
         link: '/pages/inedx/index',
-        url: 'http://www.qy58.cn/upload/lunbob.png'
+        url: 'https://www.qy58.cn/upload/lunbob.png'
       }, {
         link: '/pages/index/index',
-        url: 'http://www.qy58.cn/upload/lunboa.png'
+        url: 'https://www.qy58.cn/upload/lunboa.png'
       }
     ],
     indicatorDots: true,  //小点
@@ -38,15 +38,7 @@ Page({
         ]
   },
   onLoad: function (options) {
-    console.log(wx.getStorageSync('userxinxi',"userid"),"userxinxi11") 
-    console.log(options,"111")
-    console.log(wx.getStorageSync('userid'),"userid") 
-    wx.getStorage({
-      key: 'userid',
-      success (res) {
-        console.log(res.data)
-      }
-    })
+    
   },
   onShow: function() {
     // 页面出现在前台时执行
@@ -126,7 +118,60 @@ open: function () {
       show: true
   })
 },
+garbage: function() {
+  console.log('垃圾分类')
+  console.log(wx.getStorageSync('login'))
   
+  if(!wx.getStorageSync('login')) {
+    wx.navigateTo({
+      url: '../login/login'
+    })
+  } else {
+    wx.navigateTo({
+      url: '/pages/secondpage/secondpage'
+    })
+  }
+},
+
+notice: function() {
+  console.log('通知')
+  console.log(wx.getStorageSync('login'))
+  if(!wx.getStorageSync('login')) {
+    wx.navigateTo({
+      url: '../login/login'
+    })
+  } else {
+    wx.navigateTo({
+      url: '/pages/notice/notice'
+    })
+  }
+},
+serviceApplication: function() {
+  console.log('服务申办')
+  console.log(wx.getStorageSync('login'))
+  if(!wx.getStorageSync('login')) {
+    wx.navigateTo({
+      url: '../login/login'
+    })
+  } else {
+    wx.navigateTo({
+      url: '/pages/repair/repair'
+    })
+  }
+},
+vehicleManagement: function() {
+  console.log('车辆管理')
+  console.log(wx.getStorageSync('login'))
+  if(!wx.getStorageSync('login')) {
+    wx.navigateTo({
+      url: '../login/login'
+    })
+  } else {
+    wx.navigateTo({
+      url: '/pages/vehicle/vehicle'
+    })
+  }
+},
 
    
 })

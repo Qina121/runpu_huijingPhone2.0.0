@@ -8,16 +8,19 @@ Page({
         showtable: true,
         showyan: true,
         hiddenyan: false,
-        usertype: "tenant",
         registereds: {},
         phonenumber: "",
         sendTime: '获取验证码',
         sendColor: '#333',
         snsMsgWait: 60,
-        smsFlag:false
+        smsFlag: false,
+        userType: 4
     },
     onLoad: function (options) {
         // 生命周期函数--监听页面加载
+        wx.setNavigationBarTitle({
+            title: '注册',
+          })
     },
     onReady: function () {
         // 生命周期函数--监听页面初次渲染完成
@@ -46,27 +49,6 @@ Page({
             path: 'path' // 分享路径
         }
     },
-    sendCode: function () {
-        // 60秒后重新获取验证码
-        console.log("yanzhengma")
-        var inter = setInterval(function () {
-            this.setData({
-                smsFlag: true,
-                sendColor: '#cccccc',
-                sendTime: this.data.snsMsgWait + 's后重发',
-                snsMsgWait: this.data.snsMsgWait - 1
-            });
-            if (this.data.snsMsgWait < 0) {
-                clearInterval(inter)
-                this.setData({
-                    sendColor: '#333',
-                    sendTime: '获取验证码',
-                    snsMsgWait: 60,
-                    smsFlag: false
-                });
-            }
-        }.bind(this), 1000);
-    },
     radioChange(e) {
         const items = this.data.items
         for (let i = 0, len = items.length; i < len; ++i) {
@@ -75,150 +57,208 @@ Page({
         if (e.detail.value == "administrator") {
             var that = this;
             that.setData({
-                showtable: (!that.data.showtable)
+                showtable: (!that.data.showtable),
+                userType: 1
             })
             console.log(this.data.showtable)
-        } else if (e.detail.value == "residents" || e.detail.value == "tenant") {
+        }
+        if (e.detail.value == "residents") {
             var that = this;
             that.setData({
-                showtable: true
+                showtable: true,
+                userType: 3
             })
             console.log(this.data.showtable)
 
         }
-        that.data.residents = e.detail.value
+        if (e.detail.value == "tenant") {
+            var that = this;
+            that.setData({
+                showtable: true,
+                userType: 4
+            })
+            console.log(this.data.showtable)
+
+        }
+        console.log(this.data, "data")
     },
     formSubmit(e) {
-        var phone = e.detail.value.phonenumber;
-        if (e.detail.value.username == "") {
-            wx.showToast({
+        console.log(this.data.userType, "type")
+        var phone = e.detail.value.phoneNumber;
 
-                title: '请输入您的真实姓名',
+        if (this.data.userType == 1) {
+            if (e.detail.value.username == "") {
+                wx.showToast({
 
-                icon: 'none',
+                    title: '请输入您的真实姓名',
 
-                duration: 2000//持续的时间
+                    icon: 'none',
+
+                    duration: 2000//持续的时间
+
+                })
+                return false;
+
+            }
+            if (phone == "") {
+                wx.showToast({
+
+                    title: '请输入手机号',
+
+                    icon: 'none',
+
+                    duration: 2000//持续的时间
+
+                })
+                return false;
+            }
+            if (!(/^1[3456789]\d{9}$/.test(phone))) {
+                wx.showToast({
+
+                    title: '手机号码有误,请重新输入',
+
+                    icon: 'none',
+
+                    duration: 2000//持续的时间
+
+                })
+                return false;
+            }
+            wx.request({
+                url: 'https://api.huijingwuye6688.com/userInfo/insertManage',
+                method: "post",
+                data: {
+                    realName: e.detail.value.username,
+                    // commonAddress: e.detail.value.commonAddress,
+                    phoneNumber: e.detail.value.phoneNumber,
+                },
+                header: {
+                    // 'Content-Type': 'application/json'
+                    'Content-Type': "application/x-www-form-urlencoded"
+
+                },
+                success: function (res) {
+                    console.log(res.data)
+                    if(res.data.success == false) {
+                        wx.showToast({
+                                    title: '注册失败,请检查账号信息是否填写错误',
+                                    icon: 'none',
+                                    duration: 2000//持续的时间
+                                })
+                    }else {
+                        wx.showToast({
+                                    title: '注册成功,请等待审批完成',
+                                    icon: 'none',
+                                    duration: 2000//持续的时间
+                                }) 
+                    }
+
+                }
 
             })
-            return false;
+            return false
+        }
 
-        } 
-        // else if (e.detail.value.validation == "") {
-        //     wx.showToast({
-
-        //         title: '请输入验证码',
-
-        //         icon: 'none',
-
-        //         duration: 2000//持续的时间
-
-        //     })
-        //     return false;
-        // }
-        else if (this.data.showtable == true) {
-            if (e.detail.value.town == "" || e.detail.value.village == "" || e.detail.value.street == "") {
+        if (this.data.userType === 2 || 3 || 4) {
+            if (e.detail.value.username == "") {
                 wx.showToast({
 
-                    title: '请输入详细地址',
+                    title: '请输入您的真实姓名',
 
                     icon: 'none',
 
                     duration: 2000//持续的时间
 
                 })
-            } else if (phone == "") {
+                return false;
+
+            }
+            if (phone == "") {
                 wx.showToast({
-    
+
                     title: '请输入手机号',
-    
+
                     icon: 'none',
-    
+
                     duration: 2000//持续的时间
-    
+
                 })
                 return false;
-            } else if (!(/^1[3456789]\d{9}$/.test(phone))) {
+            }
+            if (!(/^1[3456789]\d{9}$/.test(phone))) {
                 wx.showToast({
-    
+
                     title: '手机号码有误,请重新输入',
-    
+
                     icon: 'none',
-    
+
                     duration: 2000//持续的时间
-    
+
                 })
                 return false;
-            }else {
-                var that = this;
-                wx.request({
-                    url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/common',
-                    data: {
-                        addresses: e.detail.value.addresses,
-                        phonenumber: e.detail.value.phonenumber,
-                        street: e.detail.value.street,
-                        town: e.detail.value.town,
-                        username: e.detail.value.username,
-                        village: e.detail.value.village,
-                        usertype: that.data.usertype
-                    },
-                    header: {
-                        'Content-Type': 'application/json'
-                    },
-                    success: function (res) {
-                        console.log(res.data)
+            }
+            var that = this;
+            wx.request({
+                url: 'https://api.huijingwuye6688.com/userInfo/insert',
+                method:"post",
+                data: {
+                    realName: e.detail.value.username,
+                    commonAddress: e.detail.value.commonAddress,
+                    phoneNumber: e.detail.value.phoneNumber,
+                    userType: this.data.userType,
+                    // street: e.detail.value.street,
+                    // town: e.detail.value.town,
+                    // village: e.detail.value.village,
+                    // usertype: that.data.usertype
+                },
+                header: {
+                    // 'Content-Type': 'application/json'
+                    'Content-Type': "application/x-www-form-urlencoded"
+
+                },
+                success: function (res) {
+                    console.log(res.data)
+                    if (res.data.message == 1) {
                         wx.showToast({
-                            title: '请等待审批',
-                            icon: 'success',
+                            title: '您为业主,可直接登录',
+                            icon: 'none',
                             duration: 2000//持续的时间
                         })
-                        setTimeout(function () {
-                            wx.switchTab({
-                                url: '/pages/index/index?role=管理员'
-                            })
-                            //要延时执行的代码
-                           }, 1000)
-                        
-
                     }
-                })
-            }
-            return false;
-        } else {
-            // e.detail.value == ""
-            // 判断匹配则显示正在审批 没有账号跳转到注册 有账号直接进入主页面
-            //     wx.switchTab({
-            //     url: "/pages/index/index"
-            //  })
-            var that = this;
-            console.log(777)
-            wx.switchTab({
-                url: '/pages/index/index'
-            })
-            console.log(e.detail.value.username, "e.value.username")
-            var ccc = {
-            }
-            ccc.username = e.detail.value.username
-            ccc.phonenumber = e.detail.value.phonenumber
-            ccc.usertype = that.data.usertype
-            
-            // wx.request({
-            //     url: 'http://www.qy58.cn/cgi/webjsoninterface.exe/common',
-            //     method: "get",
-            //     data: {
-            //         logindetails
-            //     },
-            //     header: {
-            //         'content-type': 'application/json' // 默认值
-            //     },
-            //     success: function (res) {
-            //         console.log(res.data)
-            //         console.log(997887)
-            //     },
-            //     error: function (rep) {
-            //         console.log(rep)
-            //     }
-            // })
+                    if (res.data.message == 2) {
+                        wx.showToast({
+                            title: '未找到您的信息,请找相关管理人员处理',
+                            icon: 'none',
+                            duration: 2000//持续的时间
+                        })
+                    }
+                    if (res.data.message == 3) {
+                        wx.showToast({
+                            title: '注册成功,请等待审批',
+                            icon: 'none',
+                            duration: 2000//持续的时间
+                        })
+                    }
+                    if (res.data.message == 4) {
+                        wx.showToast({
+                            title: '选择角色错误,请重新选择',
+                            icon: 'none',
+                            duration: 2000//持续的时间
+                        })
+                    }
+                    if (res.data.message == 5) {
+                        wx.showToast({
+                            title: '账号已注册,请等待审批完成',
+                            icon: 'none',
+                            duration: 2000//持续的时间
+                        })
+                    }
 
+                }
+            })
+
+
+            return false;
         }
 
 
@@ -231,5 +271,5 @@ Page({
             hiddenyan: true
         })
     },
-    
+
 })

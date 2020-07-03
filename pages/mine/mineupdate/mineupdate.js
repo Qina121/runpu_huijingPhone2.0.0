@@ -10,9 +10,22 @@ Page({
     onLoad: function (options) {
         // 生命周期函数--监听页面加载
         console.log(options, "options")
+        const userInfo = wx.getStorageSync('realNameone')
+        console.log(userInfo)
+        let str = userInfo.commonAddress
+        const index=str.lastIndexOf("\-");
+        str=str.substring(index+1,str.length);
+        this.setData({
+            userimg: userInfo.headImage,
+            minename:userInfo.realName,
+            minegender: '',
+            mineaddresses:str,
+            minephone:userInfo.phoneNumber,
+            minedizhi:userInfo.commonAddress,
+        })
         wx.request({
             // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/query?tableName=owner&queryString=ownername="' + e.detail.value.username + '" and ownerphone="' + e.detail.value.userphone + '"',
-            url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/querys',
+            url: 'https://www.qy58.cn/cgi-bin/webjsoninterface.exe/querys',
             method: "POST",
             dataType: "JSON",
             // 'Content-Type': 'application/json;charset:utf-8'
@@ -65,6 +78,9 @@ Page({
     },
     // 更换头像
     changeimg: function () {
+   
+  
+  
     },
     formSubmit(e) {
         console.log('form发生了submit事件，携带数据为：', e.detail.value)
@@ -180,4 +196,9 @@ Page({
 
     //     })
     //   }
+    cancel() {
+        wx.switchTab({
+            url: '../../mine/mine'
+        });
+    }
 })

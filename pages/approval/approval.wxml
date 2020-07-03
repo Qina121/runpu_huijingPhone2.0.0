@@ -1,22 +1,26 @@
 <view class="page-body">
     <view class="pageHeader">
-        <image class="bgImage" src='http://www.qy58.cn/upload/bgi.png'></image>
+        <image class="bgImage" src='https://www.qy58.cn/upload/bgi.png'></image>
     </view>
     <!-- 审批 -->
     <view wx:if="{{showsshenpi}}" class="pagefooter">
         <span class="historyNotice">我的{{smalllefttitle}}</span>
 
         <view wx:for="{{historylist}}" class="allText">
-            <!-- <navigator url="/pages/repair/repairdetail/repairdetail?detailxinxi="> -->
-            <view bindtap="jumpxinxi">
-                <span class="styleBlock textEee">
-                    {{item.title}}
+            <view bindtap="jumpxinxi" data-item="{{item}}">
+            <navigator url="/pages/repair/repairdetail/repairdetail?detailxinxi={{jump}}&userId={{item.userId}}&id={{item.id}}">
+                <span class="styleBlock textEee"  wx:if="{{showsmall}}">
+                    等待您的审批
                 </span>
+                 <span class="styleBlock textEee" wx:if="{{!showsmall}}">
+                    {{item.repairDesc}}
+                </span>
+            </navigator>
                 <span class="styleBlock">
-                    <view type="text-box">
+                    <view class="rili" type="text-box">
                         <span class="iconfont icon-rili texts redstyle"></span>
-                        <span class="texts">{{item.dates}}</span>
-                        <span wx:if="{{showsmall}}" class="passbut">点击通过</span>
+                        <span class="texts">{{item.createTime}}</span>
+                        <span  wx:if="{{showsmall}}" class="passbut" catchtap="approved" data-item="{{item}}"> {{item.userState==1?"点击通过":"已通过"}}</span>
                         <!-- <span class="passbut colorss">已通过</span> -->
                     </view>
                 </span>

@@ -2,25 +2,14 @@ Page({
     data:{
         showsshenpi:true,
         showsmall:false,
-        showsshenqing:"",
-        showscheliang:"",
+        showsshenqing:true,
+        showscheliang:true,
         showsrapair:"",
         smalllefttitle:"",
         jump:"",
-        articletitle:"配置可分类的垃圾桶, 请各部门员工积极配合按垃圾分类标准来处置各类垃圾。",
-        articledate:"2020/05/20",
-        historylist:[
-            {
-                textareatext:"为减少危险废弃物对生活环境的危害，共建美好家园，创建和谐为减少危险废弃物对生活环境的危害，共建美好家园，创建和谐圾箱置于生活区及办公楼相关位置，但仍有少部分职工充耳不闻，依旧乱扔乱倒垃圾。为使职工及家属了解电池等危险固体废弃物的危害性，以便正确使用垃圾箱...",
-                dates:"2020/05/20", //日期
-                title:"公司已于近日在宿舍南门口设立垃圾回收站"
-            },
-            {
-                textareatext:"为减少危险废弃物对生活环境的危害，共建美好家园，创建和谐为减少危险废弃物对生活环境的危害，共建美好家园，创建和谐圾箱置于生活区及办公楼相关位置，但仍有少部分职工充耳不闻，依旧乱扔乱倒垃圾。为使职工及家属了解电池等危险固体废弃物的危害性，以便正确使用垃圾箱...",
-                dates:"2020/05/20", //日期
-                title:"1公司已于近日在宿舍南门口设立垃圾回收站"
-            }
-        ]
+        // articletitle:"配置可分类的垃圾桶, 请各部门员工积极配合按垃圾分类标准来处置各类垃圾。",
+        // articledate:"2020/05/20",
+        historylist:[]
 
     },
     onLoad:function(options){
@@ -39,6 +28,28 @@ Page({
                 englishTitle:"SERVICE MANAGMENT"
             })
             wx.setNavigationBarTitle({ title:'我的审批'})
+            wx.request({
+                url: 'https://api.huijingwuye6688.com/auditInfo/getAuditInfo',
+                method: "get",
+                header: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type':"application/x-www-form-urlencoded"
+                },
+                data: {
+                   userId:wx.getStorageSync('realNameone').id
+                },
+                success: function (res) {
+                    console.log(res)
+                    that.setData({
+                        historylist : res.data.data
+                    })
+
+                },
+                error: function (error) {
+                    console.log(error,"error")
+                }
+
+            })
         }
         if(options.detailxinxi == "showsshenqing") {
             that.setData({
@@ -53,6 +64,29 @@ Page({
                 jump:"showsshenqing",
             })
             wx.setNavigationBarTitle({ title:'我的申请'})
+            // console.log(wx.getStorageSync('realNameone'),"wx.getStorageSync('realNameone')")
+            wx.request({
+                url: 'https://api.huijingwuye6688.com/garbageClassfy/selectRelated',
+                
+                method: "get",
+                header: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type':"application/x-www-form-urlencoded"
+                },
+                data: {
+                   userId:wx.getStorageSync('realNameone').id
+                },
+                success: function (res) {
+                    that.setData({
+                        historylist : res.data.data
+                    })
+
+                },
+                error: function (error) {
+                    console.log(error,"error")
+                }
+
+            })
 
         }
         if(options.detailxinxi == "showscheliang") {
@@ -68,7 +102,28 @@ Page({
                 jump:"showscheliang",
             })
             wx.setNavigationBarTitle({ title:'我的车辆'})
+            wx.request({
+                url: 'https://api.huijingwuye6688.com/vehicleManager/selectRelated',
+                method: "get",
+                header: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type':"application/x-www-form-urlencoded"
+                },
+                data: {
+                    userId:wx.getStorageSync('realNameone').id
+                },
+                success: function (res) {
+                    that.setData({
+                        historylist : res.data.data
+                    })
+                    console.log(that.data.historylist, "222")
 
+                },
+                error: function (error) {
+                    console.log(error,"error")
+                }
+
+            })
         }
         if(options.detailxinxi == "showsrapair") {
             that.setData({
@@ -83,7 +138,28 @@ Page({
                 jump:"showsrapair",
             })
             wx.setNavigationBarTitle({ title:'我的报修'})
+            wx.request({
+                url: 'https://api.huijingwuye6688.com/repairInfo/selectRelated',
+                method: "get",
+                header: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type':"application/x-www-form-urlencoded"
+                },
+                data: {
+                    userId:wx.getStorageSync('realNameone').id
+                },
+                success: function (res) {
+                    that.setData({
+                        historylist : res.data.data
+                    })
+                    console.log(that.data.historylist, "222")
 
+                },
+                error: function (error) {
+                    console.log(error,"error")
+                }
+
+            })
         }
     },
     onReady:function(){
@@ -112,10 +188,11 @@ Page({
           path: 'path' // 分享路径
         }
     },
-    jumpxinxi: function() {
+    jumpxinxi: function(e) {
         console.log(this.data.jump,"jump")
+        const  item = e.currentTarget.dataset.item
         wx.navigateTo({
-            url: '/pages/repair/repairdetail/repairdetail?detailxinxi=' + this.data.jump,
+            url: '/pages/repair/repairdetail/repairdetail?detailxinxi=' + this.data.jump+'&id='+item.id+'&userId='+item.userId,
             success: function(res){
                 // success
             },
@@ -125,6 +202,41 @@ Page({
             complete: function() {
                 // complete
             }
+        })
+    },
+    approved: function(item) {
+        console.log(item.currentTarget.dataset.item)
+        const detailItem = item.currentTarget.dataset.item
+        if(detailItem.userState == 2) {
+            wx.showToast({
+                title: '已通过',
+                icon: 'none',
+                duration: 2000//持续的时间
+            })
+            return false
+        }
+        wx.request({
+            url: 'https://api.huijingwuye6688.com/auditInfo/updateAuditInfor',
+            method: "get",
+            header: {
+                'Content-Type': 'application/json'
+                // 'Content-Type':"application/x-www-form-urlencoded"
+            },
+            data: {
+            //    id:wx.getStorageSync('realNameone').id,
+               userId:detailItem.id,
+               realName:detailItem.realName,
+               userState:2
+            },
+            success: function (res) {
+                console.log(res)
+                
+
+            },
+            error: function (error) {
+                console.log(error,"error")
+            }
+
         })
     }
 })

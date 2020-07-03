@@ -2,10 +2,59 @@ Page({
     data: {
         imgUrls: '../../image/userimg.png',
         userimg: '../../image/minefenshu.png',
+        showshenpi: false,
+        realNameone:"",
+        username:"",
+        usertypes:""
     },
     onLoad: function (options) {
+        // 判断是否登录
+        // if(!wx.getStorageSync('login')) {
+        //     wx.navigateTo({
+        //       url: '../login/login'
+        //     })
+        //   }
         // 生命周期函数--监听页面加载
         wx.setNavigationBarTitle({ title: '我的' })
+        this.data.realNameone = wx.getStorageSync('realNameone')
+        if(this.data.realNameone.userType === 2) {
+            this.setData({
+                showshenpi: true
+            })
+        } else {
+            this.setData({
+                showshenpi:false
+            })
+        }
+        console.log(this.data.realNameone,"this.data.realNameone")
+        if(this.data.realNameone.userType == 1) {
+            this.setData({
+                usertypes:"管理员" ,
+                username:this.data.realNameone.realName
+            })
+        }
+        if(this.data.realNameone.userType == 2) {
+            this.setData({
+                usertypes:"业主" ,
+                username:this.data.realNameone.realName
+            })
+        }
+        if(this.data.realNameone.userType == 3) {
+            this.setData({
+                usertypes:"住户" ,
+                username:this.data.realNameone.realName
+            })
+        }
+        if(this.data.realNameone.userType == 4) {
+            this.setData({
+                usertypes:"租户" ,
+                username:this.data.realNameone.realName
+            })
+        }
+        //console.log(e.detail.value.username);
+
+
+        // this.setData({imgUrls: '../../image/minefenshu.png' })
     },
     onReady: function () {
         // 生命周期函数--监听页面初次渲染完成

@@ -10,6 +10,5 @@
           <view class="weui-uploader__input-box"></view>
         </view>
       </view>
-      <view class='tips'>长按对应的图片即可删除</view>
     </view>
   </view>

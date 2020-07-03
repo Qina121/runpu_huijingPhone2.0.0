@@ -5,6 +5,7 @@
     margin: 0;
     padding: 0rpx;
     background-color: #FAFAFA;
+    overflow: hidden
 }
 .bgImage {
     width:750rpx;

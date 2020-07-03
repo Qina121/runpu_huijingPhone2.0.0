@@ -1,6 +1,6 @@
 <view class="page">
     <view class="pageHeader">
-        <image class="bgImage" src='http://www.qy58.cn/upload/bgi.png'></image>
+        <image class="bgImage" src='https://www.qy58.cn/upload/bgi.png'></image>
     </view>
     <view>
         <view class="widths">
@@ -52,13 +52,13 @@
                 <span class="iconfont icon-arrowRight-fill  iconright"></span>
                 <input value="{{mineaddresses}}" name="{{mineaddresses}}" class="flright"></input>
             </view>
-            <!-- <navigator url="/pages/mine/minedizhi/minedizhi?detailxinxi=dizhi"> -->
+            <navigator url="/pages/mine/minedizhi/minedizhi?detailxinxi=dizhi">
                 <view class=" paddinga xiangxi marginBottom">
                     <text class="mines">常用地址{{}}</text>
                     <span class="iconfont icon-arrowRight-fill  iconright"></span>
                     <input value="{{minedizhi}}" name="{{minedizhi}}" class="flright"></input>
                 </view>
-            <!-- </navigator> -->
+            </navigator>
             <!-- <view class=" paddinga xiangxi ">
                 <span class="iconfont icon-xinxi iconColor"></span>
                 <text class="mines">我的申请:{{}}</text>
@@ -66,7 +66,7 @@
             </view> -->
             <view>
                 <button class="showsubmit" type="error" formType="submit">保存更改</button>
-                <button class="showsubmit huise" type="none" >取消更改</button>
+                <button class="showsubmit huise" type="none" bindtap="cancel" >取消更改</button>
             </view>
         </form>
         </view>

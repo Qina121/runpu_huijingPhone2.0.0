@@ -1,8 +1,10 @@
 {
   "pages": [
-    "pages/login/login",
-    "pages/repair/repair",
+    "pages/reviewpage/reviewpage",
     "pages/index/index",
+    "pages/login/login",
+    "pages/registered/registered",
+    "pages/repair/repair",
     "pages/mine/mine",
     "pages/secondpage/secondpage",
     "pages/uploadImages/uploadImages",
@@ -11,14 +13,18 @@
     "pages/integral/integral",
     "pages/approval/approval",
     "pages/mine/mineupdate/mineupdate",
-    "pages/registered/registered",
     "pages/mine/mineset/mineset",
     "pages/notice/notice",
     "pages/mine/minedizhi/minedizhi",
     "pages/vehicle/vehicle",
     "pages/notice/noticelist/noticelist",
     "pages/shopping/shopping",
-    "pages/repair/repairdetail/repairdetail"
+    "pages/repair/repairdetail/repairdetail",
+    "pages/shopping/shoppingDetail/shoppingDetail",
+    "pages/shopping/confirmPayment/confirmPayment",
+    "pages/shopping/paymentSucceeded/paymentSucceeded",
+    "pages/shopping/personalOrder/personalOrder",
+    "pages/shopping/orderDetail/orderDetail"
   ],
   "useExtendedLib": {
     "weui": true
@@ -26,7 +32,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#A60001",
-    "navigationBarTitleText": "汇景物业垃圾分类",
+    "navigationBarTitleText": "汇景恒福物业服务",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
@@ -60,7 +66,6 @@
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
-
   "networkTimeout": {
     "request": 10000,
     "downloadFile": 10000
@@ -68,5 +73,4 @@
   "debug": true,
   "style": "v2",
   "sitemapLocation": "sitemap.json"
-  
 }

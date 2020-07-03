@@ -1,32 +1,29 @@
 <view class='page'>
     <view>
         <span class="historyNotice">图片上传</span>
-        <view class="weui-uploader">
-            <view class="weui-uploader__bd">
-                <block wx:for="{{imagesList}}" wx:key="*this">
-                    <view class="weui-uploader__file">
-                        <image name="imgall" class="weui-uploader__img" src="{{item}}"></image>
-                    </view>
-                </block>
-                <view class="weui-uploader__input-box">
-                    <input class="weui-uploader__input js_file" type="file"
-                        accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" bindtap='uploader'
-                        name="images"></input>
-                </view>
-            </view>
-        </view>
+        <uploadImages bindmyevent="myEventListener" count='{{countPic}}' showUrl="{{showImgUrl}}"
+                    uploadUrl="{{uploadImgUrl}}"></uploadImages>
         <view>
-            <button class="margintop" type="warn" formType="submit">立即上传</button>
+            <button class="margintop" type="warn" formType="submit" bindtap="uploadImgArr">立即上传</button>
         </view>
     </view>
     <view>
         <span class="historyNotice">事件描述</span>
-        <textarea class="miaoshu" maxlength="300" name="miaoshu" id="" placeholder="请输入事件描述(电瓶、煤气罐剧毒或其他大件垃圾,最多输入300字)"
-            cols="20" rows="10"></textarea>
+        <!-- <textarea class="miaoshu"  maxlength="300"  id="" placeholder="请输入事件描述(电瓶、煤气罐剧毒或其他大件垃圾,最多输入300字)"
+            cols="20" rows="10" value="{{descdetailss}}" >
+
+
+        </textarea> -->
+
+         <textarea class="miaoshu" maxlength="300" name="descdetailss" id="" value="{{descdetailss}}"  bindblur="bindTextdescBlur"  placeholder="请输入事件描述(电瓶、煤气罐剧毒或其他大件垃圾,最多输入300字)" 
+        cols="20" rows="10" bindinput="inputgetName" data-name='descdetailss'>{{descdetailss}}</textarea>
     </view>
     <view wx:if="{{showsrfid}}">
         <span class="historyNotice">RFID信息</span>
-        <textarea class="alltext" bindblur="bindTextAreaBlur" auto-height placeholder="您的RFID信息" />
+        <textarea name="uploadRFID" value="{{userxnix.rfid}}" class="alltext" bindblur="bindTextAreaBlur" auto-height placeholder="您的RFID信息" 
+        bindinput="inputgetName" data-name='detailss'>{{detailss}}
+        </textarea>
+        <button class="margintop" type="warn" bindtap="uploadRFID">立即查询</button>
         </view>
     <!-- 车辆 -->
     <span wx:if="{{showsform}}" class="historyNotice">{{smalltitle}}</span>
@@ -36,7 +33,7 @@
             您的评分
             <view class="flright">
                 <span bindtap="editintegral" class=" circular jifenup">-</span>
-                <span class=" margins jifennow">{{userintegral}}</span>
+                <span name="{{userintegral}}" class=" margins jifennow">{{userintegral}}</span>
                 <span bindtap="addintegral" class=" circular jifendown">+</span>
             </view>
         </view>
@@ -54,7 +51,7 @@
         <view wx:if="{{showsform}}" >
             <span class="titlebEeizhu">您的车牌</span>
             <span class="most">*</span>
-            <input maxlength="8" class="weui-input"  name="userlicense "
+            <input maxlength="8" class="weui-input"  name="userlicense"
                 placeholder="请输入车牌号" />
         </view>
         <view wx:if="{{showsform}}" class="allInput">

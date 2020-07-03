@@ -1,6 +1,6 @@
 <view class="page">
     <view class="pageHeader">
-        <image class="bgImage" src='http://www.qy58.cn/upload/secondbgimage.jpg'></image>
+        <image class="bgImage" src='https://www.qy58.cn/upload/secondbgimage.jpg'></image>
         <span class=" same detaileng">{{englishTitle}}</span>
         <span class=" same detailchina">{{titlebig}}</span>
         <span class=" same detailchinas"></span>
@@ -8,121 +8,151 @@
     <!-- 报修详情 -->
     <view wx:if="{{showsbaoxiu}}" class="pageCenter">
         <view class='titleOne'>
-            王志远报修详情
+            {{historylist.repairDesc}}
         </view>
         <view class='titleNote'>
-            <span style="padding-right:10rpx">发布时间:{{date}}</span>
-            <span style="padding-right:10rpx">浏览次数:{{browse}}</span>
-            <span style="padding-right:10rpx">作者:{{user}}</span>
+            <span style="padding-right:10rpx">发布时间:{{historylist.createTime}}</span>
+            <!-- <span style="padding-right:10rpx">浏览次数:{{browse}}</span> -->
+            <span style="padding-right:10rpx">作者:{{historylist.name}}</span>
         </view> 
         <view class="containner">
             <view class="repairdetail">
                 真实姓名:
-                <span class="username">王志远{{}}</span>
+                <span class="username">{{historylist.name}}</span>
             </view>
             <view class="repairdetail">
                 报修地址:
-                <span class="username">北京市大兴区新立村{{}}</span>
+                <span class="username">{{historylist.address}}</span>
             </view>
             <view class="repairdetail">
                 联系电话：
-                <span class="username">15394598336{{}}</span>
+                <span class="username">{{historylist.phoneNumber}}</span>
+            </view>
+            <view class="repairdetail">
+                审核状态:
+                <span class="username">{{historylist.auditState==1?"未审核":"已审核"}}</span>
             </view>
             <view class="repairdetail heightd">
                 问题描述:
-                <span class="username">问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述...{{}}</span>
+                <span class="username">{{historylist.repairDesc}}</span>
             </view>
         </view>
-        <image class="noticeImage" src='../../../image/noticebanner.png'></image>
+        <image class="noticeImage" src='{{historylist.attachment}}'></image>
     </view>
     <!-- 审批详情 -->
-    <view wx:if="{{showsshenpi}}" class="pageCenter">
+    <view wx:if="{{showsshenpi}}" class="pageCenter" wx:for="{{historylist}}" wx:for-item="item">
         <view class='titleOne'>
-            王志远审批详情
+            {{item.realName}}审批详情
         </view>
         <view class='titleNote'>
-            <span style="padding-right:10rpx">发布时间:{{date}}</span>
-            <span style="padding-right:10rpx">浏览次数:{{browse}}</span>
-            <span style="padding-right:10rpx">作者:{{user}}</span>
+            <span style="padding-right:10rpx">发布时间:{{item.createTime}}</span>
+            <span style="padding-right:10rpx">浏览次数:{{item.totalScore}}</span>
+            <span style="padding-right:10rpx">作者:{{item.realName}}</span>
         </view> 
         <view class="containner">
             <view class="repairdetail">
                 真实姓名:
-                <span class="username">王志远{{}}</span>
+                <span class="username">{{item.realName}}</span>
             </view>
             <view class="repairdetail">
                 报修地址:
-                <span class="username">北京市大兴区新立村{{}}</span>
+                <span class="username">{{item.commonAddress}}</span>
             </view>
             <view class="repairdetail">
                 联系电话：
-                <span class="username">15394598336{{}}</span>
+                <span class="username">{{item.phoneNumber}}</span>
             </view>
-            <view class="repairdetail heightd">
+            <view class="repairdetail">
+                审核状态:
+                <span class="username">{{item.userState == 1?"未审核":"已审核"}}</span>
+            </view>
+            <!-- <view class="repairdetail heightd">
                 问题描述:
-                <span class="username">问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述...{{}}</span>
-            </view>
+                <span class="username">{{item.applyDesc}}</span>
+            </view> -->
         </view>
-        <image class="noticeImage" src='../../../image/noticebanner.png'></image>
+        <image class="noticeImage" src='{{item.headImage}}'></image>
     </view>
     <!-- 车辆详情 -->
     <view wx:if="{{showscar}}" class="pageCenter">
         <view class='titleOne'>
-            王志远车辆详情
+            {{historylist.applyDesc}}
         </view>
         <view class='titleNote'>
-            <span style="padding-right:10rpx">发布时间:{{date}}</span>
-            <span style="padding-right:10rpx">浏览次数:{{browse}}</span>
-            <span style="padding-right:10rpx">作者:{{user}}</span>
+            <span style="padding-right:10rpx">发布时间:{{historylist.createTime}}</span>
+            <!-- <span style="padding-right:10rpx">浏览次数:{{browse}}</span> -->
+            <span style="padding-right:10rpx">作者:{{historylist.applyUser}}</span>
         </view> 
         <view class="containner">
             <view class="repairdetail">
                 真实姓名:
-                <span class="username">王志远{{}}</span>
+                <span class="username">{{historylist.applyUser}}</span>
             </view>
             <view class="repairdetail">
-                报修地址:
-                <span class="username">北京市大兴区新立村{{}}</span>
+                停车车牌:
+                <span class="username">{{historylist.plateNumber}}</span>
+            </view>
+            <view class="repairdetail">
+                门牌号:
+                <span class="username">{{historylist.houseNumber}}</span>
+            </view>
+            <view class="repairdetail">
+                开始时间:
+                <span class="username">{{historylist.statrtTime}}</span>
+            </view>
+            <view class="repairdetail">
+                结束时间:
+                <span class="username">{{historylist.endTime}}</span>
             </view>
             <view class="repairdetail">
                 联系电话：
-                <span class="username">15394598336{{}}</span>
+                <span class="username">{{historylist.phoneNumber}}</span>
+            </view>
+            <view class="repairdetail">
+                审核状态:
+                <span class="username">{{historylist.auditState==1?"未审核":"已审核"}}</span>
             </view>
             <view class="repairdetail heightd">
                 问题描述:
-                <span class="username">问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述...{{}}</span>
+                <span class="username">{{historylist.applyDesc}}</span>
             </view>
         </view>
-        <image class="noticeImage" src='../../../image/noticebanner.png'></image>
+        <image class="noticeImage" src='{{historylist.applyDesc}}'></image>
     </view>
     <!-- 申请详情 -->
-    <view wx:if="{{showsshenqing}}" class="pageCenter">
+    <view   wx:if="{{showsshenqing}}" class="pageCenter">
+      <view>
         <view class='titleOne'>
-            王志远申请详情
+            {{historylist.details}}
         </view>
         <view class='titleNote'>
-            <span style="padding-right:10rpx">发布时间:{{date}}</span>
-            <span style="padding-right:10rpx">浏览次数:{{browse}}</span>
-            <span style="padding-right:10rpx">作者:{{user}}</span>
+            <span style="padding-right:10rpx">发布时间:{{historylist.createTime}}</span>
+            <!-- <span style="padding-right:10rpx">浏览次数:{{browse}}</span> -->
+            <span style="padding-right:10rpx">作者:{{historylist.realName}}</span>
         </view> 
         <view class="containner">
             <view class="repairdetail">
                 真实姓名:
-                <span class="username">王志远{{}}</span>
+                <span class="username">{{historylist.realName}}</span>
             </view>
             <view class="repairdetail">
                 报修地址:
-                <span class="username">北京市大兴区新立村{{}}</span>
+                <span class="username">{{historylist.location}}</span>
             </view>
             <view class="repairdetail">
                 联系电话：
-                <span class="username">15394598336{{}}</span>
+                <span class="username">{{historylist.phoneNumber}}</span>
+            </view>
+            <view class="repairdetail">
+                审核状态:
+                <span class="username">{{historylist.auditState==1?"未审核":"已审核"}}</span>
             </view>
             <view class="repairdetail heightd">
                 问题描述:
-                <span class="username">问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述...{{}}</span>
+                <span class="username">{{historylist.details}}</span>
             </view>
         </view>
-        <image class="noticeImage" src='../../../image/noticebanner.png'></image>
+        <image class="noticeImage" src='{{historylist.attachment}}'></image>
+      </view>
     </view>
 </view>

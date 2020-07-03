@@ -1,0 +1,12 @@
+.btn{
+  width: 450rpx;
+  height: 250rpx;
+  border-radius: 2%;
+  border: 10rpx solid red;
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 30%;
+}

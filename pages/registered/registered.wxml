@@ -1,25 +1,27 @@
 <view class='page'>
     <view class="logoImage">
-        <image class="backGround-box" src='http://www.qy58.cn/upload/loginbg.png'></image>
+        <image class="backGround-box" src='https://www.qy58.cn/upload/loginbg.png'></image>
         <image class="center-box" src='../../image/logo.png'></image>
     </view>
     <view class="usertableOne">
         <form class="style-form " catchsubmit="formSubmit" catchreset="formReset">
-        <view class="allradio">
-            <radio-group class="he" bindchange="radioChange">
-                <label class="radio fl" wx:for="{{items}}" wx:key="{{item.value}}">
-                    <view class="fr">{{item.name}}</view>
-                    <radio name="usertype" class="fr" value="{{item.value}}" checked="true" />
-                </label>
-            </radio-group>
-        </view>
-       
+            <view class="allradio">
+                <radio-group class="he" bindchange="radioChange">
+                    <label class="radio fl" wx:for="{{items}}" wx:key="{{item.value}}">
+                        <view class="fr">{{item.name}}</view>
+                        <radio name="usertype" class="fr" value="{{item.value}}" checked="true" />
+                    </label>
+                </radio-group>
+            </view>
             <view class="moren heightSss">
                 <input class="weui-input" name="username" placeholder="请输入您的真实姓名" />
                 <span class="iconfont icon-wode iconColor"></span>
             </view>
-            
-            <view class="hiddenAll" wx:if="{{showtable}}">
+            <view wx:if="{{showtable}}" class="moren heightSss">
+                <input class="weui-input" name="commonAddress" placeholder="请输入您的地址" />
+                <span class="iconfont icon-huabanfuben iconColor"></span>
+            </view> 
+            <!-- <view class="hiddenAll" wx:if="{{showtable}}">
                 <input class="weui-input inputWidth" name="town" />
                 <span class="flleft">镇</span>
                 <input class="weui-input inputWidth" name="village" />
@@ -28,19 +30,20 @@
                 <span class="flleft">街道</span>
                 <input class="weui-input inputWidth" name="addresses" />
                 <span class="flleft">门牌号</span>
-            </view>
+            </view> -->
             <view class="moren">
-            <input class="weui-input" maxlength="11" name="phonenumber" placeholder="请输入手机号" />
-            <span class="iconfont icon-shouji iconColor"></span>
-        </view>
-        <view class=" moren">
-            <input class="weui-input" maxlength="11" name="phonenumber" placeholder="请输入手机号" >
-        </input>
-            <button class="sendcode" bindtap="sendCode" disabled="{{smsFlag}}" >{{sendTime}}</button>
-        </view>
-        <navigator url="/pages/index/index">
-            <button class="submit-login" type="primary" formType="submit">立即注册</button>
-        </navigator>
+                <input class="weui-input" maxlength="11" name="phoneNumber" placeholder="请输入手机号" />
+                <span class="iconfont icon-shouji iconColor"></span>
+            </view>
+            <!-- <view class=" moren">
+                <input class="weui-input" maxlength="11" name="phonenumber" placeholder="请输入手机号">
+                </input>
+                <button class="sendcode" bindtap="sendCode" disabled="{{smsFlag}}">{{sendTime}}</button>
+            </view> -->
+                <button class="submit-login" type="primary" formType="submit">立即注册</button>
         </form>
+    </view>
+    <view class="logoImage" style="position: absolute;bottom:0;">
+        <image class="backGround-bottom" src='https://www.qy58.cn/upload/city.png'></image>
     </view>
 </view>

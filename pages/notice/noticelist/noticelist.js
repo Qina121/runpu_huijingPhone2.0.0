@@ -1,6 +1,9 @@
 Page({
     data: {
         date: "", //日期
+        releaseTime: null,
+        creatorName: null,
+        descContent: null,
         browse: "", //浏览次数
         english:"ANNOUNCEMENT", //英文标题
         user: "", //作者
@@ -24,10 +27,10 @@ Page({
         console.log(options, "options");//输出的结果是  1
         var that = this;
         wx.request({
-            url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/query?tableName=notice',
+            url: 'https://api.huijingwuye6688.com/notice/selectOneById/'+options.id,
             method: "get",
             data: {
-                id: options.id
+                // id: options.id
             },
             header: {
                 'Content-Type': 'application/json'
@@ -35,17 +38,47 @@ Page({
             success: function (res) {
                 console.log(res)
                 that.setData({
-                    historylist: res.data,
-                    // date: res.data.date,
-                    // browse: res.data.browse,
+                    // historylist: res.data,
+                    releaseTime: res.data.data.announceTime,
+                    browse: res.data.data.views,
                     // user:res.data.user,
-                    // title:res.data.title,
+                    title:res.data.data.title,
+                    descContent: res.data.data.content,
+                    creatorName: res.data.data.creatorName,
                     // articlebody:res.data.articlebody,
                     // artileimg:res.data.artileimg
                 })
 
             }
         })
+
+ 
+
+
+
+        // wx.request({
+        //     url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/query?tableName=notice',
+        //     method: "get",
+        //     data: {
+        //         id: options.id
+        //     },
+        //     header: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     success: function (res) {
+        //         console.log(res)
+        //         that.setData({
+        //             historylist: res.data,
+        //             // date: res.data.date,
+        //             // browse: res.data.browse,
+        //             // user:res.data.user,
+        //             // title:res.data.title,
+        //             // articlebody:res.data.articlebody,
+        //             // artileimg:res.data.artileimg
+        //         })
+
+        //     }
+        // })
 
 
     },

@@ -1,17 +1,19 @@
 Page({
     data:{
-        date:"2020.05.30",
-        browse:"345",
-        user:"张张",
         titlebig:"",
         showsshenpi:"",
         showsbaoxiu:"",
         showscar:"",
-        showsshenqing:""
+        showsshenqing:"",
+        historylist:{}
     },
     onLoad:function(options){
         // 生命周期函数--监听页面加载
         console.log(options,"options")
+        // const dataId = wx.getStorageSync('realNameone').id
+        // const dataOwnId = wx.getStorageSync('realNameone').userOwnerId
+         const dataId = options.id
+        const dataOwnId = options.userId
         var that = this
         if(options.detailxinxi == "showsrapair") {
             that.setData({
@@ -23,6 +25,32 @@ Page({
                 englishTitle:"REPAIR"
             })
             wx.setNavigationBarTitle({ title:'报修详情'})
+            wx.request({
+                url: 'https://api.huijingwuye6688.com/repairInfo/select',
+                method: "get",
+                header: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type':"application/x-www-form-urlencoded"
+                },
+                data: {
+                //    userId:options.userId,
+                //    id:options.id
+
+                        userId:dataOwnId,
+                        id:dataId
+                },
+                success: function (res) {
+                    that.setData({
+                        historylist : res.data.data
+                    })
+                    console.log(that.data.historylist, "222")
+
+                },
+                error: function (error) {
+                    console.log(error,"error")
+                }
+
+            })
         }
         if(options.detailxinxi == "showsshenpi") {
             that.setData({
@@ -34,7 +62,32 @@ Page({
                 englishTitle:"HARBAGE CLASSIFICATION"
             })
             wx.setNavigationBarTitle({ title:'审批详情'})
+            wx.request({
+                url: 'https://api.huijingwuye6688.com/userInfo/selectOneApproval',
+                method: "get",
+                header: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type':"application/x-www-form-urlencoded"
+                },
+                data: {
+                //    userId:wx.getStorageSync('realNameone').userOwnerId,
+                //    id:options.wx.getStorageSync('realNameone').id
 
+                // userId:dataOwnId,
+                id:dataId
+                },
+                success: function (res) {
+                    that.setData({
+                        historylist : res.data.data
+                    })
+                    console.log(that.data.historylist, "222")
+
+                },
+                error: function (error) {
+                    console.log(error,"error")
+                }
+
+            })
         }
         if(options.detailxinxi == "showsshenqing") {
             that.setData({
@@ -46,6 +99,32 @@ Page({
                 englishTitle:"HARBAGE CLASSIFICATION"
             })
             wx.setNavigationBarTitle({ title:'申请详情'})
+            wx.request({
+                url: 'https://api.huijingwuye6688.com/garbageClassfy/selectOne',
+                method: "get",
+                header: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type':"application/x-www-form-urlencoded"
+                },
+                data: {
+                    // userId:wx.getStorageSync('realNameone').userOwnerId,
+                    // id:options.wx.getStorageSync('realNameone').id
+
+                    userId:dataOwnId,
+                    id:dataId
+                },
+                success: function (res) {
+                    that.setData({
+                        historylist : res.data.data
+                    })
+                    console.log(that.data.historylist, "222")
+
+                },
+                error: function (error) {
+                    console.log(error,"error")
+                }
+
+            })
 
         }
         if(options.detailxinxi == "showscheliang") {
@@ -58,7 +137,32 @@ Page({
                 englishTitle:"VEHICLE MANAGEMENT"
             })
             wx.setNavigationBarTitle({ title:'车辆详情'})
+            wx.request({
+                url: 'https://api.huijingwuye6688.com/vehicleManager/select',
+                method: "get",
+                header: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type':"application/x-www-form-urlencoded"
+                },
+                data: {
+                //    userId:options.userId,
+                //    id:options.id
 
+                userId:dataOwnId,
+                id:dataId
+                },
+                success: function (res) {
+                    that.setData({
+                        historylist : res.data.data
+                    })
+                    console.log(that.data.historylist, "222")
+
+                },
+                error: function (error) {
+                    console.log(error,"error")
+                }
+
+            })
         }
     },
     onReady:function(){

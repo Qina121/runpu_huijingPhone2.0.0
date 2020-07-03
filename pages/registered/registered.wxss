@@ -63,6 +63,7 @@
     width: 100%;
     padding:5%;
     box-sizing: border-box;
+    z-index: 11;
 }
 .page-section {
     width: 100%;
@@ -214,4 +215,10 @@ radio .wx-radio-input {
 }
 .heightSss {
     margin-top: 10rpx;
+}
+.backGround-bottom {
+    position: absolute;
+    width: 741rpx;
+    height: 148rpx;
+    bottom: -10rpx;
 }

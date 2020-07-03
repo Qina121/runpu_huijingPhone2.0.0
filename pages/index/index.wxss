@@ -139,6 +139,9 @@
     left:50%;
     transform: translateX(-50%);
     font-size: 36rpx;
+    font-weight: bold;
+    margin-top: 71rpx;
+
 }
 .pageCenter {
     position: absolute;
@@ -164,6 +167,22 @@
 .boxHeight {
     height: 380rpx;
     
+}
+.notce{
+    font-size: 145rpx;
+    top: 15rpx;
+}
+.carfont{
+    font-size: 110rpx;
+    top: 46rpx;
+}
+.servicfont{
+    top: 34rpx;
+    font-size: 125rpx;
+}
+.garbagefont{
+    top: 31rpx;
+    font-size: 120rpx;
 }
   
 

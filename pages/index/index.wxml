@@ -1,7 +1,7 @@
 <view class="page">
     <view class="page-header">
         <view class="logoImage">
-            <image class="backGround-box" src='http://www.qy58.cn/upload/header.png'></image>
+            <image class="backGround-box" src='https://www.qy58.cn/upload/header.png'></image>
             <!-- <image class="center-box" src='../../image/logo.png'></image> -->
         </view>
         <view class="pageCenter">
@@ -18,34 +18,34 @@
         </view>
     </view>
     <view class="pageContainer">
-        <navigator url="/pages/secondpage/secondpage">
+        <view bindtap="garbage">
             <view class="big-box">
                 <image class="bgImage" src='{{smallimgurl}}'></image>
-                <span class="iconfont icon-lajitong iconColor"></span>
+                <span class="iconfont icon-lajitong iconColor garbagefont"></span>
                 <span class="boxColor">垃圾分类</span>
             </view>
-        </navigator>
-        <navigator url="/pages/notice/notice">
+        </view>
+        <view bindtap="notice">
             <view class="big-box">
                 <image class="bgImage" src='{{smallimgurl}}'></image>
-                <span class="iconfont icon-tongzhi iconColor"></span>
+                <span class="iconfont icon-tongzhi iconColor notce"></span>
                 <span class="boxColor">通知公告</span>
             </view>
-        </navigator>
-        <navigator url="/pages/repair/repair">
+        </view>
+        <view bindtap="serviceApplication">
             <view class="big-box">
                 <image class="bgImage" src='{{smallimgurl}}'></image>
-                <span class="iconfont icon-baoxiu iconColor"></span>
-                <span class="boxColor">报修</span>
+                <span class="iconfont icon-baoxiu iconColor servicfont"></span>
+                <span class="boxColor">服务申办</span>
             </view>
-        </navigator>
-        <navigator url="/pages/vehicle/vehicle">
+        </view>
+        <view bindtap="vehicleManagement">
             <view class="big-box">
                 <image class="bgImage" src='{{smallimgurl}}'></image>
-                <span class="iconfont icon-cheliangdaiban iconColor"></span>
+                <span class="iconfont icon-cheliangdaiban iconColor carfont"></span>
                 <span class="boxColor">车辆管理</span>
             </view>
-        </navigator>
+        </view>
         <!-- <button open-type="getUserInfo" bindgetuserinfo="getPerson">获取用户信息</button> -->
     </view>
 </view>

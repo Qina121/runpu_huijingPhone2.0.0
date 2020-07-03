@@ -29,7 +29,7 @@
 .mines {
     display: block;
     width: 100%;
-    font-size:28rpx;
+    font-size:30rpx;
     font-weight:400;
     color:#333;
     line-height:80rpx;

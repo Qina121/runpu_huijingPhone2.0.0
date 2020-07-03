@@ -1,56 +1,53 @@
-const app = getApp()
 Page({
     data: {
         username: "",
         userphone: "",
-        loginbg: "http://www.qy58.cn/upload/loginbg.png",
+        loginbg: "https://www.qy58.cn/upload/loginbg.png",
         userId: "333",
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         userInfo: "",
         hasUserInfo: false,
-        avatarUrl:""
+        avatarUrl: "",
+        isShow: false,
+        canIuse: false,
+        userxinxi: {},
+        //遮罩层
+        showView: false
     },
     onload: function () {
-        console.log(111)
+        var that = this
         wx.getSetting({
             success: function (res) {
-                console.log(res,"res")
+                console.log(res, "111")
                 if (res.authSetting['scope.userInfo']) {
                     wx.getUserInfo({
                         success: function (res) {
-                            console.log(res.userInfo, "111")
                             //用户已经授权过
+                            that.setData({
+                                isShow: true
+                            })
+                            console.log(res, "授权")
+                            console.log(that.data, "canIuse")
+                        }, error: function () {
+                            that.setData({
+                                isShow: true
+                            })
                         }
                     })
                 }
             }
         })
     },
-    getUserInfo(e) {
-        if (!e.detail.userInfo) {
-            console.log(5)
-            return
-        } else {
-            console.log(6)
-            console.log(e.detail.userInfo.avatarUrl,"e.detail.userInfo")
-            this.setData({
-                avatarUrl: e.detail.userInfo.avatarUrl,
-                hasUserInfo: true
-            })
-            console.log(this.data,"data")
-        }
-    },
-    bindGetUserInfo: function (e) {
-        console.log(e.detail.userInfo)
-        if (e.detail.userInfo) {
-            //用户按了允许授权按钮
-        } else {
-            //用户按了拒绝按钮
-        }
-    },
-    
+    // bindGetUserInfo: function (e) {
+    //     if (e.detail.userInfo) {
+    //         //用户按了允许授权按钮
+    //     } else {
+    //         //用户按了拒绝按钮
+    //     }
+    // },
     onReady: function () {
         // 生命周期函数--监听页面初次渲染完成
+
     },
     onShow: function () {
         // 生命周期函数--监听页面显示
@@ -76,7 +73,6 @@ Page({
         }
     },
     formSubmit(e) {
-        console.log('form发生了submit事件，携带数据为：', e.detail.value)
         var phone = e.detail.value.userphone;
         if (e.detail.value.username == "") {
             wx.showToast({
@@ -101,78 +97,131 @@ Page({
             return false;
         } else {
             var that = this;
-            var jsons = {
-                realName: e.detail.value.username,
-                phoneNumber: e.detail.value.userphone
-            }
-            // owneruser.ownername = e.detail.value.username
-            // owneruser.userphone = e.detail.value.userphone
-            // console.log(owneruser, owneruser)
-            console.log(e.detail.value.username, "e.detail.value.username")
-            console.log(e.detail.value.userphone, " e.detail.value.userphone")
             wx.request({
                 // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/post?tableName=owner&queryString=ownername="' + e.detail.value.username + '" and ownerphone="' + e.detail.value.userphone+'"',
-                url: 'http://192.168.1.110:8084/userInfo/insert',
+                // url: 'http://124.193.199.178:8085/userInfo/selectLogin',// 原来的
+                url: 'https://api.huijingwuye6688.com/userInfo/selectLogin', //测试服务器接口地址
+                // url: 'http://192.168.1.110:8084/userInfo/insert',
                 // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/query',
-                method: "post",
+                method: "get",
                 // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/common?tableName=owner',
                 header: {
-                    // 'Content-Type': 'application/json'
-                    'Content-Type':"application/x-www-form-urlencoded"
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': "application/x-www-form-urlencoded"
                 },
-                // data: {
-                //     ownername : e.detail.value.username,
-                //     ownerphone : e.detail.value.userphone
-                // },
-                data: JSON.stringify(jsons),
+                data: {
+                    realName: e.detail.value.username,
+                    phoneNumber: e.detail.value.userphone,
+                },
                 success: function (res) {
-                    console.log(res.data, "222")
-                    // that.data.date = res.data.date
-                    // that.data.browse = res.data.browse
-                    // that.data.user = res.data.user
-                    // that.data.title = res.data.title
-                    // that.data.articlebody = res.data.articlebody
-                    // that.data.artileimg = res.data.artileimg
-                    // wx.navigateTo({
-                    //     url: '/pages/notice/noticelist/noticelist?date=' + res.data.date + 
-                    //     '&browse='+res.data.browse + '&user='+res.data.user  
-                    //     + '&title='+res.data.title + '&articlebody=' + res.data.title + 
-                    //     '&articlebody=' + res.data.articlebody + '&artileimg=' +res.data.artileimg
-                    // })
-                    wx.showToast({
-                        title: '登录成功',
-                        icon: 'success',
-                        duration: 2000//持续的时间
-                    })
-                    wx.setStorage(
-                        {
-                            key:"userxinxi",
-                            data:res.data
-                        },{
-                        key: "userid",
-                        data: res.data
-                    })
-                    setTimeout(function () {
-
-                        wx.switchTab({
-                            url: '/pages/index/index?role=管理员'
+                    console.log(res)
+                    if (res.data.data == null) {
+                        wx.showToast({
+                            title: '未查询到用户信息',
+                            icon: 'none',
+                            duration: 2000//持续的时间
                         })
-                        //要延时执行的代码
-                    }, 1000)
+                        return false
+                    }
+                    // if(res.data.data.userType == 2 || 3 || 4) {
+                    //     let realNameone = res.data.data
+                    //     wx.setStorage(
+                    //         {
+                    //             key: "realNameone",
+                    //             data: realNameone
+                    //         })
+                    //     wx.showToast({
+                    //         title: '登录成功',
+                    //         icon: 'success',
+                    //         duration: 2000//持续的时间
+                    //     })
 
+                    //     console.log(wx.getStorageSync('realNameones'), "realNameone11")
+                    //     setTimeout(function () {
+                    //         wx.switchTab({
+                    //             url: '/pages/index/index'
+                    //         })
+                    //         //要延时执行的代码
+                    //     }, 3000)
+                    // }
+                    if (res.data.data.userType == 1 ) {
+                        let realNameone = res.data.data
+                        wx.setStorage(
+                            {
+                                key: "realNameone",
+                                data: realNameone
+                            }
+                        )
+                        wx.showToast({
+                            title: '登录成功',
+                            icon: 'success',
+                            duration: 2000//持续的时间
+                        })
+                        console.log(res.data.data, "data")
+                        setTimeout(function () {
+                            wx.navigateTo({
+                                url: '/pages/mainuser/mainuser?role=管理员'
+                            })
+                            wx.setStorageSync('login', 'true')
+                            //要延时执行的代码
+                        }, 3000)
 
-                },
-                error: function (error) {
-                    console.log(error)
+                        console.log(wx.getStorageSync('realNameone'), "realNameone")
+                        return false
+                    }
+                    if (res.data.data.userType == 2 || 3 || 4 & res.data.data.userState == 2) {
+                        const realNameone = res.data.data
+                        console.log(realNameone.headImage)
+                        wx.setStorage(
+                            {
+                                key: "realNameone",
+                                data: realNameone
+                            }
+                        )
+                        wx.showToast({
+                            title: '登录成功',
+                            icon: 'success',
+                            duration: 2000//持续的时间
+                        })
+                        console.log(res.data.data, "data")
+                        setTimeout(function () {
+                            wx.switchTab({
+                                url: '/pages/index/index?'
+                            })
+                            wx.setStorageSync('login', 'true')
+                            //要延时执行的代码
+                        }, 3000)
+
+                        console.log(wx.getStorageSync('realNameone'), "realNameone")
+                        return false
+                    }
+                    if ( res.data.data.userState == 1) {
+                        wx.showToast({
+                            title: '您暂未通过审批',
+                            icon: 'none',
+                            duration: 2000//持续的时间
+                        })
+                        return false
+                    }
                 }
-
             })
-
-            // 判断匹配则显示正在审批 没有账号跳转到注册 有账号直接进入主页面
-            //     wx.switchTab({
-            //     url: "/pages/index/index"
-            //  })
         }
 
     },
+    doNotMove: function() {
+        console.log('stop user scroll it!');
+        return;    
+    },
+    change: function() {
+        let that = this;
+        that.setData({
+            showView: (!that.data.showView)
+        })
+    },
+    goregistered: function() {
+        console.log('现在正式测试注册新用户')
+        wx.navigateTo({
+            url: '/pages/registered/registered'
+        })
+    }
 })

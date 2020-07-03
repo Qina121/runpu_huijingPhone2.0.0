@@ -1,6 +1,6 @@
 <view class="page">
     <view class="pageHeader">
-        <image class="bgImage" src='http://www.qy58.cn/upload/secondbgimage.jpg'></image>
+        <image class="bgImage" src='https://www.qy58.cn/upload/secondbgimage.jpg'></image>
         <span class=" same detaileng">ANNOUNCEMENT{{}}</span>
         <span class=" same detailchina">通 知 公 告{{}}</span>
         <span class=" same detailchinas"></span>
@@ -16,7 +16,7 @@
             </view>
             <view class="pagecenterBottom">
                 <textarea name="" id="" cols="30" rows="10">
-                {{textareatext}}
+                {{historylist[0].content}}
             </textarea>
             </view>
             <view class="pagecenterEnd">
@@ -29,18 +29,18 @@
     <view class="pagefooter">
         <span class="historyNotice">历史通知公告</span>
         <view wx:for="{{historylist}}" class="allText">
-            <navigator url="/pages/notice/noticelist/noticelist?id=1">
+            <view bindtap="goDetail" data-item="{{item}}">
             <span class="styleBlock titleStyle">
                 {{item.title}}
             </span>
-            </navigator>
+            </view>
             <span class="styleBlock textEee">
-                {{item.textareatext}}
+                {{item.content}}
             </span>
             <span class="styleBlock ">
                 <view type="text-box">
                     <span class="iconfont icon-rili iconColor"></span>
-                    <span class="texts">2020/05/20</span>
+                    <span class="texts">{{item.announceTime}}</span>
                     <span class="iconfont icon-youjiantou iconColorright"></span>
                 </view>
             </span>

@@ -1,10 +1,13 @@
 Page({
     data:{
-        fuwuimg:"http://www.qy58.cn/upload/fuwu.png",
-        carguanliimg:"http://www.qy58.cn/upload/carguanli.png",
-        shijian:"http://www.qy58.cn/upload/shijian.png"
+        fuwuimg:"https://www.qy58.cn/upload/fuwu.png",
+        carguanliimg:"https://www.qy58.cn/upload/carguanli.png",
+        shijian:"https://www.qy58.cn/upload/shijian.png",
+        
     },
     onLoad:function(options){
+    wx.setNavigationBarTitle({ title: '汇景恒福物业服务' })
+
         // 生命周期函数--监听页面加载
     },
     onReady:function(){

@@ -23,7 +23,10 @@ Page({
         countPic: 3,//上传图片最大数量
         showImgUrl: "", //路径拼接，一般上传返回的都是文件名，
         uploadImageId: [],
-        uploadImgUrl: 'http://www.qy58.cn/cgi-bin/webUpLoad.exe'//图片的上传的路径
+        uploadImgUrl: 'http://www.qy58.cn/cgi-bin/webUpLoad.exe',//图片的上传的路径,
+        pic_array: [],
+        pic_index: 0,
+        pic_number: 0,
     },
     onLoad: function (options) {
         // 生命周期函数--监听页面加载
@@ -69,6 +72,15 @@ Page({
             wx.setNavigationBarTitle({ title: '事件上传' })
 
         }
+
+        // 初始化服务管理中积分的区间
+        let arr = [];
+        for(let i = 0; i < 100; i++) {
+            arr.push(i.toString())
+        }
+        that.setData({
+            pic_array : arr
+        })
     },
     myEventListener: function (e) {
         console.log("上传的图片结果集合")
@@ -345,7 +357,8 @@ Page({
                     userId:that.data.userxnix.userId,
                     attachment: that.data.uploadImageId.join(","),
                     details:this.data.descdetailss,
-                    score:that.data.userintegral,
+                    score:that.data.pic_number,
+                    // score:that.data.userintegral,
                     //details: this.data.detailss
                     // rfidInfo: e.detail.value.creatTime,
                     // auditState: this.data.auditState,
@@ -582,6 +595,14 @@ Page({
     inputgetName: function(e) {
         console.log(e.detail.value)
         this.setData({descdetailss:e.detail.value})
+    },
+    bindNumberChange: function(e) {
+        // console.log(e)
+        this.setData({
+            pic_number: e.detail.value
+        })
+        // console.log(this.data.pic_number)
     }
+
 
 }) 

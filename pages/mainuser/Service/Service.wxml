@@ -29,14 +29,20 @@
     <span wx:if="{{showsform}}" class="historyNotice">{{smalltitle}}</span>
     <form  class="formStyle" catchsubmit="formSubmit" catchreset="formReset">
         <span wx:if="{{showsjifen}}" class="historyNotice">垃圾分类评分</span>
-        <view  wx:if="{{showsjifen}}" class="jifendetail">
+        <!-- <view  wx:if="{{showsjifen}}" class="jifendetail">
             您的评分
             <view class="flright">
                 <span bindtap="editintegral" class=" circular jifenup">-</span>
                 <span name="{{userintegral}}" class=" margins jifennow">{{userintegral}}</span>
                 <span bindtap="addintegral" class=" circular jifendown">+</span>
             </view>
-        </view>
+        </view> -->
+        <picker mode = "selector"   name="picker_hx" class="cybm_pic_1" value="{pic_index}}"  range="{{pic_array}}" 
+            bindchange="bindNumberChange">
+            <view name="startdata" class="picker weui-input packers">
+                {{pic_number}}
+            </view>
+        </picker>
         <view wx:if="{{showsform}}">
             <span class="titlebEeizhu">姓名</span>
             <span class="most">*</span>

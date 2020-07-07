@@ -25,20 +25,28 @@
             </view> -->
             <!-- 信息 -->
             <form class="style-form " catchsubmit="formSubmit" catchreset="formReset">
-            <view class=" bigbox paddings bigimg xiangxi">
+            <!-- <view class=" bigbox paddings bigimg xiangxi">
                 <text class=" bigtext mines">用户头像</text>
                 <span class=" iconstyle iconfont icon-arrowRight-fill  iconright"></span>
                 <image bindtap="changeimg" class="userimgbox" src='{{userimg}}'></image>
-            </view>
-            <view class=" paddinga xiangxi">
+            </view> -->
+            <!-- <view class=" paddinga xiangxi">
                 <text class="mines">真实姓名</text>
                 <span class="iconfont icon-arrowRight-fill  iconright"></span>
                 <input name="minename" value="{{minename}}" class="flright"></input>
-            </view>
+            </view> -->
             <view class=" paddinga xiangxi">
+                <text class="mines">真实姓名</text>
+                <text  class="flright">{{minename}}</text>
+            </view>
+            <!-- <view class=" paddinga xiangxi">
                 <text class="mines">性别</text>
                 <span class="iconfont icon-arrowRight-fill  iconright"></span>
                 <input value="{{minegender}}" name="minegender" class="flright"></input>
+            </view> -->
+            <view class=" paddinga xiangxi">
+                <text class="mines">性别</text>
+                <text  class="flright">{{minegender}}</text>
             </view>
             <!-- <navigator url="/pages/mine/minedizhi/minedizhi?detailxinxi=phonenumber&id=1&minephone={{minephone}}">
                 <view class=" paddinga xiangxi">
@@ -47,27 +55,36 @@
                     <span name="minephone" class="flright">{{minephone}}</span>
                 </view>
             </navigator> -->
-            <view class=" paddinga xiangxi">
+            <!-- <view class=" paddinga xiangxi">
                 <text class="mines">门牌号{{}}</text>
                 <span class="iconfont icon-arrowRight-fill  iconright"></span>
                 <input value="{{mineaddresses}}" name="{{mineaddresses}}" class="flright"></input>
+            </view> -->
+            <view class=" paddinga xiangxi">
+                <text class="mines">门牌号{{}}</text>
+                <text class="flright">{{mineaddresses}}</text>
             </view>
-            <navigator url="/pages/mine/minedizhi/minedizhi?detailxinxi=dizhi">
+            <!-- <navigator url="/pages/mine/minedizhi/minedizhi?detailxinxi=dizhi">
                 <view class=" paddinga xiangxi marginBottom">
                     <text class="mines">常用地址{{}}</text>
                     <span class="iconfont icon-arrowRight-fill  iconright"></span>
                     <input value="{{minedizhi}}" name="{{minedizhi}}" class="flright"></input>
                 </view>
-            </navigator>
+            </navigator> -->
+            <view class=" paddinga xiangxi">
+                <text class="mines">常用地址{{}}</text>
+                <text class="flright">{{minedizhi}}</text>
+            </view>
             <!-- <view class=" paddinga xiangxi ">
                 <span class="iconfont icon-xinxi iconColor"></span>
                 <text class="mines">我的申请:{{}}</text>
                 <span class="iconfont icon-youjiantou  iconright"></span>
             </view> -->
-            <view>
+            <!-- 暂时不予更改 -->
+            <!-- <view>
                 <button class="showsubmit" type="error" formType="submit">保存更改</button>
                 <button class="showsubmit huise" type="none" bindtap="cancel" >取消更改</button>
-            </view>
+            </view> -->
         </form>
         </view>
     

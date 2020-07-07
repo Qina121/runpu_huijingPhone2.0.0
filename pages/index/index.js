@@ -20,8 +20,8 @@ Page({
     ],
     indicatorDots: true,  //小点
     autoplay: true,  //是否自动轮播
-    interval: 3000,  //间隔时间
-    duration: 3000,  //滑动时间
+    interval: 4000,  //间隔时间
+    duration: 1000,  //滑动时间
      buttons: [
             {
                 type: 'default',

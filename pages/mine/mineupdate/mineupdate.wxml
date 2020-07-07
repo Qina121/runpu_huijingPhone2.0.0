@@ -44,10 +44,11 @@
                 <span class="iconfont icon-arrowRight-fill  iconright"></span>
                 <input value="{{minegender}}" name="minegender" class="flright"></input>
             </view> -->
-            <view class=" paddinga xiangxi">
+            <!-- 暂时没有性别 -->
+            <!-- <view class=" paddinga xiangxi">
                 <text class="mines">性别</text>
                 <text  class="flright">{{minegender}}</text>
-            </view>
+            </view> -->
             <!-- <navigator url="/pages/mine/minedizhi/minedizhi?detailxinxi=phonenumber&id=1&minephone={{minephone}}">
                 <view class=" paddinga xiangxi">
                     <text class="mines">联系电话{{}}</text>

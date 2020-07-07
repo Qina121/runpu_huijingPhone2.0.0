@@ -1,7 +1,8 @@
 <view class="page">
     <view class="page_title">
-        <view class="page_name">汇景恒福物业服务</view>
         <image class="page_title_backgrond" src='../../image/logo_title.png'></image>
+        <view class="page_name">汇景恒福物业服务</view>
+        <!-- <image class="page_title_backgrond" src='../../image/logo_title.png'></image> -->
     </view>
     <view class="page-header">
         <view class="logoImage">

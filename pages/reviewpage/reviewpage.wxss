@@ -10,17 +10,24 @@
     height: 200rpx;
     position: absolute;
     z-index: 99;
-    text-align: center;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
 }
 .page_name{
     color: #fff;
     font-weight: bold;
-    line-height: 187rpx;
+    /* line-height: 187rpx; */
     margin-bottom: -60rpx;
+    /* text-align: center; */
+    margin-top: -61rpx;
+    margin-left: 16px;
+
 }
 .page_title_backgrond{
     width: 200rpx;
     height: 65rpx;
+    margin-left: 40rpx;
 }
 .page-header {
     width: 100%;

@@ -15,7 +15,7 @@ Page({
             url: 'https://api.huijingwuye6688.com/scoreLogs/selectScoredById',
             method: "get",
             data: {
-                userId: realNameone.userOwnerId
+                userId: realNameone.id
             },
             header: {
                 'Content-Type': 'application/json'

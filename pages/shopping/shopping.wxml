@@ -18,18 +18,20 @@
     <view class="container">
   <view class="product-list">
     <!--商品列表-->
-    <view class="pro-item" bindtap="detail" wx:for="{{productList}}" wx:key="{{index}}">
-      <image src="../../image/mall/product/{{item.img}}.jpg" class="pro-img" mode="widthFix" />
-      <view class="pro-content">
-        <view class="pro-tit">{{item.name}}</view>
-        <view>
-          <view class="pro-price">
-            <text class="sale-price">￥{{item.sale}}</text>
-            <text class="factory-price">￥{{item.factory}}</text>
+    <view class="pro-item" bindtap="detail" wx:for="{{productList}}" wx:key="index" data-goodsId="{{item.goodsId}}">
+      <!-- <navigator url="/pages/shopping/shoppingDetail/shoppingDetail?goodsId={{item.goodsId}}"> -->
+          <image src="{{item.goodsPicture}}" class="pro-img"  />
+          <view class="pro-content">
+            <text>{{item.goodsName}}</text>
+            <text>{{item.goodsDescribe}}</text>
           </view>
-          <view class="pro-pay">{{item.payNum}}人付款</view>
-        </view>
-      </view>
+          <view class="pro-price">
+            <text class="sale-price">积分:{{item.goodsPrice}}</text>
+            <text class="factory-price">库存:{{item.goodsInventory}}</text>
+          </view>
+            <!-- <view class="pro-pay">{{item.payNum}}人付款</view> -->
+ 
+      <!-- </navigator> -->
     </view>
     <!--商品列表-->
   </view>

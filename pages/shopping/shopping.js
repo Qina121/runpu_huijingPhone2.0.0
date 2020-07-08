@@ -15,126 +15,9 @@ Page({
         factory: 69,
         payNum: 999
       },
-      {
-        img: 3,
-        name: "利物浦官方 独家出品大红床上用品三件套",
-        sale: 299,
-        factory: 699,
-        payNum: 666
-      },
-      {
-        img: 4,
-        name: "利物浦官方 独家出品花花碎花床上用品三件套",
-        sale: 1599,
-        factory: 2899,
-        payNum: 236
-      },
-      {
-        img: 5,
-        name: "利物浦官方 独家出品纪念版书柜，便宜又省空间，超级划算",
-        sale: 599,
-        factory: 899,
-        payNum: 2399
-      }, {
-        img: 1,
-        name: "独家出品纪念版沙发",
-        sale: 599,
-        factory: 899,
-        payNum: 2342
-      },
-      {
-        img: 2,
-        name: "好看好养活的绿色养眼小盆栽，超级实惠",
-        sale: 29,
-        factory: 69,
-        payNum: 999
-      },
-      {
-        img: 3,
-        name: "利物浦官方 独家出品大红床上用品三件套",
-        sale: 299,
-        factory: 699,
-        payNum: 666
-      },
-      {
-        img: 4,
-        name: "利物浦官方 独家出品花花碎花床上用品三件套",
-        sale: 1599,
-        factory: 2899,
-        payNum: 236
-      },
 
     ],
-    loadData: [{
-        img: 1,
-        name: "利物浦官方 独家出品纪念版沙发",
-        sale: 599,
-        factory: 899,
-        payNum: 2342
-      },
-      {
-        img: 2,
-        name: "好看好养活的绿色养眼小盆栽，超级实惠",
-        sale: 29,
-        factory: 69,
-        payNum: 999
-      },
-      {
-        img: 3,
-        name: "利物浦官方 独家出品大红床上用品三件套",
-        sale: 299,
-        factory: 699,
-        payNum: 666
-      },
-      {
-        img: 4,
-        name: "利物浦官方 独家出品花花碎花床上用品三件套",
-        sale: 1599,
-        factory: 2899,
-        payNum: 236
-      },
-      {
-        img: 5,
-        name: "利物浦官方 独家出品纪念版书柜，便宜又省空间，超级划算",
-        sale: 599,
-        factory: 899,
-        payNum: 2399
-      }, {
-        img: 1,
-        name: "利物浦官方 独家出品纪念版沙发",
-        sale: 599,
-        factory: 899,
-        payNum: 2342
-      },
-      {
-        img: 2,
-        name: "好看好养活的绿色养眼小盆栽，超级实惠",
-        sale: 29,
-        factory: 69,
-        payNum: 999
-      },
-      {
-        img: 3,
-        name: "大红床上用品三件套",
-        sale: 299,
-        factory: 699,
-        payNum: 666
-      },
-      {
-        img: 4,
-        name: "利物浦官方 独家出品花花碎花床上用品三件套",
-        sale: 1599,
-        factory: 2899,
-        payNum: 236
-      },
-      {
-        img: 5,
-        name: "利物浦官方 独家出品纪念版书柜，便宜又省空间，超级划算",
-        sale: 599,
-        factory: 899,
-        payNum: 2399
-      }
-    ],
+
     loadding: false,
     pullUpOn: true
     },
@@ -162,11 +45,11 @@ Page({
             },
             success: function (res) {
                 console.log(res.data)
-                // that.setData({
-                //     historylist: res.data.data,
+                that.setData({
+                  productList: res.data.data,
                     
-                // })
-                console.log(that.historylist)
+                })
+                console.log(that.data.productList)
 
             }
         })
@@ -240,8 +123,10 @@ Page({
   },
 //   商品的详细内容
   detail(e) {
+    console.log(e)
+    const goodsId = e.currentTarget.dataset.goodsid
     wx.navigateTo({
-      url: './shoppingDetail/shoppingDetail'
+      url: './shoppingDetail/shoppingDetail?goodsId='+ goodsId
     })
   },
 //   轮播图的点击事件

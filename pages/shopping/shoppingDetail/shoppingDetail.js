@@ -67,6 +67,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     let obj = wx.getMenuButtonBoundingClientRect();
     this.setData({
       width: obj.left,
@@ -81,6 +82,23 @@ Page({
         }
       })
     });
+
+
+    // 获取详情信息
+    wx.request({
+      url: 'https://api.huijingwuye6688.com/MallGoods/selectOneInfo/'+ options.goodsId,
+      method: "get",
+      data: {
+          // id: options.id
+      },
+      header: {
+          'Content-Type': 'application/json'
+      },
+      success: function (res) {
+          console.log(res.data)
+
+      }
+  })
   },
 
   /**

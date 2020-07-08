@@ -67,7 +67,7 @@ image{
     justify-content: space-between;
     box-sizing: border-box;
     padding: 20rpx;
-    height: 230rpx;
+    height: 150rpx;
   }
   
   .pro-tit {
@@ -95,7 +95,7 @@ image{
   .factory-price {
     font-size: 24rpx;
     color: #a0a0a0;
-    text-decoration: line-through;
+    /* text-decoration: line-through; */
     padding-left: 12rpx;
   }
   

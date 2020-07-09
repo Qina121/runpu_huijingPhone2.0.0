@@ -20,8 +20,10 @@ Page({
     console.log(options, "options")
     const userInfo = wx.getStorageSync('realNameone')
     let str = userInfo.commonAddress
-    const index=str.lastIndexOf("\-");
-    str=str.substring(index+1,str.length);
+    if(str) {
+      const index=str.lastIndexOf("\-");
+      str=str.substring(index+1,str.length);
+    }
     this.setData({
         userimg: userInfo.headImage,
         minename:userInfo.realName,

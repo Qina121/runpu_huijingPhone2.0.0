@@ -1,7 +1,7 @@
 Page({
     data: {
         userimg: "../../../image/userimg.png",
-        minename: "王志远",
+        minename: "",
         minegender: "男",
         mineaddresses: "503门牌",
         minephone: "15394598336",
@@ -13,15 +13,28 @@ Page({
         const userInfo = wx.getStorageSync('realNameone')
         console.log(userInfo)
         let str = userInfo.commonAddress
-        const index=str.lastIndexOf("\-");
-        str=str.substring(index+1,str.length);
+        let usercommonAddress = userInfo.commonAddress
+
+        if(str) {
+            const index=str.lastIndexOf("\-");
+            console.log(index)
+            if(index == -1) {
+                str = '无'
+            } else {
+                str=str.substring(index+1,str.length);
+            }
+            
+        } else {
+            str = '无'
+            usercommonAddress = '无'
+        }
         this.setData({
             userimg: userInfo.headImage,
             minename:userInfo.realName,
             minegender: '',
             mineaddresses:str,
             minephone:userInfo.phoneNumber,
-            minedizhi:userInfo.commonAddress,
+            minedizhi:usercommonAddress,
         })
         wx.request({
             // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/query?tableName=owner&queryString=ownername="' + e.detail.value.username + '" and ownerphone="' + e.detail.value.userphone + '"',

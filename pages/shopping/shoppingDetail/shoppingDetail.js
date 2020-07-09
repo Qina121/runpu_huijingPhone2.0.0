@@ -10,6 +10,7 @@ Page({
     scrollH: 0, //滚动总高度
     opcity: 0,
     iconOpcity: 0.5,
+    singleMessage: {},
     banner: [
       "https://www.thorui.cn/img/product/11.jpg",
       "https://www.thorui.cn/img/product/2.png",
@@ -21,46 +22,47 @@ Page({
       "https://www.thorui.cn/img/product/8.jpg"
     ],
     bannerIndex: 0,
-    topMenu: [{
-      icon: "message",
-      text: "消息",
-      size: 26,
-      badge: 3
-    }, {
-      icon: "home",
-      text: "首页",
-      size: 23,
-      badge: 0
-    }, {
-      icon: "people",
-      text: "我的",
-      size: 26,
-      badge: 0
-    }, {
-      icon: "cart",
-      text: "购物车",
-      size: 23,
-      badge: 2
-    }, {
-      icon: "kefu",
-      text: "客服小蜜",
-      size: 26,
-      badge: 0
-    }, {
-      icon: "feedback",
-      text: "我要反馈",
-      size: 23,
-      badge: 0
-    }, {
-      icon: "share",
-      text: "分享",
-      size: 26,
-      badge: 0
-    }],
+    // topMenu: [{
+    //   icon: "message",
+    //   text: "消息",
+    //   size: 26,
+    //   badge: 3
+    // }, {
+    //   icon: "home",
+    //   text: "首页",
+    //   size: 23,
+    //   badge: 0
+    // }, {
+    //   icon: "people",
+    //   text: "我的",
+    //   size: 26,
+    //   badge: 0
+    // }, {
+    //   icon: "cart",
+    //   text: "购物车",
+    //   size: 23,
+    //   badge: 2
+    // }, {
+    //   icon: "kefu",
+    //   text: "客服小蜜",
+    //   size: 26,
+    //   badge: 0
+    // }, {
+    //   icon: "feedback",
+    //   text: "我要反馈",
+    //   size: 23,
+    //   badge: 0
+    // }, {
+    //   icon: "share",
+    //   text: "分享",
+    //   size: 26,
+    //   badge: 0
+    // }],
     menuShow: false,
     popupShow: false,
     value: 1,
-    collected: false
+    collected: false,
+    userAddress:''
   },
 
   /**
@@ -68,6 +70,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    const that = this
     let obj = wx.getMenuButtonBoundingClientRect();
     this.setData({
       width: obj.left,
@@ -82,8 +85,10 @@ Page({
         }
       })
     });
-
-
+    const user = wx.getStorageSync('realNameone')
+    that.setData({
+      userAddress:user.commonAddress
+    })
     // 获取详情信息
     wx.request({
       url: 'https://api.huijingwuye6688.com/MallGoods/selectOneInfo/'+ options.goodsId,
@@ -96,9 +101,12 @@ Page({
       },
       success: function (res) {
           console.log(res.data)
-
+          that.setData({
+            singleMessage: res.data.data
+          })
+          
       }
-  })
+    })
   },
 
   /**

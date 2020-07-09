@@ -26,7 +26,6 @@
         </view>
       <!-- </tui-list-cell> -->
       <block wx:for="{{2}}" wx:key="index">
-        <!-- <tui-list-cell hover="{{false}}" padding="0"> -->
           <view class="tui-goods-item">
             <image src="/image/mall/product/{{index+3}}.jpg" class="tui-goods-img"></image>
             <view class="tui-goods-center">

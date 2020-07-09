@@ -81,14 +81,33 @@ Page({
         fontsize: '22',
         //icon: 'undo'
       }
-    ]
+    ],
+    allOrder: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const that = this
+        // 获取详情信息
+        wx.request({
+          url: 'https://api.huijingwuye6688.com/MallOrders/selectAllMallOrders',
+          method: "get",
+          data: {
+              // id: options.id
+          },
+          header: {
+              'Content-Type': 'application/json'
+          },
+          success: function (res) {
+              console.log(res.data)
+              that.setData({
+                allOrder:res.data.data
+              })
+              
+          }
+      })
   },
 
   /**

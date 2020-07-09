@@ -21,7 +21,29 @@ Page({
         auditState:1,
         createTime:"",
         plateNumber:"",
-        realNameone:""
+        realNameone:"",
+        pic_array: ['1个月','2个月','3个月','4个月','5个月','6个月','7个月','8个月','9个月','10个月','11个月','12个月'],
+        pic_index: 0,
+        pic_number: null,
+        data_describe: '1个月',
+        //是否为租户停放
+        tenantParking: false
+    },
+    onShow() {
+        const that = this
+        console.log(wx.getStorageSync('userType'))
+         const type = wx.getStorageSync('userType')
+        if(type == 2 || type == 3) {
+            that.setData({
+                tenantParking : false,
+                pic_number: 0
+            })
+        } else {
+            that.setData({
+                tenantParking : true,
+                pic_number: 1
+            })
+        }
     },
     onload(options) {
         wx.setNavigationBarTitle({ title: '车辆' })
@@ -102,23 +124,23 @@ Page({
             })
             return false
         }
-        if (e.detail.value.statrtTime == null) {
-            wx.showToast({
-                title: '请输入开始时间',
-                icon: 'none',
-                duration: 2000//持续的时间
-            })
+        // if (e.detail.value.statrtTime == null) {
+        //     wx.showToast({
+        //         title: '请输入开始时间',
+        //         icon: 'none',
+        //         duration: 2000//持续的时间
+        //     })
             
-            return false;
-        }
-        if (e.detail.value.endTime == null) {
-            wx.showToast({
-                title: '请输入结束时间',
-                icon: 'none',
-                duration: 2000//持续的时间
-            })
-            return false;
-        }
+        //     return false;
+        // }
+        // if (e.detail.value.endTime == null) {
+        //     wx.showToast({
+        //         title: '请输入结束时间',
+        //         icon: 'none',
+        //         duration: 2000//持续的时间
+        //     })
+        //     return false;
+        // }
         if (e.detail.value.applyDesc == "") {
             wx.showToast({
                 title: '请输入申请说明',
@@ -157,13 +179,14 @@ Page({
                     userId:this.data.realNameone.id,
                     phoneNumber:e.detail.value.phoneNumber,
                     houseNumber:e.detail.value.houseNumber,
-                    statrtTime:e.detail.value.statrtTime,
-                    endTime:e.detail.value.endTime,
+                    // statrtTime:e.detail.value.statrtTime,
+                    // endTime:e.detail.value.endTime,
                     applyDesc:e.detail.value.applyDesc,
                     auditState:this.data.auditState,
                     plateNumber:e.detail.value.plateNumber,
-                    createTime:e.detail.value.statrtTime,
-                    realName: this.data.realNameone.realName
+                    // createTime:e.detail.value.statrtTime,
+                    realName: this.data.realNameone.realName,
+                    validityMonth: that.data.pic_number
                 },
                 success: function (res) {
                     console.log(res.data, "222")
@@ -215,5 +238,13 @@ Page({
             endTime: e.detail.value
         })
     },
+    bindNumberChange: function(e) {
+        console.log(e)
+        this.setData({
+            pic_number: Number(e.detail.value)+1,
+            data_describe: Number(e.detail.value)+1 +'个月'
+        })
+        console.log(this.data.pic_number)
+    }
 
 })

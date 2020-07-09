@@ -159,6 +159,27 @@
 					"id": -1,
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/vehicle/vehicle",
+					"pathName": "pages/vehicle/vehicle",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mainuser/Service/Service",
+					"pathName": "pages/mainuser/Service/Service",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mainuser/Service/Service",
+					"pathName": "pages/mainuser/Service/Service",
 					"scene": null
 				}
 			]

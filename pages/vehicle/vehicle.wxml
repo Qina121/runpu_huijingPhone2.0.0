@@ -39,7 +39,26 @@
                     <input maxlength="8" class="weui-input" bindblur='watchPhotoNumber' name="plateNumber"
                       value="{{plateNumber}}"  placeholder="请输入停车车牌" />
                 </view>
-                <view class="allInput">
+                 <!-- 目前是按照用户类型显示 -->
+                 <!-- 用户类型为2或3 -->
+                 <view  wx:if="{{!tenantParking}}">
+                    <span class="titlebEeizhu">停车时间</span>
+                    <span class="most">*</span>
+                    <span class="titlebEeizhu">有效期一年,一年后换证</span>
+                 </view>
+                 <!-- 租户 -->
+                 <view  wx:if="{{tenantParking}}">
+                    <span class="titlebEeizhu">停车时间</span>
+                    <span class="most">*</span>
+                    <picker mode = "selector"   name="picker_hx" class="cybm_pic_1" value="{pic_index}}"  range="{{pic_array}}" 
+                        bindchange="bindNumberChange">
+                        <view name="startdata" class="picker weui-input packers">
+                            {{data_describe}}
+                        </view>
+                    </picker>
+                </view>
+                <!-- 目前是按照用户类型显示 -->
+                <!-- <view class="allInput">
                     <span class="titlebEeizhu">起止时间</span>
                     <span class="most">*</span>
                     <view class="section">
@@ -50,8 +69,8 @@
                             </view>
                         </picker>
                     </view>
-                </view>
-                <view class="allInput">
+                </view> -->
+                <!-- <view class="allInput">
                     <span class="titlebEeizhu">结束时间</span>
                     <span class="most">*</span>
                     <view class="section">
@@ -62,7 +81,7 @@
                             </view>
                         </picker>
                     </view>
-                </view>
+                </view> -->
                 <!-- <view>
                     <span class="titlebEeizhu">请输入报修地址</span>
                     <span class="most">*</span>

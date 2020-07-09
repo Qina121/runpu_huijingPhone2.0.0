@@ -75,7 +75,7 @@ Page({
 
         // 初始化服务管理中积分的区间
         let arr = [];
-        for(let i = 0; i < 100; i++) {
+        for(let i = -49; i < 50; i++) {
             arr.push(i.toString())
         }
         that.setData({
@@ -347,10 +347,11 @@ Page({
             // this.data.userintegral
             wx.request({
                 url: 'https://api.huijingwuye6688.com/serviceManagement/insert',
+                // url: 'http://192.168.1.110:8084/serviceManagement/insert',
                 method: "post",
                 header: {
-                    'Content-Type': 'application/json'
-                    // 'Content-Type': "application/x-www-form-urlencoded"
+                    // 'Content-Type': 'application/json'
+                    'Content-Type': "application/x-www-form-urlencoded"
                 },
                 data: {
                     rfidInfo:that.data.userxnix.rfid,
@@ -598,8 +599,9 @@ Page({
     },
     bindNumberChange: function(e) {
         // console.log(e)
+        const that = this
         this.setData({
-            pic_number: e.detail.value
+            pic_number: that.data.pic_array[e.detail.value]
         })
         // console.log(this.data.pic_number)
     }

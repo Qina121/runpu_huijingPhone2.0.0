@@ -125,12 +125,16 @@ Page({
                 return false;
             }
             wx.request({
-                url: 'https://api.huijingwuye6688.com/userInfo/insertManage',
+                //需要先填pc端备案表
+                // url: 'https://api.huijingwuye6688.com/userInfo/insertManage',
+                 //不需要备案
+                 url: 'http://192.168.1.110:8084/users/insertUsers',
                 method: "post",
                 data: {
                     realName: e.detail.value.username,
                     // commonAddress: e.detail.value.commonAddress,
                     phoneNumber: e.detail.value.phoneNumber,
+                    userType: this.data.userType,
                 },
                 header: {
                     // 'Content-Type': 'application/json'
@@ -199,7 +203,10 @@ Page({
             }
             var that = this;
             wx.request({
-                url: 'https://api.huijingwuye6688.com/userInfo/insert',
+                //需要先填pc端备案表
+                // url: 'https://api.huijingwuye6688.com/userInfo/insert',
+                //不需要备案
+                url: 'http://192.168.1.110:8084/users/insertUsers',
                 method:"post",
                 data: {
                     realName: e.detail.value.username,

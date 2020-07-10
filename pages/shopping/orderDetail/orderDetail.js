@@ -21,6 +21,21 @@ Page({
     console.log(options)
     const userInfo = wx.getStorageSync('realNameone')
     let str = userInfo.commonAddress
+    let usercommonAddress = userInfo.commonAddress
+    if(str) {
+      const index=str.lastIndexOf("\-");
+      console.log(index)
+      if(index == -1) {
+          str = '无'
+      } else {
+          str=str.substring(index+1,str.length);
+      }
+      
+  } else {
+      str = '无'
+      usercommonAddress = '无'
+  }
+    
     const index=str.lastIndexOf("\-");
     str=str.substring(index+1,str.length);
     this.setData({
@@ -29,8 +44,26 @@ Page({
         minegender: '',
         mineaddresses:str,
         minephone:userInfo.phoneNumber,
-        minedizhi:userInfo.commonAddress,
+        minedizhi:usercommonAddress,
     })
+
+
+        // 获取详情信息
+        wx.request({
+          url: 'https://api.huijingwuye6688.com//MallOrders/selectOne/' + options.orderDetail,
+          method: "get",
+          data: {
+              // id: options.id
+          },
+          header: {
+              'Content-Type': 'application/json'
+          },
+          success: function (res) {
+              console.log(res.data)
+             
+              
+          }
+      })
   },
 
   /**

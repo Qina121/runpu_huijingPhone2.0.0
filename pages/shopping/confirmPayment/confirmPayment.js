@@ -18,6 +18,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options, "options")
+    const that = this
     const userInfo = wx.getStorageSync('realNameone')
     let str = userInfo.commonAddress
     if(str) {
@@ -32,6 +33,26 @@ Page({
         minephone:userInfo.phoneNumber,
         minedizhi:userInfo.commonAddress,
     })
+
+
+        // 获取详情信息
+      //   wx.request({
+      //     url: 'https://api.huijingwuye6688.com/MallOrders/selectAllMallOrders',
+      //     method: "get",
+      //     data: {
+      //         // id: options.id
+      //     },
+      //     header: {
+      //         'Content-Type': 'application/json'
+      //     },
+      //     success: function (res) {
+      //         console.log(res.data)
+      //         that.setData({
+      //           allOrder:res.data.data
+      //         })
+              
+      //     }
+      // })
   },
 
   /**

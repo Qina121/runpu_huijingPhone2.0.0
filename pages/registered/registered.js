@@ -1,6 +1,7 @@
 Page({
     data: {
         items: [
+            { value: 'owner', name: '业主'},
             { value: 'residents', name: '住户', checked: 'true' },
             { value: 'administrator', name: '管理员' },
             { value: 'tenant', name: '租户' },
@@ -14,7 +15,20 @@ Page({
         sendColor: '#333',
         snsMsgWait: 60,
         smsFlag: false,
-        userType: 4
+        userType: 3,
+        selectArray: [{
+            "id": "0",
+            "text": "新立村"
+        }, {
+            "id": "1",
+            "text": "六合庄"
+        },{
+            "id": "2",
+            "text": "马村"
+        }],
+        zhen: '请选择您所在的村',
+        town:'',
+        village:''
     },
     onLoad: function (options) {
         // 生命周期函数--监听页面加载
@@ -62,6 +76,16 @@ Page({
             })
             console.log(this.data.showtable)
         }
+        //新增了业主 类型为2
+        if (e.detail.value == "owner") {
+            var that = this;
+            that.setData({
+                showtable: true,
+                userType: 2
+            })
+            console.log(this.data.showtable)
+        }
+
         if (e.detail.value == "residents") {
             var that = this;
             that.setData({
@@ -83,6 +107,7 @@ Page({
         console.log(this.data, "data")
     },
     formSubmit(e) {
+        const that = this
         console.log(this.data.userType, "type")
         var phone = e.detail.value.phoneNumber;
 
@@ -128,7 +153,7 @@ Page({
                 //需要先填pc端备案表
                 // url: 'https://api.huijingwuye6688.com/userInfo/insertManage',
                  //不需要备案
-                 url: 'http://192.168.1.110:8084/users/insertUsers',
+                 url: 'https://api.huijingwuye6688.com/userInfo/insertManage',
                 method: "post",
                 data: {
                     realName: e.detail.value.username,
@@ -177,6 +202,32 @@ Page({
                 return false;
 
             }
+            if (that.data.village == "") {
+                wx.showToast({
+
+                    title: '请选择您所在的村',
+
+                    icon: 'none',
+
+                    duration: 2000//持续的时间
+
+                })
+                return false;
+
+            }
+            if (e.detail.value.commonAddress == "") {
+                wx.showToast({
+
+                    title: '请输入您的地址',
+
+                    icon: 'none',
+
+                    duration: 2000//持续的时间
+
+                })
+                return false;
+
+            }
             if (phone == "") {
                 wx.showToast({
 
@@ -201,18 +252,19 @@ Page({
                 })
                 return false;
             }
-            var that = this;
             wx.request({
                 //需要先填pc端备案表
                 // url: 'https://api.huijingwuye6688.com/userInfo/insert',
                 //不需要备案
-                url: 'http://192.168.1.110:8084/users/insertUsers',
+                url: 'https://api.huijingwuye6688.com/userInfo/insertUsers',
                 method:"post",
                 data: {
                     realName: e.detail.value.username,
                     commonAddress: e.detail.value.commonAddress,
                     phoneNumber: e.detail.value.phoneNumber,
                     userType: this.data.userType,
+                    town:'北臧村镇',
+                    village: that.data.village
                     // street: e.detail.value.street,
                     // town: e.detail.value.town,
                     // village: e.detail.value.village,
@@ -225,41 +277,59 @@ Page({
                 },
                 success: function (res) {
                     console.log(res.data)
-                    if (res.data.message == 1) {
+                    if(res.data.success) {
                         wx.showToast({
-                            title: '您为业主,可直接登录',
+                            title: '注册成功',
+                            icon: 'none',
+                            duration: 2000//持续的时间
+                        })
+                        wx.navigateTo({
+                            url: '../login/login'
+                          })
+                    } else {
+                        wx.showToast({
+                            title: '注册失败',
                             icon: 'none',
                             duration: 2000//持续的时间
                         })
                     }
-                    if (res.data.message == 2) {
-                        wx.showToast({
-                            title: '未找到您的信息,请找相关管理人员处理',
-                            icon: 'none',
-                            duration: 2000//持续的时间
-                        })
-                    }
-                    if (res.data.message == 3) {
-                        wx.showToast({
-                            title: '注册成功,请等待审批',
-                            icon: 'none',
-                            duration: 2000//持续的时间
-                        })
-                    }
-                    if (res.data.message == 4) {
-                        wx.showToast({
-                            title: '选择角色错误,请重新选择',
-                            icon: 'none',
-                            duration: 2000//持续的时间
-                        })
-                    }
-                    if (res.data.message == 5) {
-                        wx.showToast({
-                            title: '账号已注册,请等待审批完成',
-                            icon: 'none',
-                            duration: 2000//持续的时间
-                        })
-                    }
+
+                    //目前不需要
+                    // if (res.data.message == 1) {
+                    //     wx.showToast({
+                    //         title: '您为业主,可直接登录',
+                    //         icon: 'none',
+                    //         duration: 2000//持续的时间
+                    //     })
+                    // }
+                    // if (res.data.message == 2) {
+                    //     wx.showToast({
+                    //         title: '未找到您的信息,请找相关管理人员处理',
+                    //         icon: 'none',
+                    //         duration: 2000//持续的时间
+                    //     })
+                    // }
+                    // if (res.data.message == 3) {
+                    //     wx.showToast({
+                    //         title: '注册成功,请等待审批',
+                    //         icon: 'none',
+                    //         duration: 2000//持续的时间
+                    //     })
+                    // }
+                    // if (res.data.message == 4) {
+                    //     wx.showToast({
+                    //         title: '选择角色错误,请重新选择',
+                    //         icon: 'none',
+                    //         duration: 2000//持续的时间
+                    //     })
+                    // }
+                    // if (res.data.message == 5) {
+                    //     wx.showToast({
+                    //         title: '账号已注册,请等待审批完成',
+                    //         icon: 'none',
+                    //         duration: 2000//持续的时间
+                    //     })
+                    // }
 
                 }
             })
@@ -278,5 +348,12 @@ Page({
             hiddenyan: true
         })
     },
+    //获取地址
+    getData:function(e){
+        console.log(e.detail),
+        this.setData({
+            village: e.detail.text
+        })
+    }
 
 })

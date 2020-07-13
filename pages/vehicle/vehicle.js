@@ -31,14 +31,15 @@ Page({
     },
     onShow() {
         const that = this
-        console.log(wx.getStorageSync('userType'))
-         const type = wx.getStorageSync('userType')
-        if(type == 2 || type == 3) {
+        console.log(wx.getStorageSync('realNameone'))
+         const type = wx.getStorageSync('realNameone')
+        if(type.userType == 2 || type.userType == 3) {
+            console.log(type)
             that.setData({
                 tenantParking : false,
                 pic_number: 0
             })
-        } else {
+        } else if(type.userType == 4) {
             that.setData({
                 tenantParking : true,
                 pic_number: 1

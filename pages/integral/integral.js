@@ -26,7 +26,8 @@ Page({
                     jifenDataList: res.data.data,
     
                 })
-                let score = 0
+                //默认是10分
+                let score = 10
                 for(let i = 0; i<that.data.jifenDataList.length; i++) {
                     score += that.data.jifenDataList[i].score
                 }

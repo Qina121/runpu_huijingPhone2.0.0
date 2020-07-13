@@ -61,10 +61,11 @@
                 <span class="iconfont icon-arrowRight-fill  iconright"></span>
                 <input value="{{mineaddresses}}" name="{{mineaddresses}}" class="flright"></input>
             </view> -->
-            <view class=" paddinga xiangxi">
+            <!-- 目前不展示门牌号 -->
+            <!-- <view class=" paddinga xiangxi">
                 <text class="mines">门牌号{{}}</text>
                 <text class="flright">{{mineaddresses}}</text>
-            </view>
+            </view> -->
             <!-- <navigator url="/pages/mine/minedizhi/minedizhi?detailxinxi=dizhi">
                 <view class=" paddinga xiangxi marginBottom">
                     <text class="mines">常用地址{{}}</text>

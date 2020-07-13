@@ -24,7 +24,7 @@ Page({
         showImgUrl: "", //路径拼接，一般上传返回的都是文件名，
         uploadImageId: [],
         uploadImgUrl: 'http://www.qy58.cn/cgi-bin/webUpLoad.exe',//图片的上传的路径,
-        pic_array: [],
+        pic_array: [0,1,2,3],
         pic_index: 0,
         pic_number: 0,
     },
@@ -73,14 +73,14 @@ Page({
 
         }
 
-        // 初始化服务管理中积分的区间
-        let arr = [];
-        for(let i = -49; i < 50; i++) {
-            arr.push(i.toString())
-        }
-        that.setData({
-            pic_array : arr
-        })
+        // 初始化服务管理中积分的区间 之前默认是正负49 现在默认0,1,2,3
+        // let arr = [];
+        // for(let i = -49; i < 50; i++) {
+        //     arr.push(i.toString())
+        // }
+        // that.setData({
+        //     pic_array : arr
+        // })
     },
     myEventListener: function (e) {
         console.log("上传的图片结果集合")
@@ -603,7 +603,7 @@ Page({
         this.setData({
             pic_number: that.data.pic_array[e.detail.value]
         })
-        // console.log(this.data.pic_number)
+        console.log(this.data.pic_number)
     }
 
 

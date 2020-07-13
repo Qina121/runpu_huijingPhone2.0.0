@@ -13,28 +13,29 @@ Page({
         const userInfo = wx.getStorageSync('realNameone')
         console.log(userInfo)
         let str = userInfo.commonAddress
-        let usercommonAddress = userInfo.commonAddress
+        // let usercommonAddress = userInfo.commonAddress
 
-        if(str) {
-            const index=str.lastIndexOf("\-");
-            console.log(index)
-            if(index == -1) {
-                str = '无'
-            } else {
-                str=str.substring(index+1,str.length);
-            }
+        // if(str) {
+        //     const index=str.lastIndexOf("\-");
+        //     console.log(index)
+        //     if(index == -1) {
+        //         str = '无'
+        //     } else {
+        //         str=str.substring(index+1,str.length);
+        //     }
             
-        } else {
-            str = '无'
-            usercommonAddress = '无'
-        }
+        // } else {
+        //     str = '无'
+        //     usercommonAddress = '无'
+        // }
         this.setData({
             userimg: userInfo.headImage,
             minename:userInfo.realName,
             minegender: '',
             mineaddresses:str,
             minephone:userInfo.phoneNumber,
-            minedizhi:usercommonAddress,
+            // minedizhi:usercommonAddress,
+            minedizhi:userInfo.commonAddress,
         })
         wx.request({
             // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/query?tableName=owner&queryString=ownername="' + e.detail.value.username + '" and ownerphone="' + e.detail.value.userphone + '"',

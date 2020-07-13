@@ -141,6 +141,14 @@ radio .wx-radio-input {
     padding-left: 5%;
     overflow: hidden;
 }
+.select-img{
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    right: 70rpx;
+    top: 10rpx;
+
+}
 .submit-login{
     background-color: #A60001 !important;
     color: white;

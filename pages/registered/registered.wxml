@@ -6,10 +6,10 @@
     <view class="usertableOne">
         <form class="style-form " catchsubmit="formSubmit" catchreset="formReset">
             <view class="allradio">
-                <radio-group class="he" bindchange="radioChange">
+                <radio-group class="he" bindchange="radioChange" style="padding-left:0;">
                     <label class="radio fl" wx:for="{{items}}" wx:key="{{item.value}}">
                         <view class="fr">{{item.name}}</view>
-                        <radio name="usertype" class="fr" value="{{item.value}}" checked="true" />
+                        <radio name="usertype" class="fr" value="{{item.value}}" checked="{{item.checked}}" />
                     </label>
                 </radio-group>
             </view>
@@ -17,6 +17,10 @@
                 <input class="weui-input" name="username" placeholder="请输入您的真实姓名" />
                 <span class="iconfont icon-wode iconColor"></span>
             </view>
+            <view wx:if="{{showtable}}" class="moren heightSss">
+                <Select prop-array='{{selectArray}}' prop-nowText='{{zhen}}' bind:myget='getData'></Select>
+                 <image src='../../image/乡村.png' class="select-img"></image>
+            </view> 
             <view wx:if="{{showtable}}" class="moren heightSss">
                 <input class="weui-input" name="commonAddress" placeholder="请输入您的地址" />
                 <span class="iconfont icon-huabanfuben iconColor"></span>

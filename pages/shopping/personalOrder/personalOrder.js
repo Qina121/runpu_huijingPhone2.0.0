@@ -105,6 +105,7 @@ Page({
               that.setData({
                 allOrder:res.data.data
               })
+              console.log(that.data.allOrder)
               
           }
       })

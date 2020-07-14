@@ -241,7 +241,7 @@ page {
 }
 
 .tui-line-through {
-  text-decoration: line-through;
+  /* text-decoration: line-through; */
 }
 
 .tui-collection {

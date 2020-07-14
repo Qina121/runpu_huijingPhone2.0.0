@@ -22,8 +22,8 @@
       <!-- <navigator url="/pages/shopping/shoppingDetail/shoppingDetail?goodsId={{item.goodsId}}"> -->
           <image src="{{item.goodsPicture}}" class="pro-img"  />
           <view class="pro-content">
-            <text>{{item.goodsName}}</text>
-            <text>{{item.goodsDescribe}}</text>
+            <text class="goodsName">{{item.goodsName}}</text>
+            <text class="goodsDescribe">{{item.goodsDescribe}}</text>
           </view>
           <view class="pro-price">
             <text class="sale-price">积分:{{item.goodsPrice}}</text>

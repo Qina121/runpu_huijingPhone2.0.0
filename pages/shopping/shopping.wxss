@@ -32,6 +32,7 @@ image{
     box-sizing: border-box;
     padding: 30rpx 30rpx 0 30rpx;
     background: #fff;
+    width: 100%;
 }
   
   .pro-item {
@@ -40,6 +41,7 @@ image{
     width: 49%;
     position: relative;
     margin-bottom: 2%;
+    padding: 14rpx;
   }
   
   .pro-item::after {
@@ -47,7 +49,8 @@ image{
     position: absolute;
     height: 200%;
     width: 200%;
-    border: 1rpx solid #eaeef1;
+    /* border: 1rpx solid #eaeef1; */
+    border: 1rpx solid #ccc;
     transform-origin: 0 0;
     -webkit-transform-origin: 0 0;
     -webkit-transform: scale(0.5);
@@ -59,15 +62,16 @@ image{
   .pro-img {
     width: 100%;
     display: block;
+    height: 230rpx;
   }
   
   .pro-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     box-sizing: border-box;
-    padding: 20rpx;
-    height: 150rpx;
+    padding: 30rpx 20rpx;
+    height: 140rpx;
   }
   
   .pro-tit {
@@ -83,13 +87,30 @@ image{
   }
   
   .pro-price {
-    padding-top: 18rpx;
+    /* padding-top: 18rpx; */
+  }
+
+  .goodsName{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .goodsDescribe{
+    color: #666;
+    font-size: 24rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   
   .sale-price {
-    font-size: 34rpx;
+    font-size: 30rpx;
     font-weight: 500;
     color: #ea1500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-left: 23rpx;
   }
   
   .factory-price {

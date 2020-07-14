@@ -14,10 +14,10 @@
             <text>{{minedizhi}}</text>
           </view>
         </view>
-        <view class="tui-none-addr" wx:else>
+        <!-- <view class="tui-none-addr" wx:else>
           <image src="/image/mall/shoppingIcon/map.png" class="tui-addr-img" mode="widthFix"></image>
           <text>选择收货地址</text>
-        </view>
+        </view> -->
       </view>
       <view class="tui-bg-img"></view>
     </view>

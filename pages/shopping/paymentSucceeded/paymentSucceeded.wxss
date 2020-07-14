@@ -77,6 +77,7 @@
   text-align: center;
   color: #eb0909;
   border: 1rpx solid #eb0909;
+  margin: 0 auto;
 }
 .viewbutton{
   width: 132px;

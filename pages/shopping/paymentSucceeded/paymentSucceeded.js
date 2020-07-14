@@ -69,8 +69,9 @@ Page({
     });
   },
   viewOrder() {
+    const state = false
     wx.navigateTo({
-      url: '../orderDetail/orderDetail'
+      url: '../orderDetail/orderDetail?state='+ state
     })
   }
 })

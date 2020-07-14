@@ -107,6 +107,10 @@
           <!-- <view class="tui-addr-item">今日23:59前完成下单，预计6月28日23:30前发货，7月1日24:00前送达</view> -->
         </view>
       </view>
+      <view class="tui-list-cell">
+            <view class="tui-bold tui-cell-title">数量</view>
+            <tui-numberbox max="99" min="1" value="{{goodsValue}}" bind:change="goodsValueChange"></tui-numberbox>
+      </view>
       <!-- <view class="tui-list-cell tui-last">
         <view class="tui-bold tui-cell-title">运费</view>
         <view class="tui-selected-box">在线支付免运费</view>

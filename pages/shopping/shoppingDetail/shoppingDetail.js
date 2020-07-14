@@ -62,7 +62,9 @@ Page({
     popupShow: false,
     value: 1,
     collected: false,
-    userAddress:''
+    userAddress:'',
+    goodsValue: 1,
+    detailId : 0
   },
 
   /**
@@ -87,8 +89,10 @@ Page({
     });
     const user = wx.getStorageSync('realNameone')
     that.setData({
-      userAddress:user.commonAddress
+      userAddress:user.commonAddress,
+      detailId:options.goodsId
     })
+
     // 获取详情信息
     wx.request({
       url: 'https://api.huijingwuye6688.com/MallGoods/selectOneInfo/'+ options.goodsId,
@@ -163,13 +167,28 @@ Page({
     })
   },
   submit() {
+    const that = this
+    if(that.data.goodsValue>that.data.singleMessage.goodsInventory) {
+      wx.showToast({
+        title: '库存不足',
+        icon: 'none',
+        duration: 2000//持续的时间
+      })
+      return false
+    }
+
     wx.navigateTo({
-      url: '../confirmPayment/confirmPayment'
+      url: '../confirmPayment/confirmPayment?number='+ that.data.goodsValue +'&detailId='+ that.data.detailId
     })
   },
   personalOrder() {
     wx.navigateTo({
       url: '../personalOrder/personalOrder'
     })
-  }
+  },
+  goodsValueChange: function (e) {
+    this.setData({
+      goodsValue: e.detail.value
+    })
+  },
  })

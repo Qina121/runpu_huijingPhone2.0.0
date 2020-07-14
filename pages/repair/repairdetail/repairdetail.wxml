@@ -30,7 +30,7 @@
             </view>
             <view class="repairdetail">
                 审核状态:
-                <span class="username">{{historylist.auditState==1?"未审核":"已审核"}}</span>
+                <span class="username">{{historylist.reapirState==1?"未审核":"已审核"}}</span>
             </view>
             <view class="repairdetail heightd">
                 问题描述:
@@ -98,7 +98,7 @@
             </view>
             <view class="repairdetail">
                 开始时间:
-                <span class="username">{{historylist.statrtTime}}</span>
+                <span class="username">{{historylist.createTime}}</span>
             </view>
             <view class="repairdetail">
                 结束时间:

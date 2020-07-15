@@ -8,6 +8,7 @@ Page({
         }
     },
     data: {
+        api: app.globalData.api,
         pickerHidden: true,
         chosen: '',
         imagesList: [],
@@ -124,7 +125,7 @@ Page({
       
         // }
         wx.request({
-            url: 'https://api.huijingwuye6688.com/garbageClassfy/insert',
+            url: that.data.api+'garbageClassfy/insert',
             method: "post",
             header: {
                 // 'Content-Type': 'application/json'

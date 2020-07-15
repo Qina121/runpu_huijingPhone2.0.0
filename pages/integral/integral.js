@@ -1,5 +1,7 @@
+const app = getApp()
 Page({
     data:{
+        api: app.globalData.api,
         bgimgurl:"../../image/Integration-background.png",
         jifenDataList: [],
         totalPoints: 0,
@@ -12,7 +14,7 @@ Page({
         const realNameone = wx.getStorageSync('realNameone')
         console.log(realNameone.userOwnerId)
         wx.request({
-            url: 'https://api.huijingwuye6688.com/scoreLogs/selectScoredById',
+            url: that.data.api +'scoreLogs/selectScoredById',
             method: "get",
             data: {
                 userId: realNameone.id

@@ -5,6 +5,10 @@ App({
       title: '登录',
     })
   },
+  globalData:{
+    // api: "https://api.huijingwuye6688.com/",
+    api : 'http://192.168.1.110:8084/'
+  },
   onShow(options) {
     // Do something when show.
   },

@@ -1,16 +1,19 @@
 // pages/shopping/orderDetail/orderDetail.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    api: app.globalData.api,
     userimg: '',
     minename: '',
     minegender: '',
     mineaddresses: '',
     minephone: '',
     minedizhi: '',
+    orderInfo: {}
   },
 
   /**
@@ -19,6 +22,7 @@ Page({
   onLoad: function (options) {
     //获取到单条的订单信息
     console.log(options)
+    const that = this
     const userInfo = wx.getStorageSync('realNameone')
     let str = userInfo.commonAddress
     let usercommonAddress = userInfo.commonAddress
@@ -50,7 +54,8 @@ Page({
 
         // 获取详情信息
         wx.request({
-          url: 'https://api.huijingwuye6688.com//MallOrders/selectOne/' + options.orderDetail,
+          url: that.data.api+'MallOrders/selectOne/' + options.orderDetail,
+        //   url: 'https://api.huijingwuye6688.com//MallOrders/selectOne/7' ,
           method: "get",
           data: {
               // id: options.id
@@ -60,7 +65,9 @@ Page({
           },
           success: function (res) {
               console.log(res.data)
-             
+             that.setData({
+                orderInfo:res.data.data
+             })
               
           }
       })

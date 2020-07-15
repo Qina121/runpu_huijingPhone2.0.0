@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
     onShareAppMessage() {
         return {
@@ -6,6 +7,7 @@ Page({
         }
     },
     data: {
+        api: app.globalData.api,
         pickerHidden: true,
         chosen: '',
         detailPics: [],
@@ -150,7 +152,7 @@ Page({
                 realNameone: wx.getStorageSync('realNameone'),
             })
             wx.request({
-                url: 'https://api.huijingwuye6688.com/repairInfo/insert',
+                url: that.data.api+'repairInfo/insert',
                 method: "post",
                 header: {
                     // 'Content-Type': 'application/json'

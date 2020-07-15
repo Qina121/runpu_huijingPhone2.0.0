@@ -1,5 +1,7 @@
+const app = getApp()
 Page({
     data:{
+      api: app.globalData.api,
     pageIndex: 1,
     productList: [{
         img: 1,
@@ -29,13 +31,14 @@ Page({
         //       url: '../login/login'
         //     })
         //   }
+        const that = this
         wx.setNavigationBarTitle({ title:'积分商城'})
         // 生命周期函数--监听页面加载
 
         // 获取商品列表信息
-        var that = this;
+
         wx.request({
-            url: 'https://api.huijingwuye6688.com/MallGoods/selectAllMallGoods',
+            url: that.data.api+'MallGoods/selectAllMallGoods',
             method: "get",
             data: {
                 // id: options.id

@@ -122,17 +122,17 @@ garbage: function() {
   wx.navigateTo({
     url: '../login/login'
   })
-  console.log('垃圾分类')
-  console.log(wx.getStorageSync('login'))
-  if(!wx.getStorageSync('login')) {
-    wx.navigateTo({
-      url: '../login/login'
-    })
-  } else {
-    wx.navigateTo({
-      url: '/pages/notice/notice'
-    })
-  }
+  // console.log('垃圾分类')
+  // console.log(wx.getStorageSync('login'))
+  // if(!wx.getStorageSync('login')) {
+  //   wx.navigateTo({
+  //     url: '../login/login'
+  //   })
+  // } else {
+  //   wx.navigateTo({
+  //     url: '/pages/notice/notice'
+  //   })
+  // }
 },
 
 notice: function() {

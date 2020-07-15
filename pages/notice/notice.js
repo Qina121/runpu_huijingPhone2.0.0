@@ -1,5 +1,7 @@
+const app = getApp()
 Page({
     data:{
+        api: app.globalData.api,
         date:"", 
         allDetail:{},
         // 详情页数据
@@ -28,7 +30,7 @@ Page({
         //通知公告请求
         var that = this;
         wx.request({
-            url: 'https://api.huijingwuye6688.com/notice/selectAllNotice',
+            url: that.data.api+'notice/selectAllNotice',
             method: "get",
             data: {
                 // id: options.id

@@ -1,5 +1,7 @@
+const app = getApp()
 Page({
     data: {
+        api: app.globalData.api,
         items: [
             { value: 'owner', name: '业主'},
             { value: 'residents', name: '住户', checked: 'true' },
@@ -153,7 +155,7 @@ Page({
                 //需要先填pc端备案表
                 // url: 'https://api.huijingwuye6688.com/userInfo/insertManage',
                  //不需要备案
-                 url: 'https://api.huijingwuye6688.com/userInfo/insertManage',
+                 url: that.data.api+'userInfo/insertManage',
                 method: "post",
                 data: {
                     realName: e.detail.value.username,
@@ -256,7 +258,7 @@ Page({
                 //需要先填pc端备案表
                 // url: 'https://api.huijingwuye6688.com/userInfo/insert',
                 //不需要备案
-                url: 'https://api.huijingwuye6688.com/userInfo/insertUsers',
+                url: that.data.api+'userInfo/insertUsers',
                 method:"post",
                 data: {
                     realName: e.detail.value.username,

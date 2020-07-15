@@ -1,5 +1,7 @@
+const app = getApp()
 Page({
     data:{
+        api: app.globalData.api,
         titlebig:"",
         showsshenpi:"",
         showsbaoxiu:"",
@@ -26,7 +28,7 @@ Page({
             })
             wx.setNavigationBarTitle({ title:'报修详情'})
             wx.request({
-                url: 'https://api.huijingwuye6688.com/repairInfo/select',
+                url: that.data.api+'repairInfo/select',
                 method: "get",
                 header: {
                     'Content-Type': 'application/json'
@@ -63,7 +65,7 @@ Page({
             })
             wx.setNavigationBarTitle({ title:'审批详情'})
             wx.request({
-                url: 'https://api.huijingwuye6688.com/userInfo/selectOneApproval',
+                url: that.data.api+'userInfo/selectOneApproval',
                 method: "get",
                 header: {
                     'Content-Type': 'application/json'
@@ -100,7 +102,7 @@ Page({
             })
             wx.setNavigationBarTitle({ title:'申请详情'})
             wx.request({
-                url: 'https://api.huijingwuye6688.com/garbageClassfy/selectOne',
+                url: that.data.api+'garbageClassfy/selectOne',
                 method: "get",
                 header: {
                     'Content-Type': 'application/json'
@@ -138,7 +140,7 @@ Page({
             })
             wx.setNavigationBarTitle({ title:'车辆详情'})
             wx.request({
-                url: 'https://api.huijingwuye6688.com/vehicleManager/select',
+                url: that.data.api+'vehicleManager/select',
                 method: "get",
                 header: {
                     'Content-Type': 'application/json'

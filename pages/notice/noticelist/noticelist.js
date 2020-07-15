@@ -1,5 +1,7 @@
+const app = getApp()
 Page({
     data: {
+        api: app.globalData.api,
         date: "", //日期
         releaseTime: null,
         creatorName: null,
@@ -27,7 +29,7 @@ Page({
         console.log(options, "options");//输出的结果是  1
         var that = this;
         wx.request({
-            url: 'https://api.huijingwuye6688.com/notice/selectOneById/'+options.id,
+            url: that.data.api+'notice/selectOneById/'+options.id,
             method: "get",
             data: {
                 // id: options.id

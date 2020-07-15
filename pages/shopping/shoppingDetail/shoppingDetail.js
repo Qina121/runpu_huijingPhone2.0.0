@@ -1,10 +1,12 @@
 // pages/shopping/shoppingDetail/shoppingDetail.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    api: app.globalData.api,
     height: 64, //header高度
     top: 0, //标题图标距离顶部距离
     scrollH: 0, //滚动总高度
@@ -95,7 +97,7 @@ Page({
 
     // 获取详情信息
     wx.request({
-      url: 'https://api.huijingwuye6688.com/MallGoods/selectOneInfo/'+ options.goodsId,
+      url: that.data.api+'MallGoods/selectOneInfo/'+ options.goodsId,
       method: "get",
       data: {
           // id: options.id

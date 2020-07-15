@@ -1,5 +1,7 @@
+const app = getApp()
 Page({
     data: {
+        api: app.globalData.api,
         showsjifen: false,
         showsform: false,
         showsrfid: false,
@@ -156,7 +158,7 @@ Page({
             userId: wx.getStorageSync('realNameone').id,
         })
         wx.request({
-            url: 'https://api.huijingwuye6688.com/rfidInfo/select',
+            url: that.data.api+'rfidInfo/select',
             method: "get",
             header: {
                 // 'Content-Type': 'application/json'
@@ -203,7 +205,7 @@ Page({
         //   success = data.success ? data.success : 0,
         //   fail = data.fail ? data.fail : 0;
         wx.uploadFile({
-          url: 'https://api.huijingwuye6688.com/attachment/uploadFiles1',
+          url: that.data.api+'attachment/uploadFiles1',
           filePath: showImgUrlStr,      
           header: {
             // 'content-type': 'application/json'
@@ -232,6 +234,7 @@ Page({
 
     //服务管理 图片 立即上传   /////上传图片时 已经提交了  所以这里只提示成功就好了  
     uploadImgArr:function(){
+        const that = this
         console.log(this.data.showImgUrl);
         if(this.data.showImgUrl.length > '0'){
             wx.showToast({
@@ -294,7 +297,7 @@ Page({
             console.log(imgurl)
             console.log('触发我的图片上传')
             wx.uploadFile({
-                url: 'https://api.huijingwuye6688.com/attachment/uploadFiles1',
+                url: that.data.api+'attachment/uploadFiles1',
                 filePath: showImgUrlStr,      
                 header: {
                 //   'content-type': 'application/json'
@@ -346,7 +349,7 @@ Page({
             // this.data.miaoshu
             // this.data.userintegral
             wx.request({
-                url: 'https://api.huijingwuye6688.com/serviceManagement/insert',
+                url: that.data.api+'serviceManagement/insert',
                 // url: 'http://192.168.1.110:8084/serviceManagement/insert',
                 method: "post",
                 header: {
@@ -438,8 +441,9 @@ Page({
             //     this.tab(this.data.startdata, this.data.enddata);
             //     return false
             // }
+            const that = this
             wx.request({
-                url: 'https://api.huijingwuye6688.com/carManagement/insert',
+                url: that.data.api+'carManagement/insert',
                 // url: 'http://192.168.1.110:8085/vehicleManager/insert',
                 method: "post",
                 header: {
@@ -526,7 +530,7 @@ Page({
             }
 
             wx.request({
-                url: 'https://api.huijingwuye6688.com/eventsUpload/insertEventsUpload',
+                url: that.data.api+'eventsUpload/insertEventsUpload',
                 method: "post",
                 header: {
                     // 'Content-Type': 'application/json'

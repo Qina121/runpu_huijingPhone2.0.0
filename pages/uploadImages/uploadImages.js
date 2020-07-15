@@ -1,4 +1,5 @@
 // component/uploadImages/index.js
+const app = getApp()
 Component({
   /**
    * 组件的属性列表
@@ -99,7 +100,7 @@ Component({
 
           // 取代上面的方法
           wx.uploadFile({
-            url: 'https://api.huijingwuye6688.com/attachment/uploadFiles1',
+            url: app.globalData.api+'attachment/uploadFiles1',
             filePath: that.data.detailPics[0],
             name: 'file',
             formData: {

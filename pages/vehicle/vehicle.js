@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
     onShareAppMessage() {
         return {
@@ -7,6 +8,7 @@ Page({
     },
 
     data: {
+        api: app.globalData.api,
         pickerHidden: true,
         chosen: '',
         images: [],
@@ -169,7 +171,7 @@ Page({
             })
             console.log(this.data, "data")
             wx.request({
-                url: 'https://api.huijingwuye6688.com/vehicleManager/insert',
+                url: that.data.api+'vehicleManager/insert',
                 method: "post",
                 header: {
                     // 'Content-Type': 'application/json'

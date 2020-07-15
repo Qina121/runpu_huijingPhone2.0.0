@@ -1,5 +1,7 @@
+const app = getApp()
 Page({
     data:{
+        api: app.globalData.api,
         showsshenpi:true,
         showsmall:false,
         showsshenqing:true,
@@ -29,7 +31,7 @@ Page({
             })
             wx.setNavigationBarTitle({ title:'我的审批'})
             wx.request({
-                url: 'https://api.huijingwuye6688.com/auditInfo/getAuditInfo',
+                url: that.data.api +'auditInfo/getAuditInfo',
                 method: "get",
                 header: {
                     'Content-Type': 'application/json'
@@ -66,7 +68,7 @@ Page({
             wx.setNavigationBarTitle({ title:'我的申请'})
             // console.log(wx.getStorageSync('realNameone'),"wx.getStorageSync('realNameone')")
             wx.request({
-                url: 'https://api.huijingwuye6688.com/garbageClassfy/selectRelated',
+                url: that.data.api +'garbageClassfy/selectRelated',
                 
                 method: "get",
                 header: {
@@ -103,7 +105,7 @@ Page({
             })
             wx.setNavigationBarTitle({ title:'我的车辆'})
             wx.request({
-                url: 'https://api.huijingwuye6688.com/vehicleManager/selectRelated',
+                url: that.data.api +'vehicleManager/selectRelated',
                 method: "get",
                 header: {
                     'Content-Type': 'application/json'
@@ -139,7 +141,7 @@ Page({
             })
             wx.setNavigationBarTitle({ title:'我的报修'})
             wx.request({
-                url: 'https://api.huijingwuye6688.com/repairInfo/selectRelated',
+                url: that.data.api +'repairInfo/selectRelated',
                 method: "get",
                 header: {
                     'Content-Type': 'application/json'
@@ -216,7 +218,7 @@ Page({
             return false
         }
         wx.request({
-            url: 'https://api.huijingwuye6688.com/auditInfo/updateAuditInfor',
+            url: that.data.api +'auditInfo/updateAuditInfor',
             method: "get",
             header: {
                 'Content-Type': 'application/json'

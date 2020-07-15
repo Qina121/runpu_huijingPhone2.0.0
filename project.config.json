@@ -27,7 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -215,6 +215,13 @@
 					"id": -1,
 					"name": "pages/shopping/shopping",
 					"pathName": "pages/shopping/shopping",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/reviewpage/reviewpage",
+					"pathName": "pages/reviewpage/reviewpage",
 					"scene": null
 				}
 			]

@@ -1,10 +1,12 @@
 // pages/shopping/personalOrder/personalOrder.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    api: app.globalData.api,
     //小程序没有refs，所以只能用动态布尔值控制关闭
     toggle: false,
     dataList:[
@@ -92,7 +94,7 @@ Page({
     const that = this
         // 获取详情信息
         wx.request({
-          url: 'https://api.huijingwuye6688.com/MallOrders/selectAllMallOrders',
+          url: that.data.api+'MallOrders/selectAllMallOrders',
           method: "get",
           data: {
               // id: options.id
@@ -108,7 +110,8 @@ Page({
               console.log(that.data.allOrder)
               
           }
-      })
+        })
+
   },
 
   /**

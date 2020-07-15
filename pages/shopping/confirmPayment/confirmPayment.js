@@ -1,10 +1,12 @@
 // pages/shopping/confirmPayment/confirmPayment.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    api: app.globalData.api,
     userimg: '',
     minename: '',
     mineId:'',
@@ -45,7 +47,7 @@ Page({
      
     // 获取详情信息
     wx.request({
-      url: 'https://api.huijingwuye6688.com/MallGoods/selectOneInfo/'+ options.detailId,
+      url: that.data.api+'MallGoods/selectOneInfo/'+ options.detailId,
       method: "get",
       data: {
           // id: options.id
@@ -115,8 +117,8 @@ Page({
         const that = this
         // 获取详情信息
         wx.request({
-          // url: 'https://api.huijingwuye6688.com/MallGoods/updateUserPurchasesGoods',
-          url: 'http://192.168.1.110:8084/MallGoods/updateUserPurchasesGoods',
+          url: that.data.api+'MallGoods/updateUserPurchasesGoods',
+          // url: 'http://192.168.1.110:8084/MallGoods/updateUserPurchasesGoods',
           method: "post",
           data: {
             id: that.data.mineId,
@@ -125,7 +127,9 @@ Page({
             goodsId: that.data.goodsId,
             // goodsPrice: Number(that.data.singleMessage.goodsPrice),
             goodsPrice: that.data.singleMessage.goodsPrice,
-            goodsNumber: that.data.orderNumber
+            goodsNumber: that.data.orderNumber,
+            goodsName:that.data.singleMessage.goodsName,
+            goodsPicture: that.data.singleMessage.goodsPicture
           },
           header: {
               // 'Content-Type': 'application/json'

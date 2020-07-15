@@ -1,5 +1,7 @@
+const app = getApp()
 Page({
     data: {
+        api: app.globalData.api,
         username: "",
         userphone: "",
         loginbg: "https://www.qy58.cn/upload/loginbg.png",
@@ -12,9 +14,11 @@ Page({
         canIuse: false,
         userxinxi: {},
         //遮罩层
-        showView: false
+        showView: false,
+        nameValue:'',
+        phoneValue:''
     },
-    onload: function () {
+    onLoad: function () {
         var that = this
         wx.getSetting({
             success: function (res) {
@@ -37,6 +41,15 @@ Page({
                 }
             }
         })
+        //判断是否用户之前是否登录
+        const LoginInfo = wx.getStorageSync('realNameone')
+        console.log(LoginInfo)
+        if(LoginInfo) {
+            that.setData({
+                nameValue:LoginInfo.realName,
+                phoneValue:LoginInfo.phoneNumber
+            })
+        }
     },
     // bindGetUserInfo: function (e) {
     //     if (e.detail.userInfo) {
@@ -73,6 +86,7 @@ Page({
         }
     },
     formSubmit(e) {
+        console.log(e)
         var phone = e.detail.value.userphone;
         if (e.detail.value.username == "") {
             wx.showToast({
@@ -100,7 +114,7 @@ Page({
             wx.request({
                 // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/post?tableName=owner&queryString=ownername="' + e.detail.value.username + '" and ownerphone="' + e.detail.value.userphone+'"',
                 // url: 'http://124.193.199.178:8085/userInfo/selectLogin',// 原来的
-                url: 'https://api.huijingwuye6688.com/userInfo/selectLogin', //测试服务器接口地址
+                url: that.data.api +'userInfo/selectLogin', //测试服务器接口地址
                 // url: 'http://192.168.1.110:8084/userInfo/insert',
                 // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/query',
                 method: "get",

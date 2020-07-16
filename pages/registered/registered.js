@@ -281,7 +281,7 @@ Page({
                     console.log(res.data)
                     if(res.data.success) {
                         wx.showToast({
-                            title: '注册成功',
+                            title: res.data.message,
                             icon: 'none',
                             duration: 2000//持续的时间
                         })
@@ -290,7 +290,7 @@ Page({
                           })
                     } else {
                         wx.showToast({
-                            title: '注册失败',
+                            title: res.data.message,
                             icon: 'none',
                             duration: 2000//持续的时间
                         })

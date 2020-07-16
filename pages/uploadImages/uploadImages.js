@@ -35,9 +35,11 @@ Component({
    */
   methods: {
     uploadDetailImage: function(e) { //这里是选取图片的方法
+      console.log('正在执行图片上传')
       var that = this;
       var pics = [];
       var detailPics = that.data.detailPics;
+      console.log(detailPics)
       if (detailPics.length >= that.data.count) {
         wx.showToast({
           title: '最多选择' + that.data.count + '张！',
@@ -97,11 +99,13 @@ Component({
           //   })
           //   }
           // })
-
+          console.log(that.data.detailPics)
+          console.log(res.tempFiles)
           // 取代上面的方法
           wx.uploadFile({
             url: app.globalData.api+'attachment/uploadFiles1',
-            filePath: that.data.detailPics[0],
+            // filePath: that.data.detailPics[0],
+            filePath: that.data.detailPics[that.data.detailPics.length-1],
             name: 'file',
             formData: {
                 file: res.tempFiles[0],
@@ -125,6 +129,8 @@ Component({
                 data: res
               } // detail对象，提供给事件监听函数
               that.triggerEvent('myevent', myEventDetail, myEventOption)//结果返回调用的页面
+              console.log(myEventDetail)
+              console.log(myEventOption)
             }, fail: function (err) {
               console.log()
             }

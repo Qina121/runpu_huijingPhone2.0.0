@@ -37,7 +37,7 @@
                 <span bindtap="addintegral" class=" circular jifendown">+</span>
             </view>
         </view> -->
-        <picker mode = "selector"   name="picker_hx" class="cybm_pic_1" value="{pic_index}}"  range="{{pic_array}}" 
+        <picker wx:if="{{showsjifen}}" mode = "selector"   name="picker_hx" class="cybm_pic_1" value="{pic_index}}"  range="{{pic_array}}" 
             bindchange="bindNumberChange">
             <view name="startdata" class="picker weui-input packers">
                 {{pic_number}}

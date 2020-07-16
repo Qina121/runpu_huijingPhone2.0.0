@@ -543,7 +543,7 @@ Page({
                     phoneNumber: that.data.sbumitPhoneNumber,
                     // details: e.detail.value.details,
                     attachment: that.data.uploadImageId.join(","),
-                    createTime: e.detail.value.creatTime,
+                    // createTime: e.detail.value.creatTime,
                     // auditState: this.data.auditState,
                     realName: wx.getStorageSync('realNameone').realName,
                     eventDescription:that.data.descdetailss

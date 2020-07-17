@@ -555,8 +555,9 @@ Page({
                         icon: 'success',
                         duration: 2000//持续的时间
                     })
+                    
                     setTimeout(function () {
-                        wx.navigateTo({
+                        wx.redirectTo({
                             url: '/pages/mainuser/mainuser'
                         })
                         //要延时执行的代码

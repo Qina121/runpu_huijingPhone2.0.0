@@ -142,7 +142,7 @@ Page({
                 realName: this.data.realNameone.realName
             },
             success: function (res) {
-                console.log(res.data, "222")
+                // console.log(res.data, "222")
                 wx.showToast({
                     title: '上传成功',
                     icon: 'success',

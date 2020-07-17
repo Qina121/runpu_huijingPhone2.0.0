@@ -23,20 +23,13 @@ Page({
     loadding: false,
     pullUpOn: true
     },
+    onShow:function(e){
+      this.onLoad();
+    },
     onLoad:function(options){
-        // 判断是否登录
-        // console.log(wx.getStorageSync('login'))
-        // if(!wx.getStorageSync('login')) {
-        //     wx.navigateTo({
-        //       url: '../login/login'
-        //     })
-        //   }
         const that = this
         wx.setNavigationBarTitle({ title:'积分商城'})
-        // 生命周期函数--监听页面加载
-
         // 获取商品列表信息
-
         wx.request({
             url: that.data.api+'MallGoods/selectAllMallGoods',
             method: "get",

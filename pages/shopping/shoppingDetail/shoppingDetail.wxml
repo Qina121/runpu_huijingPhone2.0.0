@@ -193,9 +193,9 @@
         <view class="tui-badge-class">2</view>
       </view> -->
     </view>
-    <view class="tui-operation-right tui-right-flex tui-col-7">
+    <view class="tui-operation-right tui-right-flex">
       <!-- <view class="addCart" bindtap="showPopup">加入购物车</view> -->
-       <view class="addCart"  bindtap="personalOrder">我的订单</view>
+       <!-- <view class="addCart"  bindtap="personalOrder">我的订单</view> -->
       <view class="buyNow"  bindtap="submit">立即兑换</view>
       <!-- <tui-button type="red" tui-button-class="tui-btn-equals" shape="circle" size="mini" class="tui-flex-1" bindtap="showPopup">加入购物车</tui-button> -->
       <!-- <tui-button type="warning" tui-button-class="tui-btn-equals" shape="circle" size="mini" class="tui-flex-1" bindtap="submit">立即购买</tui-button> -->

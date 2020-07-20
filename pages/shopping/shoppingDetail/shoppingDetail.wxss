@@ -600,6 +600,7 @@ page {
   border-radius: 41rpx;
   margin: 0 10rpx;
   color: #fff;
+  margin-left: 222rpx;
 }
 
 .tui-flex-1 {

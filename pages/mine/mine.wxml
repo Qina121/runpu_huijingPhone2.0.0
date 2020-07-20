@@ -71,6 +71,14 @@
                         <span class="iconfont icon-youjiantou  iconright"></span>
                     </view>
                 </navigator>
+                <!-- 我的订单添加在这里 -->
+                <navigator url="/pages/shopping/personalOrder/personalOrder">
+                    <view class=" paddinga xiangxi marginBottom">
+                        <span class="iconfont icon-cheliangxinxi iconColor"></span>
+                        <text class="mines">我的订单{{}}</text>
+                        <span class="iconfont icon-youjiantou  iconright"></span>
+                    </view>
+                </navigator>
                 <!-- <navigator url="/pages/mine/minedizhi/minedizhi?detailxinxi=dizhi">
                     <view class=" paddinga xiangxi marginBottom">
                         <span class="iconfont icon-dingwei iconColor"></span>

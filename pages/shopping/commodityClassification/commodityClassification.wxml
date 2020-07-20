@@ -1,0 +1,43 @@
+<!-- <view class="page">
+    <image class="backGround-box" src='https://www.qy58.cn/upload/zhaungxiu.jpg'></image>
+</view> -->
+
+<view class="page">
+<!-- 积分商城上面的轮播图 -->
+    <!-- <swiper indicator-dots autoplay circular interval="5000" duration="150" class="swiper">
+        <swiper-item  catchtap="swiperDetail">
+        <image src="../../image/mall/banner/2.jpg" class="slide-image" />
+        </swiper-item>
+        <swiper-item catchtap="swiperDetail">
+        <image src="../../image/mall/banner/4.jpg" class="slide-image" />
+        </swiper-item>
+        <swiper-item catchtap="swiperDetail">
+        <image src="../../image/mall/banner/5.jpg" class="slide-image" />
+        </swiper-item>
+    </swiper> -->
+    <view class="container">
+  <view class="product-list">
+    <!--商品列表-->
+    <view class="pro-item" bindtap="detail" wx:for="{{productList}}" wx:key="index" data-goodsId="{{item.goodsId}}">
+      <!-- <navigator url="/pages/shopping/shoppingDetail/shoppingDetail?goodsId={{item.goodsId}}"> -->
+          <image src="{{item.goodsPicture}}" class="pro-img"  />
+          <view class="pro-content">
+            <text class="goodsName">{{item.goodsName}}</text>
+            <text class="goodsDescribe">{{item.goodsDescribe}}</text>
+          </view>
+          <view class="pro-price">
+            <text class="sale-price">积分:{{item.goodsPrice}}</text>
+            <text class="factory-price">库存:{{item.goodsInventory}}</text>
+          </view>
+            <!-- <view class="pro-pay">{{item.payNum}}人付款</view> -->
+ 
+      <!-- </navigator> -->
+    </view>
+    <!--商品列表-->
+  </view>
+  <!--加载loadding-->
+  <tui-loadmore visible="{{loadding}}" index="3" type="primary"></tui-loadmore>
+  <tui-nomore visible="{{!pullUpOn}}"></tui-nomore>
+  <!--加载loadding-->
+</view>
+</view>

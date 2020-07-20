@@ -24,7 +24,8 @@
     "pages/shopping/confirmPayment/confirmPayment",
     "pages/shopping/paymentSucceeded/paymentSucceeded",
     "pages/shopping/personalOrder/personalOrder",
-    "pages/shopping/orderDetail/orderDetail"
+    "pages/shopping/orderDetail/orderDetail",
+    "pages/shopping/commodityClassification/commodityClassification"
   ],
   "useExtendedLib": {
     "weui": true

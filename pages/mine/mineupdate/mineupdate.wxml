@@ -39,6 +39,19 @@
                 <text class="mines">真实姓名</text>
                 <text  class="flright">{{minename}}</text>
             </view>
+            <view class=" paddinga xiangxi">
+                    <text class="mines">联系电话{{}}</text>
+                    <!-- <span class="iconfont icon-arrowRight-fill  iconright"></span> -->
+                    <span name="minephone" class="flright">{{minephone}}</span>
+            </view>
+            <view class=" paddinga xiangxi">
+                <text class="mines">镇</text>
+                <text  class="flright">{{town}}</text>
+            </view>
+            <view class=" paddinga xiangxi">
+                <text class="mines">村</text>
+                <text  class="flright">{{village}}</text>
+            </view>
             <!-- <view class=" paddinga xiangxi">
                 <text class="mines">性别</text>
                 <span class="iconfont icon-arrowRight-fill  iconright"></span>
@@ -73,10 +86,13 @@
                     <input value="{{minedizhi}}" name="{{minedizhi}}" class="flright"></input>
                 </view>
             </navigator> -->
+            <navigator url="/pages/mine/minedizhi/minedizhi?detailxinxi=dizhi&minedizhi={{minedizhi}}">
             <view class=" paddinga xiangxi">
                 <text class="mines">常用地址{{}}</text>
+                <span class="iconfont icon-arrowRight-fill  iconright"></span>
                 <text class="flright">{{minedizhi}}</text>
             </view>
+            </navigator>
             <!-- <view class=" paddinga xiangxi ">
                 <span class="iconfont icon-xinxi iconColor"></span>
                 <text class="mines">我的申请:{{}}</text>

@@ -5,7 +5,9 @@ Page({
         minegender: "男",
         mineaddresses: "503门牌",
         minephone: "15394598336",
-        minedizhi: "北京市西城区"
+        minedizhi: "北京市西城区",
+        town: '',
+        village:''
     },
     onLoad: function (options) {
         // 生命周期函数--监听页面加载
@@ -36,6 +38,8 @@ Page({
             minephone:userInfo.phoneNumber,
             // minedizhi:usercommonAddress,
             minedizhi:userInfo.commonAddress,
+            town:userInfo.town,
+            village:userInfo.village
         })
         wx.request({
             // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/query?tableName=owner&queryString=ownername="' + e.detail.value.username + '" and ownerphone="' + e.detail.value.userphone + '"',

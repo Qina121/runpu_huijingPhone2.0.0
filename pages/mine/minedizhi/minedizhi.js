@@ -25,7 +25,8 @@ Page({
         if (options.detailxinxi == "dizhi") {
             that.setData({
                 showtable: true,
-                showsphone: false
+                showsphone: false,
+                xiangxi:options.minedizhi
             })
         }
         if (options.detailxinxi == "phonenumber") {

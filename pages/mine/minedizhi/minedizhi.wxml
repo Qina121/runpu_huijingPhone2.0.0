@@ -9,11 +9,11 @@
             
                 <view wx:if="{{showtable}}">
                     <span class="historyNotice">常用地址</span>
-                    <view class=" paddings xiangxi">
+                    <!-- <view class=" paddings xiangxi">
                         <text class="mines">所在地区{{}}</text>
-                        <!-- <span class="iconfont icon-arrowRight-fill  iconright"></span> -->
+                        <span class="iconfont icon-arrowRight-fill  iconright"></span>
                         <input maxlength="20" name="maindizhi" value="{{maindizhi}}" class="flright cssleft" />
-                    </view>
+                    </view> -->
                     <view class=" paddinga xiangxi ">
                         <text class="mines paddinga">详细地址{{}}</text>
                         <textarea name="xiangxi" value="{{xiangxi}}"  cols="20" rows="10"

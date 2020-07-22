@@ -28,6 +28,7 @@ Page({
     },
     onLoad:function(options){
         const that = this
+        console.log(options)
         wx.setNavigationBarTitle({ title:'积分商城'})
         // 获取商品列表信息
         wx.request({
@@ -41,9 +42,28 @@ Page({
             },
             success: function (res) {
                 console.log(res.data)
+                let list = []
+                if(options.type == '1') {
+                  for(let i = 0; i<res.data.data.length; i++) {
+                    if(res.data.data[i].goodsItems == '1') {
+                      list.push(res.data.data[i])
+                    }
+                  }
+                } else if(options.type == '2') {
+                  for(let i = 0; i<res.data.data.length; i++) {
+                    if(res.data.data[i].goodsItems == '2') {
+                      list.push(res.data.data[i])
+                    }
+                  }
+                } else if (options.type == '3') {
+                  for(let i = 0; i<res.data.data.length; i++) {
+                    if(res.data.data[i].goodsItems == '3') {
+                      list.push(res.data.data[i])
+                    }
+                  }
+                }
                 that.setData({
-                  productList: res.data.data,
-                    
+                  productList: list,
                 })
                 console.log(that.data.productList)
 

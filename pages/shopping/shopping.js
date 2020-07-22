@@ -21,7 +21,12 @@ Page({
     ],
 
     loadding: false,
-    pullUpOn: true
+    pullUpOn: true,
+    listImg:[
+      {img:'/image/food.png',type:'1'},
+      {img:'/image/clothes.png',type:'2'},
+      {img:'/image/home.png',type:'3'}
+    ]
     },
     onShow:function(e){
       this.onLoad();

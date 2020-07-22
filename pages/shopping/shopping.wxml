@@ -1,13 +1,7 @@
-<view>
+<view class="classificationBox">
   <view class="classification">
-    <view>
-       <image src="/image/food.png" class="tui-icon"></image>
-    </view>
-    <view>
-       <image src="/image/clothes.png" class="tui-icon"></image>
-    </view>
-     <view>
-       <image src="/image/home.png" class="tui-icon"></image>
-    </view>
+    <navigator url="/pages/shopping/commodityClassification/commodityClassification?type={{item.type}}" wx:for="{{listImg}}" wx:key="{{i}}">
+       <image src="{{item.img}}" class="tui-icon"></image>
+    </navigator>
   </view>
 </view>

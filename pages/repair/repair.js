@@ -1,9 +1,13 @@
 const app = getApp()
+var dateTimePicker = require('../../utils/dateTimePicker.js');
 Page({
     onShareAppMessage() {
         return {
             title: 'form',
-            path: "pages/shopping/shopping"
+            path: "pages/shopping/shopping",
+            // 时间
+            dateTimeArray1: null,
+            dateTime1: null,
         }
     },
     data: {
@@ -52,8 +56,22 @@ Page({
             uploadImageId:imgIdArr
         })
     },
-    onload(options) {
+    onLoad(options) {
         wx.setNavigationBarTitle({ title: '报修' })
+        const that = this
+        //时间
+         // 获取完整的年月日 时分秒，以及默认显示的数组
+         var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
+         var obj1 = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
+         // 精确到分的处理，将数组的秒去掉
+         var lastArray = obj1.dateTimeArray.pop();
+          var lastTime = obj1.dateTime.pop();
+             
+         this.setData({
+             dateTimeArray1: obj1.dateTimeArray,
+             dateTime1: obj1.dateTime
+         });
+         console.log(that.data.dateTimeArray1)
     },
     pickerConfirm(e) {
         this.setData({
@@ -85,6 +103,9 @@ Page({
     formSubmit(e) {
         console.log(this.data,"data")
         var that = this
+        const dateTimeArray1 = that.data.dateTimeArray1
+        const dateTime1 = that.data.dateTime1
+        const appointment = dateTimeArray1[0][dateTime1[0]]+'-'+dateTimeArray1[1][dateTime1[1]]+'-'+dateTimeArray1[2][dateTime1[2]]+' '+dateTimeArray1[3][dateTime1[3]]+':'+dateTimeArray1[4][dateTime1[4]]
         console.log('form发生了submit事件，携带数据为：', e.detail.value)
         if (e.detail.value.name == "") {
             wx.showToast({
@@ -94,14 +115,22 @@ Page({
             })
             return false
         }
-        if (e.detail.value.creatTime == null) {
+         if (appointment == null) {
             wx.showToast({
-                title: '请输入日期',
+                title: '请输入预约时间',
                 icon: 'none',
                 duration: 2000//持续的时间
             })
             return false
         }
+        // if (e.detail.value.creatTime == null) {
+        //     wx.showToast({
+        //         title: '请输入日期',
+        //         icon: 'none',
+        //         duration: 2000//持续的时间
+        //     })
+        //     return false
+        // }
         if (e.detail.value.address == "") {
             wx.showToast({
                 title: '请输入报修地址',
@@ -134,6 +163,7 @@ Page({
             })
             return false;
         }
+       
         // if (this.data.showImgUrl == "") {
         //     wx.showToast({
         //         title: '请上传图片',
@@ -167,6 +197,7 @@ Page({
                     createTime:e.detail.value.creatTime,
                     attachment:this.data.uploadImageId,
                     reapirState:this.data.reapirState,
+                    appointmentTime: appointment
                 },
                 success: function (res) {
                     console.log(res.data, "222")
@@ -203,6 +234,19 @@ Page({
             chosen: ''
         })
     },
+
+changeDateTime1(e) {
+    this.setData({ dateTime1: e.detail.value });
+    var arr = this.data.dateTime1, dateArr = this.data.dateTimeArray1;
+    arr[e.detail.column] = e.detail.value;
+    dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+
+        this.setData({ 
+        dateTimeArray1: dateArr,
+        dateTime1: arr
+    });
+},
+changeDateTimeColumn1(e) {}
     
 
 })

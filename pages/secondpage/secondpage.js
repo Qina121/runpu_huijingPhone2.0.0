@@ -79,14 +79,14 @@ Page({
             })
             return false
         }
-        if (e.detail.value.creatTime == null) {
-            wx.showToast({
-                title: '请输入日期',
-                icon: 'none',
-                duration: 2000//持续的时间
-            })
-            return false
-        }
+        // if (e.detail.value.creatTime == null) {
+        //     wx.showToast({
+        //         title: '请输入日期',
+        //         icon: 'none',
+        //         duration: 2000//持续的时间
+        //     })
+        //     return false
+        // }
         if (e.detail.value.phoneNumber == "") {
             wx.showToast({
                 title: '请输入联系电话',
@@ -137,7 +137,7 @@ Page({
                 phoneNumber: e.detail.value.phoneNumber,
                 details: e.detail.value.details,
                 attachment: this.data.uploadImageId,
-                createTime: e.detail.value.creatTime,
+                // createTime: e.detail.value.creatTime,
                 auditState: this.data.auditState,
                 realName: this.data.realNameone.realName
             },

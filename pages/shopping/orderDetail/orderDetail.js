@@ -13,7 +13,8 @@ Page({
     mineaddresses: '',
     minephone: '',
     minedizhi: '',
-    orderInfo: {}
+    orderInfo: {},
+    orderID:''
   },
 
   /**
@@ -49,6 +50,7 @@ Page({
         mineaddresses:str,
         minephone:userInfo.phoneNumber,
         minedizhi:usercommonAddress,
+        orderID:options.orderDetail
     })
 
 

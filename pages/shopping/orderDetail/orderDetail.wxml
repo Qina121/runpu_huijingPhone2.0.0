@@ -107,7 +107,8 @@
     <view class="tui-pr25">
       <!-- <tui-button width="200rpx" height="70rpx" type="danger" shape="circle" bind:click="btnPay">确认支付</tui-button> -->
        <!-- <view class="confirmPayment"  bindtap="submit">确认支付</view> -->
-      <view class="confirmPayment"  >已兑换</view>
+       <view>订单ID:{{orderID}}</view>
+      <!-- <view class="confirmPayment"  >已兑换</view> -->
     </view>
   </view>
 

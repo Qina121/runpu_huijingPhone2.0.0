@@ -1,5 +1,14 @@
-.classification{
+.classificationBox{
   display: flex;
-  /* justify-content: space-around; */
-  align-items: space-around;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20rpx;
+}
+.classification{
+  text-align: center;
+}
+.classification image{
+  width: 670rpx;
+  height: 260rpx;
+  padding: 20rpx 0;
 }

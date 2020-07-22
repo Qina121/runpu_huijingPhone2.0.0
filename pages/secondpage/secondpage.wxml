@@ -20,7 +20,7 @@
                     <span class="most">*</span>
                     <input placeholder="请输入您的位置" class="weui-input" name="location" />
                 </view>
-                <view class="allInput">
+                <!-- <view class="allInput">
                     <span class="titlebEeizhu">上传日期</span>
                     <span class="most">*</span>
                     <view class="section">
@@ -31,7 +31,7 @@
                             </view>
                         </picker>
                     </view>
-                </view>
+                </view> -->
                 <view>
                     <span class="titlebEeizhu">请输入您的联系电话</span>
                     <span class="most">*</span>

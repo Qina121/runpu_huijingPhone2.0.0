@@ -21,7 +21,7 @@
             </view>
             <view class="pagecenterEnd">
                 <!-- <navigator  url="/pages/notice/noticelist/noticelist"> -->
-                <span bindtap="lookdetail" class="newNotice noticess">点击查看公告详情</span>
+                <span bindtap="lookdetail" data-newId="{{historylist[0].id}}" class="newNotice noticess">点击查看公告详情</span>
                 <!-- </navigator> -->
             </view>
         </view>

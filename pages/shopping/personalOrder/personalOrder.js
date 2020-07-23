@@ -92,12 +92,13 @@ Page({
    */
   onLoad: function (options) {
     const that = this
+
         // 获取详情信息
         wx.request({
-          url: that.data.api+'MallOrders/selectAllMallOrders',
+          url: that.data.api+'MallOrders/selectMallOrdersRelated',
           method: "get",
           data: {
-              // id: options.id
+            userId: wx.getStorageSync('realNameone').id
           },
           header: {
               'Content-Type': 'application/json'

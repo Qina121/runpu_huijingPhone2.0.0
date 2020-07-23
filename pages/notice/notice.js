@@ -77,6 +77,8 @@ Page({
     },
     lookdetail(e) {
                 var that = this;
+                console.log(e)
+                let newId = e.currentTarget.dataset.newid;
                 // wx.request({
                 //     url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/query?tableName=notice',
                 //     method: "get",
@@ -101,7 +103,7 @@ Page({
                         //     '&articlebody=' + res.data.articlebody + '&artileimg=' +res.data.artileimg
                         // })
                         wx.navigateTo({
-                                url: '/pages/notice/noticelist/noticelist?id=1'
+                                url: '/pages/notice/noticelist/noticelist?id='+newId
                             })
                         
                     // }

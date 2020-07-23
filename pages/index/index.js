@@ -1,5 +1,7 @@
+const app = getApp()
 Page({
   data: {
+    api: app.globalData.api,
     inputValue: '',
     warnSize: 'default',
     show: true,
@@ -22,23 +24,91 @@ Page({
     autoplay: true,  //是否自动轮播
     interval: 4000,  //间隔时间
     duration: 1000,  //滑动时间
-     buttons: [
-            {
-                type: 'default',
-                className: '',
-                text: '辅助操作',
-                value: 0
-            },
-            {
-                type: 'primary',
-                className: '',
-                text: '主操作',
-                value: 1
-            }
-        ]
+    buttons: [
+        {
+            type: 'default',
+            className: '',
+            text: '辅助操作',
+            value: 0
+        },
+        {
+            type: 'primary',
+            className: '',
+            text: '主操作',
+            value: 1
+        }
+    ],
+    IdSwiper:[],
+    noticeSwiper:[],
+    SwiperInfo: []
   },
   onLoad: function (options) {
-    
+    const that = this
+    wx.request({
+      url: that.data.api+'NoticeAsCarousel/selectOneNoticeAsCarousel',
+      method: "get",
+      data: {
+          // id: options.id
+      },
+      header: {
+          'Content-Type': 'application/json'
+      },
+      success: function (res) {
+          console.log(res)
+          if(res.data.data.noticeAsCarousel) {
+            that.setData({
+              IdSwiper:res.data.data.noticeAsCarousel.split(',')//获取轮播图公告的id
+            })
+            console.log(that.data.IdSwiper)
+          }
+          let imgArr = [] //轮播图数组
+          let info = []  //获取图片id和 公告id
+          // 按照轮播图的id查询每一条详细信息
+          for(let i = 0; i<that.data.IdSwiper.length; i++ ) {  //遍历公告找出图片id
+            wx.request({
+              url: that.data.api+'notice/selectOneById/'+that.data.IdSwiper[i],
+              method: "get",
+              data: {       
+              },
+              header: {
+                  'Content-Type': 'application/json'
+              },
+              success: function (res) {
+                  console.log(res)
+                  info.push({
+                    imgId:res.data.data.attachment,
+                    noticeId:that.data.IdSwiper[i]
+                  })
+                  that.setData({
+                    SwiperInfo:info
+                  })
+                  // 获取图片
+                  wx.request({
+                    url: that.data.api+'notice/selectPictureById/'+that.data.SwiperInfo[i].imgId,
+                    method: "get",
+                    data: {
+                        // id: options.id
+                    },
+                    header: {
+                        'Content-Type': 'application/json'
+                    },
+                    success: function (res) {
+                        console.log(res.data.data)
+                        // img = res.data.data.fileUrl
+                        imgArr.push({
+                          link: '/pages/notice/noticelist/noticelist?id='+that.data.SwiperInfo[i].noticeId,
+                          url: res.data.data.fileUrl
+                        })
+                        that.setData({
+                          imgUrls:imgArr
+                        })
+                    }
+                  })
+              }
+            })
+          }
+      }
+  })
   },
   onShow: function() {
     // 页面出现在前台时执行

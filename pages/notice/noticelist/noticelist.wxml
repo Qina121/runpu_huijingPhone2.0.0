@@ -17,7 +17,7 @@
         <view class="containner">
             {{descContent}}
         </view>
-        <image class="noticeImage" :src='{{artileimg}}'></image>
+        <image class="noticeImage" src='{{artileimg}}'></image>
     </view>
     <!-- <view class="pageFooter">
         <view class="noticeUP" bindtap="firstbut">

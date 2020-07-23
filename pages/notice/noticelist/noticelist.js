@@ -39,16 +39,31 @@ Page({
             },
             success: function (res) {
                 console.log(res)
+                let img = null
+                wx.request({
+                    url: that.data.api+'notice/selectPictureById/'+res.data.data.attachment,
+                    method: "get",
+                    data: {
+                        // id: options.id
+                    },
+                    header: {
+                        'Content-Type': 'application/json'
+                    },
+                    success: function (res) {
+                        console.log(res)
+                        img = res.data.data.fileUrl
+
+                        that.setData({
+                            artileimg:img
+                        })
+                    }
+                })
                 that.setData({
-                    // historylist: res.data,
                     releaseTime: res.data.data.announceTime,
                     browse: res.data.data.views,
-                    // user:res.data.user,
                     title:res.data.data.title,
                     descContent: res.data.data.content,
                     creatorName: res.data.data.creatorName,
-                    // articlebody:res.data.articlebody,
-                    // artileimg:res.data.artileimg
                 })
 
             }

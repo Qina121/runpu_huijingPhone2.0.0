@@ -1,5 +1,7 @@
+const app = getApp()
 Page({
     data: {
+        api: app.globalData.api,
         showtable: false,
         showsphone: true,
         updateminephone: "",
@@ -68,72 +70,98 @@ Page({
     },
     formSubmit(e) {
         console.log('form发生了submit事件，携带数据为：', e.detail.value)
-        if(this.data.showtable == true) {
-            if (e.detail.value.phones == "") {
-                wx.showToast({
-                    title: '请输入所在地区',
-                    icon: 'none',
-                    duration: 2000//持续的时间
-                })
-                return false;
-            }
-            if (e.detail.value.phones == "") {
-                wx.showToast({
-                    title: '请输入详细地址',
-                    icon: 'none',
-                    duration: 2000//持续的时间
-                })
-                return false;
-            }else {
-                wx.showModal({
-                    title: '提示',
-                    content: '确定更改地址?',
-                    success: function (res) {
-                      if (res.confirm) {//这里是点击了确定以后
-                        console.log('用户点击确定')
-                        wx.request({
-                            // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/query?tableName=owner&queryString=ownername="' + e.detail.value.username + '" and ownerphone="' + e.detail.value.userphone+'"',
-                            // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/common?tableName=owner',
-                            method: "get",
-                            data: {
-                                ownername : e.detail.value.minename,
-                                ownername : e.detail.value.minegender,
-                                ownername : e.detail.value.mineaddresses,
-                                ownername : e.detail.value.minedizhi,
-                                // ownerphone : e.detail.value.userphone
-                                // owneruser
-                            },
-                            header: {
-                                'Content-Type': 'application/json'
-                            },
-                            success: function (res) {
-                                console.log(res.data)
-                                // that.data.date = res.data.date
-                                // that.data.browse = res.data.browse
-                                // that.data.user = res.data.user
-                                // that.data.title = res.data.title
-                                // that.data.articlebody = res.data.articlebody
-                                // that.data.artileimg = res.data.artileimg
+        const that = this
+        if(that.data.showtable == true) {
+            wx.request({
+                url: that.data.api+'userInfo/updateUserInfoAdd',
+                method: "get",
+                data: {
+                    id: wx.getStorageSync('realNameone').id,
+                    commonAddress:e.detail.value.xiangxi
+                },
+                header: {
+                    'Content-Type': 'application/json'
+                },
+                success: function (res) {
+                    console.log(res.data)
+                    let userInfo = wx.getStorageSync('realNameone')
+                    userInfo.commonAddress = e.detail.value.xiangxi
+                    wx.setStorageSync('realNameone', userInfo)
+                    wx.showToast({
+                        title: res.data.message,
+                        icon: 'success',
+                        duration: 2000//持续的时间
+                    })
+                    wx.switchTab({
+                        url: '/pages/mine/mine'
+                      });
+                }
+            })
+            // if (e.detail.value.phones == "") {
+            //     wx.showToast({
+            //         title: '请输入所在地区',
+            //         icon: 'none',
+            //         duration: 2000//持续的时间
+            //     })
+            //     return false;
+            // }
+            // if (e.detail.value.phones == "") {
+            //     wx.showToast({
+            //         title: '请输入详细地址',
+            //         icon: 'none',
+            //         duration: 2000//持续的时间
+            //     })
+            //     return false;
+            // }else {
+            //     wx.showModal({
+            //         title: '提示',
+            //         content: '确定更改地址?',
+            //         success: function (res) {
+            //           if (res.confirm) {//这里是点击了确定以后
+            //             console.log('用户点击确定')
+            //             wx.request({
+            //                 // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/query?tableName=owner&queryString=ownername="' + e.detail.value.username + '" and ownerphone="' + e.detail.value.userphone+'"',
+            //                 // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/common?tableName=owner',
+            //                 method: "get",
+            //                 data: {
+            //                     ownername : e.detail.value.minename,
+            //                     ownername : e.detail.value.minegender,
+            //                     ownername : e.detail.value.mineaddresses,
+            //                     ownername : e.detail.value.minedizhi,
+            //                     ownerphone : e.detail.value.userphone
+                 
+            //                 },
+            //                 header: {
+            //                     'Content-Type': 'application/json'
+            //                 },
+            //                 success: function (res) {
+            //                     console.log(res.data)
+            //                     that.data.date = res.data.date
+            //                     that.data.browse = res.data.browse
+            //                     that.data.user = res.data.user
+            //                     that.data.title = res.data.title
+            //                     that.data.articlebody = res.data.articlebody
+            //                     that.data.artileimg = res.data.artileimg
                                 
-                                wx.showToast({
-                                    title: '修改地址成功',
-                                    icon: 'success',
-                                    duration: 2000//持续的时间
-                                })
-                                setTimeout(function () {
-                                    wx.switchTab({
-                                        url: '/pages/index/index?role=管理员'
-                                    })
-                                    //要延时执行的代码
-                                }, 1000)
-                            }
-                        })
-                      } else {//这里是点击了取消以后
-                        console.log('用户点击取消')
-                      }
-                    }
-                  })
-            }
+            //                     wx.showToast({
+            //                         title: '修改地址成功',
+            //                         icon: 'success',
+            //                         duration: 2000//持续的时间
+            //                     })
+            //                     setTimeout(function () {
+            //                         wx.switchTab({
+            //                             url: '/pages/index/index?role=管理员'
+            //                         })
+            //                         //要延时执行的代码
+            //                     }, 1000)
+            //                 }
+            //             })
+            //           } else {//这里是点击了取消以后
+            //             console.log('用户点击取消')
+            //           }
+            //         }
+            //       })
+            // }
         }else {
             if (e.detail.value.phones == "") {
                 wx.showToast({
@@ -158,7 +186,7 @@ Page({
                 })
                 return false;
             }else {
-                var that = this;
+          
                 // var owneruser = {}
                 // owneruser.ownername = e.detail.value.username
                 // owneruser.userphone = e.detail.value.userphone

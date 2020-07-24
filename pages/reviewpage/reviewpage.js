@@ -40,11 +40,11 @@ Page({
     ],
     IdSwiper:[],
     noticeSwiper:[],
-    SwiperInfo: []
+
   },
   onLoad: function (options) {
     const that = this
-    console.log(options)
+
     wx.request({
       url: that.data.api+'NoticeAsCarousel/selectOneNoticeAsCarousel',
       method: "get",
@@ -55,15 +55,15 @@ Page({
           'Content-Type': 'application/json'
       },
       success: function (res) {
-          console.log(res)
+
           if(res.data.data.noticeAsCarousel) {
             that.setData({
               IdSwiper:res.data.data.noticeAsCarousel.split(',')//获取轮播图公告的id
             })
-            console.log(that.data.IdSwiper)
+       
           }
           let imgArr = [] //轮播图数组
-          let info = []  //获取图片id和 公告id
+          // let info = []  //获取图片id和 公告id
           // 按照轮播图的id查询每一条详细信息
           for(let i = 0; i<that.data.IdSwiper.length; i++ ) {  //遍历公告找出图片id
             wx.request({
@@ -75,20 +75,11 @@ Page({
                   'Content-Type': 'application/json'
               },
               success: function (res) {
-                  console.log(res)
-                  info.push({
-                    imgId:res.data.data.attachment,
-                    noticeId:that.data.IdSwiper[i]
-                  })
-                  that.setData({
-                    SwiperInfo:info
-                  })
-                  console.log(that.data.SwiperInfo[i].imgId)
                   
-                  if(that.data.SwiperInfo[i].imgId) {
-                        // 获取图片
+                  if(res.data.data.attachment) {
+                  // 获取图片
                   wx.request({
-                    url: that.data.api+'notice/selectPictureById/'+that.data.SwiperInfo[i].imgId,
+                    url: that.data.api+'notice/selectPictureById/'+res.data.data.attachment,
                     method: "get",
                     data: {
                         // id: options.id
@@ -97,16 +88,13 @@ Page({
                         'Content-Type': 'application/json'
                     },
                     success: function (res) {
-                        console.log(res.data.data)
-                        // img = res.data.data.fileUrl
                         imgArr.push({
-                          link: '/pages/notice/noticelist/noticelist?id='+that.data.SwiperInfo[i].noticeId,
+                          link: '/pages/notice/noticelist/noticelist?id='+that.data.IdSwiper[i],
                           url: res.data.data.fileUrl
                         })
                         that.setData({
                           imgUrls:imgArr
                         })
-                        console.log(that.data.imgUrls)
                     }
                   })
                   }
@@ -146,9 +134,6 @@ Page({
   },
   onTabItemTap(item) {
     // // tab 点击时执行
-    // console.log(item.index)
-    // console.log(item.pagePath)
-    // console.log(item.text)
   },
   // 事件响应函数
   viewTap: function() {
@@ -159,8 +144,7 @@ Page({
     })
   },
   getPerson:function(e){
-    // console.log(this.data.openid);
-    // console.log(e);
+
   },
   // 自由数据
   customData: {
@@ -172,13 +156,11 @@ Page({
     })
   },
   formSubmit(e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    // console.log('form发生了submit事件，携带数据为：', e.detail.value)
   },
   watchPhotoNumber: function (event) {
-    console.log(event.detail.value);
     var phone = event.detail.value;
     if(!(/^1[3456789]\d{9}$/.test(phone))){ 
-        console.log("手机号码有误，请重填");  
         return false; 
     } 
   },
@@ -188,7 +170,7 @@ Page({
     })
 },
 buttontap(e) {
-  // console.log(e.detail)
+
 },
 open: function () {
   this.setData({
@@ -205,49 +187,18 @@ notice: function() {
   wx.navigateTo({
     url: '../login/login'
   })
-  // console.log('通知')
-  // console.log(wx.getStorageSync('login'))
-  // if(!wx.getStorageSync('login')) {
-  //   wx.navigateTo({
-  //     url: '../login/login'
-  //   })
-  // } else {
-  //   wx.navigateTo({
-  //     url: '/pages/notice/notice'
-  //   })
-  // }
 },
 serviceApplication: function() {
   wx.navigateTo({
     url: '../login/login'
   })
-  // console.log('服务申办')
-  // console.log(wx.getStorageSync('login'))
-  // if(!wx.getStorageSync('login')) {
-  //   wx.navigateTo({
-  //     url: '../login/login'
-  //   })
-  // } else {
-  //   wx.navigateTo({
-  //     url: '/pages/repair/repair'
-  //   })
-  // }
+
 },
 vehicleManagement: function() {
   wx.navigateTo({
     url: '../login/login'
   })
-  // console.log('车辆管理')
-  // console.log(wx.getStorageSync('login'))
-  // if(!wx.getStorageSync('login')) {
-  //   wx.navigateTo({
-  //     url: '../login/login'
-  //   })
-  // } else {
-  //   wx.navigateTo({
-  //     url: '/pages/vehicle/vehicle'
-  //   })
-  // }
+
 },
 
    

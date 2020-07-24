@@ -22,7 +22,6 @@ Page({
         var that = this
         wx.getSetting({
             success: function (res) {
-                console.log(res, "111")
                 if (res.authSetting['scope.userInfo']) {
                     wx.getUserInfo({
                         success: function (res) {
@@ -30,8 +29,6 @@ Page({
                             that.setData({
                                 isShow: true
                             })
-                            console.log(res, "授权")
-                            console.log(that.data, "canIuse")
                         }, error: function () {
                             that.setData({
                                 isShow: true
@@ -43,7 +40,6 @@ Page({
         })
         //判断是否用户之前是否登录
         const LoginInfo = wx.getStorageSync('realNameone')
-        console.log(LoginInfo)
         if(LoginInfo) {
             that.setData({
                 nameValue:LoginInfo.realName,
@@ -86,7 +82,7 @@ Page({
         }
     },
     formSubmit(e) {
-        console.log(e)
+
         var phone = e.detail.value.userphone;
         if (e.detail.value.username == "") {
             wx.showToast({
@@ -128,7 +124,7 @@ Page({
                     phoneNumber: e.detail.value.userphone,
                 },
                 success: function (res) {
-                    console.log(res)
+           
                     if (res.data.data == null) {
                         wx.showToast({
                             title: '未查询到用户信息',
@@ -150,7 +146,7 @@ Page({
                     //         duration: 2000//持续的时间
                     //     })
 
-                    //     console.log(wx.getStorageSync('realNameones'), "realNameone11")
+           
                     //     setTimeout(function () {
                     //         wx.switchTab({
                     //             url: '/pages/index/index'
@@ -171,7 +167,7 @@ Page({
                             icon: 'success',
                             duration: 2000//持续的时间
                         })
-                        console.log(res.data.data, "data")
+          
                         setTimeout(function () {
                             wx.navigateTo({
                                 url: '/pages/mainuser/mainuser?role=管理员'
@@ -179,13 +175,10 @@ Page({
                             wx.setStorageSync('login', 'true')
                             //要延时执行的代码
                         }, 3000)
-
-                        console.log(wx.getStorageSync('realNameone'), "realNameone")
                         return false
                     }
                     if (res.data.data.userType == 2 || 3 || 4 & res.data.data.userState == 2) {
                         const realNameone = res.data.data
-                        console.log(realNameone.headImage)
                         wx.setStorage(
                             {
                                 key: "realNameone",
@@ -197,7 +190,6 @@ Page({
                             icon: 'success',
                             duration: 2000//持续的时间
                         })
-                        console.log(res.data.data, "data")
                         setTimeout(function () {
                             wx.switchTab({
                                 url: '/pages/index/index?'
@@ -206,7 +198,6 @@ Page({
                             //要延时执行的代码
                         }, 3000)
 
-                        console.log(wx.getStorageSync('realNameone'), "realNameone")
                         return false
                     }
                     if ( res.data.data.userState == 1) {
@@ -223,7 +214,6 @@ Page({
 
     },
     doNotMove: function() {
-        console.log('stop user scroll it!');
         return;    
     },
     change: function() {
@@ -233,7 +223,6 @@ Page({
         })
     },
     goregistered: function() {
-        console.log('现在正式测试注册新用户')
         wx.navigateTo({
             url: '/pages/registered/registered'
         })

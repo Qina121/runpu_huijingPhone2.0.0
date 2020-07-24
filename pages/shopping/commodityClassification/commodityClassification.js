@@ -142,7 +142,7 @@ Page({
     console.log(e)
     const goodsId = e.currentTarget.dataset.goodsid
     wx.navigateTo({
-      url: './shoppingDetail/shoppingDetail?goodsId='+ goodsId
+      url: '../shoppingDetail/shoppingDetail?goodsId='+ goodsId
     })
   },
 //   轮播图的点击事件

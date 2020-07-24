@@ -40,7 +40,7 @@ Page({
     ],
     IdSwiper:[],
     noticeSwiper:[],
-    SwiperInfo: []
+    // SwiperInfo: []
   },
   onLoad: function (options) {
     const that = this
@@ -54,15 +54,15 @@ Page({
           'Content-Type': 'application/json'
       },
       success: function (res) {
-          console.log(res)
+     
           if(res.data.data.noticeAsCarousel) {
             that.setData({
               IdSwiper:res.data.data.noticeAsCarousel.split(',')//获取轮播图公告的id
             })
-            console.log(that.data.IdSwiper)
+
           }
           let imgArr = [] //轮播图数组
-          let info = []  //获取图片id和 公告id
+          // let info = []  //获取图片id和 公告id
           // 按照轮播图的id查询每一条详细信息
           for(let i = 0; i<that.data.IdSwiper.length; i++ ) {  //遍历公告找出图片id
             wx.request({
@@ -74,17 +74,11 @@ Page({
                   'Content-Type': 'application/json'
               },
               success: function (res) {
-                  console.log(res)
-                  info.push({
-                    imgId:res.data.data.attachment,
-                    noticeId:that.data.IdSwiper[i]
-                  })
-                  that.setData({
-                    SwiperInfo:info
-                  })
+
                   // 获取图片
+                  if(res.data.data.attachment) {
                   wx.request({
-                    url: that.data.api+'notice/selectPictureById/'+that.data.SwiperInfo[i].imgId,
+                    url: that.data.api+'notice/selectPictureById/'+res.data.data.attachment,
                     method: "get",
                     data: {
                         // id: options.id
@@ -93,10 +87,9 @@ Page({
                         'Content-Type': 'application/json'
                     },
                     success: function (res) {
-                        console.log(res.data.data)
-                        // img = res.data.data.fileUrl
+        
                         imgArr.push({
-                          link: '/pages/notice/noticelist/noticelist?id='+that.data.SwiperInfo[i].noticeId,
+                          link: '/pages/notice/noticelist/noticelist?id='+that.data.IdSwiper[i],
                           url: res.data.data.fileUrl
                         })
                         that.setData({
@@ -104,10 +97,69 @@ Page({
                         })
                     }
                   })
+                }
+
               }
             })
           }
       }
+  })
+
+  //判断车牌时效性
+  wx.request({
+    url: that.data.api+'RfidCarTimeliness/selectOneInfoByCarNumber',
+    method: "get",
+    data: {
+        carNumber: wx.getStorageSync('realNameone').carNumber
+    },
+    header: {
+        'Content-Type': 'application/json'
+    },
+    success: function (res) {
+        console.log(res)                           
+        var day1 = new Date(app.getFullTime());
+        var day2 = new Date(res.data.data.endTime);
+        // var day1 = new Date("2017-9-18");
+        // var day2 = new Date("2017-9-18");
+        console.log((day2 - day1) / (1000 * 60 * 60 * 24));
+        const timeNumber = (day2 - day1) / (1000 * 60 * 60 * 24)
+        if(0<timeNumber<1) {
+            wx.showModal({
+              title: '您的车牌即将到期',                                       
+              confirmText: '确定',                                       
+              content: '请联系管理员',                                      
+              success: function (res) {                                      
+                if (res.confirm) {}
+              }
+             })
+        } else if(timeNumber<0) {
+    
+            wx.showModal({
+              title: '您的车牌已过期',                                       
+              confirmText: '确定',                                       
+              content: '请联系管理员',                                      
+              success: function (res) {                                      
+                if (res.confirm) {}
+              }
+             })
+            // 过期提示后台
+            wx.request({
+              url: that.data.api+'RfidCarTimeliness/updateRfidCarFailure',
+              method: "get",
+              data: {
+                  carNumber: wx.getStorageSync('realNameone').carNumber
+              },
+              header: {
+                  'Content-Type': 'application/json'
+              },
+              success: function (res) {
+                  console.log(res)
+              }
+            })
+        
+        }
+
+    }
   })
   },
   onShow: function() {
@@ -139,9 +191,7 @@ Page({
   },
   onTabItemTap(item) {
     // // tab 点击时执行
-    // console.log(item.index)
-    // console.log(item.pagePath)
-    // console.log(item.text)
+
   },
   // 事件响应函数
   viewTap: function() {
@@ -152,8 +202,7 @@ Page({
     })
   },
   getPerson:function(e){
-    // console.log(this.data.openid);
-    // console.log(e);
+
   },
   // 自由数据
   customData: {
@@ -165,13 +214,12 @@ Page({
     })
   },
   formSubmit(e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    // console.log('form发生了submit事件，携带数据为：', e.detail.value)
   },
   watchPhotoNumber: function (event) {
-    console.log(event.detail.value);
+
     var phone = event.detail.value;
     if(!(/^1[3456789]\d{9}$/.test(phone))){ 
-        console.log("手机号码有误，请重填");  
         return false; 
     } 
   },
@@ -181,17 +229,14 @@ Page({
     })
 },
 buttontap(e) {
-  // console.log(e.detail)
+
 },
 open: function () {
   this.setData({
       show: true
   })
 },
-garbage: function() {
-  console.log('垃圾分类')
-  console.log(wx.getStorageSync('login'))
-  
+garbage: function() { 
   if(!wx.getStorageSync('login')) {
     wx.navigateTo({
       url: '../login/login'
@@ -204,8 +249,6 @@ garbage: function() {
 },
 
 notice: function() {
-  console.log('通知')
-  console.log(wx.getStorageSync('login'))
   if(!wx.getStorageSync('login')) {
     wx.navigateTo({
       url: '../login/login'
@@ -217,8 +260,6 @@ notice: function() {
   }
 },
 serviceApplication: function() {
-  console.log('服务申办')
-  console.log(wx.getStorageSync('login'))
   if(!wx.getStorageSync('login')) {
     wx.navigateTo({
       url: '../login/login'
@@ -230,8 +271,6 @@ serviceApplication: function() {
   }
 },
 vehicleManagement: function() {
-  console.log('车辆管理')
-  console.log(wx.getStorageSync('login'))
   if(!wx.getStorageSync('login')) {
     wx.navigateTo({
       url: '../login/login'

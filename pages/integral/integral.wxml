@@ -12,7 +12,7 @@
     <view class="addjifen" wx:for="{{jifenDataList}}">
         <view class="smallBoxs">
             <span class='iconfont icon-jifen'></span>
-            <span>积分+{{item.score}}</span>
+            <span>积分{{item.score > 0 ? '+' + item.score : item.score}}</span>
         </view>
         <span class="stylered">{{item.scoreDesc}}</span>
         <span class="styleblod">{{item.createTime}}</span>

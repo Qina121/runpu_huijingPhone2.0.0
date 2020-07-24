@@ -33,10 +33,10 @@ Page({
     },
     onShow() {
         const that = this
-        console.log(wx.getStorageSync('realNameone'))
+        // console.log(wx.getStorageSync('realNameone'))
          const type = wx.getStorageSync('realNameone')
         if(type.userType == 2 || type.userType == 3) {
-            console.log(type)
+            // console.log(type)
             that.setData({
                 tenantParking : false,
                 pic_number: 0
@@ -48,8 +48,13 @@ Page({
             })
         }
     },
-    onload(options) {
+    onLoad(options) {
         wx.setNavigationBarTitle({ title: '车辆' })
+        const that = this
+        that.setData({
+            applyUser : wx.getStorageSync('realNameone').realName,
+            phoneNumber: wx.getStorageSync('realNameone').phoneNumber
+        })
     },
     pickerConfirm(e) {
         this.setData({

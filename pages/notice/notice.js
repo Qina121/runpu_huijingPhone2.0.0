@@ -39,13 +39,10 @@ Page({
                 'Content-Type': 'application/json'
             },
             success: function (res) {
-                console.log(res.data)
                 that.setData({
                     historylist: res.data.data,
                     
                 })
-                console.log(that.historylist)
-
             }
         })
     },
@@ -77,7 +74,6 @@ Page({
     },
     lookdetail(e) {
                 var that = this;
-                console.log(e)
                 let newId = e.currentTarget.dataset.newid;
                 // wx.request({
                 //     url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/query?tableName=notice',
@@ -114,7 +110,6 @@ Page({
 
     },
     goDetail: function(e) {
-        console.log('单击列表到详情页')
         const  item = e.currentTarget.dataset.item
         wx.navigateTo({
             url: '/pages/notice/noticelist/noticelist?id=' + item.id,

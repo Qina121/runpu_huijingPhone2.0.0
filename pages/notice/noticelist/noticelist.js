@@ -26,7 +26,6 @@ Page({
          //下一篇公告
     },
     onLoad: function (options) {
-        console.log(options, "options");//输出的结果是  1
         var that = this;
         wx.request({
             url: that.data.api+'notice/selectOneById/'+options.id,
@@ -38,7 +37,6 @@ Page({
                 'Content-Type': 'application/json'
             },
             success: function (res) {
-                console.log(res)
                 let img = null
                 wx.request({
                     url: that.data.api+'notice/selectPictureById/'+res.data.data.attachment,
@@ -50,7 +48,6 @@ Page({
                         'Content-Type': 'application/json'
                     },
                     success: function (res) {
-                        console.log(res)
                         img = res.data.data.fileUrl
 
                         that.setData({

@@ -105,35 +105,33 @@ Page({
       }
   })
 
-  //判断车牌时效性
-  wx.request({
-    url: that.data.api+'RfidCarTimeliness/selectOneInfoByCarNumber',
-    method: "get",
-    data: {
-        carNumber: wx.getStorageSync('realNameone').carNumber
-    },
-    header: {
-        'Content-Type': 'application/json'
-    },
-    success: function (res) {
-        console.log(res)                           
-        var day1 = new Date(app.getFullTime());
-        var day2 = new Date(res.data.data.endTime);
-        // var day1 = new Date("2017-9-18");
-        // var day2 = new Date("2017-9-18");
-        console.log((day2 - day1) / (1000 * 60 * 60 * 24));
-        const timeNumber = (day2 - day1) / (1000 * 60 * 60 * 24)
-        if(0<timeNumber<1) {
-            wx.showModal({
-              title: '您的车牌即将到期',                                       
-              confirmText: '确定',                                       
-              content: '请联系管理员',                                      
-              success: function (res) {                                      
-                if (res.confirm) {}
-              }
-             })
-        } else if(timeNumber<0) {
-    
+  console.log(wx.getStorageSync('realNameone').carNumber)
+  console.log(wx.getStorageSync('realNameone').carNumber.split(','))
+  console.log(wx.getStorageSync('realNameone').carNumber, '车牌')
+    //判断车牌时效性
+  const carNumberArr = wx.getStorageSync('realNameone').carNumber.split(',');
+  for(let i = 0; i<carNumberArr.length; i++) {
+    console.log(carNumberArr[i])
+    wx.request({
+      url: that.data.api+'RfidCarTimeliness/selectOneInfoByCarNumber',
+      method: "get",
+      data: {
+          carNumber: carNumberArr[i]
+      },
+      header: {
+          'Content-Type': 'application/json'
+      },
+      success: function (res) {
+          console.log(res)                           
+          var day1 = new Date(app.getFullTime());
+          var day2 = new Date(res.data.data.endTime);
+          // var day1 = new Date("2017-9-18");
+          // var day2 = new Date("2017-9-18");
+          // console.log((day2 - day1) / (1000 * 60 * 60 * 24));
+          const timeNumber = (day2 - day1) / (1000 * 60 * 60 * 24)
+          console.log(timeNumber)
+          if(timeNumber<0){
+   
             wx.showModal({
               title: '您的车牌已过期',                                       
               confirmText: '确定',                                       
@@ -147,7 +145,7 @@ Page({
               url: that.data.api+'RfidCarTimeliness/updateRfidCarFailure',
               method: "get",
               data: {
-                  carNumber: wx.getStorageSync('realNameone').carNumber
+                  carNumber: carNumberArr[i]
               },
               header: {
                   'Content-Type': 'application/json'
@@ -156,11 +154,25 @@ Page({
                   console.log(res)
               }
             })
-        
-        }
+          }
 
-    }
-  })
+         else if(0<=timeNumber && timeNumber<2) {
+              wx.showModal({
+                title: '您的车牌即将到期',                                       
+                confirmText: '确定',                                       
+                content: '请联系管理员',                                      
+                success: function (res) {                                      
+                  if (res.confirm) {}
+                }
+               })
+
+          }
+  
+      }
+    })
+  }
+
+
   },
   onShow: function() {
     // 页面出现在前台时执行

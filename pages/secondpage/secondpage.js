@@ -29,8 +29,11 @@ Page({
         uploadImageId: [],
         uploadImgUrl: 'http://www.qy58.cn/cgi-bin/webUpLoad.exe'//图片的上传的路径
     },
-    onload(options) {
+    onLoad(options) {
         wx.setNavigationBarTitle({ title: '垃圾分类' })
+        this.setData({
+            phoneNumber: wx.getStorageSync('realNameone').phoneNumber
+        })
     },
     onready: function () {
 

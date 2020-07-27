@@ -207,6 +207,7 @@ Page({
         })
     },
     approved: function(item) {
+        const that = this
         console.log(item.currentTarget.dataset.item)
         const detailItem = item.currentTarget.dataset.item
         if(detailItem.userState == 2) {
@@ -228,7 +229,9 @@ Page({
             //    id:wx.getStorageSync('realNameone').id,
                userId:detailItem.id,
                realName:detailItem.realName,
-               userState:2
+               userState:2,
+               phoneNumber:detailItem.phoneNumber
+
             },
             success: function (res) {
                 console.log(res)

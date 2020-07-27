@@ -49,23 +49,35 @@ Page({
                       list.push(res.data.data[i])
                     }
                   }
+                  that.setData({
+                    productList: list,
+                  })
+                  console.log(that.data.productList)
                 } else if(options.type == '2') {
                   for(let i = 0; i<res.data.data.length; i++) {
                     if(res.data.data[i].goodsItems == '2') {
                       list.push(res.data.data[i])
                     }
                   }
+                  that.setData({
+                    productList: list,
+                  })
+                  console.log(that.data.productList)
                 } else if (options.type == '3') {
                   for(let i = 0; i<res.data.data.length; i++) {
                     if(res.data.data[i].goodsItems == '3') {
                       list.push(res.data.data[i])
                     }
                   }
+                  that.setData({
+                    productList: list,
+                  })
+                  console.log(that.data.productList)
                 }
-                that.setData({
-                  productList: list,
-                })
-                console.log(that.data.productList)
+                // that.setData({
+                //   productList: list,
+                // })
+                // console.log(that.data.productList)
 
             }
         })

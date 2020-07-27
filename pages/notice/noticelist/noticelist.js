@@ -48,11 +48,14 @@ Page({
                         'Content-Type': 'application/json'
                     },
                     success: function (res) {
-                        img = res.data.data.fileUrl
-
-                        that.setData({
-                            artileimg:img
-                        })
+                        // console.log(res.data.data)
+                        if(res.data.data) {
+                            img = res.data.data.fileUrl
+                            that.setData({
+                                artileimg:img
+                            })
+                        }
+                      
                     }
                 })
                 that.setData({

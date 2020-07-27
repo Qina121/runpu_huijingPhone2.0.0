@@ -13,7 +13,7 @@
                 <view>
                     <span class="titlebEeizhu">真实姓名</span>
                     <span class="most">*</span>
-                    <input class="weui-input" placeholder="请输入您的真实姓名" value="{{name}}" name="name" />
+                    <input class="weui-input" placeholder="请输入您的真实姓名" value="{{nameValue}}" name="name" />
                 </view>
                 <view class="allInput">
                     <span class="titlebEeizhu">预约时间</span>

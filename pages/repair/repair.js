@@ -35,6 +35,7 @@ Page({
         name:"",
         address:"",
         phoneNumber:"",
+        nameValue:"",
         repairDesc:"",
         createTime:"",
         attachment:"",
@@ -59,14 +60,24 @@ Page({
     onLoad(options) {
         wx.setNavigationBarTitle({ title: '报修' })
         const that = this
+        this.setData({
+            phoneNumber: wx.getStorageSync('realNameone').phoneNumber,
+            nameValue: wx.getStorageSync('realNameone').realName
+        })
         //时间
          // 获取完整的年月日 时分秒，以及默认显示的数组
          var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
          var obj1 = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
          // 精确到分的处理，将数组的秒去掉
+        //  console.log(obj1.dateTimeArray)
+        //  console.log(obj1.dateTime)
+         //默认分钟是0
+         obj1.dateTime[4] = 0
          var lastArray = obj1.dateTimeArray.pop();
-          var lastTime = obj1.dateTime.pop();
-             
+         var lastTime = obj1.dateTime.pop();
+         
+        //  更改分钟的选项为 0 15 30 35
+        obj1.dateTimeArray[4] = ['00','15','30','45']
          this.setData({
              dateTimeArray1: obj1.dateTimeArray,
              dateTime1: obj1.dateTime

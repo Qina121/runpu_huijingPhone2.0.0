@@ -47,6 +47,8 @@ function getNewDateArry(){
       minu = withData(newDate.getMinutes()),
       seco = withData(newDate.getSeconds());
 
+      console.log(minu)
+
   return [year, mont, date, hour, minu, seco];
 }
 function dateTimePicker(startYear,endYear,date) {
@@ -63,12 +65,14 @@ function dateTimePicker(startYear,endYear,date) {
   dateTimeArray[2] = getMonthDay(defaultDate[0], defaultDate[1]);
   dateTimeArray[3] = getLoopArray(0, 23);
   dateTimeArray[4] = getLoopArray(0, 59);
+  // 更改分钟的选项为 0 15 30 35 45
+  // dateTimeArray[4] = getLoopArray(0, 4); 
   dateTimeArray[5] = getLoopArray(0, 59);
 
   dateTimeArray.forEach((current,index) => {
     dateTime.push(current.indexOf(defaultDate[index]));
   });
-
+  console.log(dateTimeArray[4])
   return {
     dateTimeArray: dateTimeArray,
     dateTime: dateTime

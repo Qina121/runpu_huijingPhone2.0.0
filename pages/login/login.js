@@ -45,6 +45,7 @@ Page({
                 nameValue:LoginInfo.realName,
                 phoneValue:LoginInfo.phoneNumber
             })
+            that.formSubmit() 
         }
     },
     // bindGetUserInfo: function (e) {
@@ -82,23 +83,26 @@ Page({
         }
     },
     formSubmit(e) {
+        const that = this
+        // var phone = e.detail.value.userphone;
 
-        var phone = e.detail.value.userphone;
-        if (e.detail.value.username == "") {
+        let userInfoName = that.data.nameValue
+        let userInfoPhone = that.data.phoneValue
+        if (userInfoName == "") {
             wx.showToast({
                 title: '请输入您的真实姓名',
                 icon: 'none',
                 duration: 2000//持续的时间
             })
             return false;
-        } else if (phone == "") {
+        } else if (userInfoPhone == "") {
             wx.showToast({
                 title: '请输入手机号',
                 icon: 'none',
                 duration: 2000//持续的时间
             })
             return false;
-        } else if (!(/^1[3456789]\d{9}$/.test(phone))) {
+        } else if (!(/^1[3456789]\d{9}$/.test(userInfoPhone))) {
             wx.showToast({
                 title: '手机号码有误,请重新输入',
                 icon: 'none',
@@ -106,7 +110,7 @@ Page({
             })
             return false;
         } else {
-            var that = this;
+
             wx.request({
                 // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/post?tableName=owner&queryString=ownername="' + e.detail.value.username + '" and ownerphone="' + e.detail.value.userphone+'"',
                 // url: 'http://124.193.199.178:8085/userInfo/selectLogin',// 原来的
@@ -120,8 +124,8 @@ Page({
                     // 'Content-Type': "application/x-www-form-urlencoded"
                 },
                 data: {
-                    realName: e.detail.value.username,
-                    phoneNumber: e.detail.value.userphone,
+                    realName: userInfoName,
+                    phoneNumber: userInfoPhone,
                 },
                 success: function (res) {
            
@@ -225,6 +229,16 @@ Page({
     goregistered: function() {
         wx.navigateTo({
             url: '/pages/registered/registered'
+        })
+    },
+    watchPhotoNumber(e) {
+        this.setData({
+            phoneValue: e.detail.value
+        })
+    },
+    watchNameValue(e) {
+        this.setData({
+            nameValue: e.detail.value
         })
     }
 })

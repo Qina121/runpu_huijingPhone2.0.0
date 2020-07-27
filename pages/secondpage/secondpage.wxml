@@ -35,7 +35,7 @@
                 <view>
                     <span class="titlebEeizhu">请输入您的联系电话</span>
                     <span class="most">*</span>
-                    <input maxlength="11" class="weui-input" bindblur='watchPhotoNumber' name="phoneNumber"
+                    <input maxlength="11" class="weui-input" bindblur='watchPhotoNumber' name="phoneNumber"  value="{{phoneNumber}}"
                         placeholder="请输入您的联系电话" />
                 </view>
                 <view>

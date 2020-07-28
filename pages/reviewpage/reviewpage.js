@@ -44,7 +44,114 @@ Page({
   },
   onLoad: function (options) {
     const that = this
+    //判断是否用户之前是否登录
+    const LoginInfo = wx.getStorageSync('realNameone')
+    if(LoginInfo) {
+        that.setData({
+            nameValue:LoginInfo.realName,
+            phoneValue:LoginInfo.phoneNumber
+        })
+        let userInfoName = that.data.nameValue
+        let userInfoPhone = that.data.phoneValue
+        wx.request({
+            url: that.data.api +'userInfo/selectLogin', //测试服务器接口地址
+            method: "get",
+            header: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': "application/x-www-form-urlencoded"
+            },
+            data: {
+                realName: userInfoName,
+                phoneNumber: userInfoPhone,
+            },
+            success: function (res) {
+        
+                if (res.data.data == null) {
+                    wx.showToast({
+                        title: '未查询到用户信息',
+                        icon: 'none',
+                        duration: 2000//持续的时间
+                    })
+                    return false
+                }
+                // if(res.data.data.userType == 2 || 3 || 4) {
+                //     let realNameone = res.data.data
+                //     wx.setStorage(
+                //         {
+                //             key: "realNameone",
+                //             data: realNameone
+                //         })
+                //     wx.showToast({
+                //         title: '登录成功',
+                //         icon: 'success',
+                //         duration: 2000//持续的时间
+                //     })
 
+        
+                //     setTimeout(function () {
+                //         wx.switchTab({
+                //             url: '/pages/index/index'
+                //         })
+                //         //要延时执行的代码
+                //     }, 3000)
+                // }
+                if (res.data.data.userType == 1 ) {
+                    let realNameone = res.data.data
+                    wx.setStorage(
+                        {
+                            key: "realNameone",
+                            data: realNameone
+                        }
+                    )
+                    wx.showToast({
+                        title: '登录成功',
+                        icon: 'success',
+                        duration: 2000//持续的时间
+                    })
+      
+                    setTimeout(function () {
+                        wx.navigateTo({
+                            url: '/pages/mainuser/mainuser?role=管理员'
+                        })
+                        wx.setStorageSync('login', 'true')
+                        //要延时执行的代码
+                    }, 3000)
+                    return false
+                }
+                if (res.data.data.userType == 2 || 3 || 4 & res.data.data.userState == 2) {
+                    const realNameone = res.data.data
+                    wx.setStorage(
+                        {
+                            key: "realNameone",
+                            data: realNameone
+                        }
+                    )
+                    wx.showToast({
+                        title: '登录成功',
+                        icon: 'success',
+                        duration: 2000//持续的时间
+                    })
+                    setTimeout(function () {
+                        wx.switchTab({
+                            url: '/pages/index/index?'
+                        })
+                        wx.setStorageSync('login', 'true')
+                        //要延时执行的代码
+                    }, 3000)
+
+                    return false
+                }
+                if ( res.data.data.userState == 1) {
+                    wx.showToast({
+                        title: '您暂未通过审批',
+                        icon: 'none',
+                        duration: 2000//持续的时间
+                    })
+                    return false
+                }
+            }
+        })
+    }
     wx.request({
       url: that.data.api+'NoticeAsCarousel/selectOneNoticeAsCarousel',
       method: "get",

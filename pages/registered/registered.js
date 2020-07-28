@@ -9,6 +9,7 @@ Page({
             { value: 'tenant', name: '租户' },
         ],
         showtable: true,
+        showOwntable: true,
         showyan: true,
         hiddenyan: false,
         registereds: {},
@@ -74,6 +75,7 @@ Page({
             var that = this;
             that.setData({
                 showtable: (!that.data.showtable),
+                showOwntable: (!that.data.showOwntable),
                 userType: 1
             })
             console.log(this.data.showtable)
@@ -83,6 +85,7 @@ Page({
             var that = this;
             that.setData({
                 showtable: true,
+                showOwntable: false,
                 userType: 2
             })
             console.log(this.data.showtable)
@@ -92,6 +95,7 @@ Page({
             var that = this;
             that.setData({
                 showtable: true,
+                showOwntable: true,
                 userType: 3
             })
             console.log(this.data.showtable)
@@ -101,6 +105,7 @@ Page({
             var that = this;
             that.setData({
                 showtable: true,
+                showOwntable: true,
                 userType: 4
             })
             console.log(this.data.showtable)
@@ -191,6 +196,34 @@ Page({
         }
 
         if (this.data.userType === 2 || 3 || 4) {
+            if(that.data.showOwntable) {
+                if (e.detail.value.userOwerName == "") {
+                    wx.showToast({
+    
+                        title: '请输入户主姓名',
+    
+                        icon: 'none',
+    
+                        duration: 2000//持续的时间
+    
+                    })
+                    return false;
+    
+                }
+                if (e.detail.value.userOwerPhoneNumber == "") {
+                    wx.showToast({
+    
+                        title: '请输入户主电话',
+    
+                        icon: 'none',
+    
+                        duration: 2000//持续的时间
+    
+                    })
+                    return false;
+    
+                }
+            }
             if (e.detail.value.username == "") {
                 wx.showToast({
 
@@ -258,7 +291,7 @@ Page({
                 //需要先填pc端备案表
                 // url: 'https://api.huijingwuye6688.com/userInfo/insert',
                 //不需要备案
-                url: that.data.api+'userInfo/insertUsers',
+                url: that.data.api+'userInfo/insertUsers/'+e.detail.value.userOwerName+'/'+e.detail.value.userOwerPhoneNumber,
                 method:"post",
                 data: {
                     realName: e.detail.value.username,
@@ -266,15 +299,15 @@ Page({
                     phoneNumber: e.detail.value.phoneNumber,
                     userType: this.data.userType,
                     town:'北臧村镇',
-                    village: that.data.village
-                    // street: e.detail.value.street,
-                    // town: e.detail.value.town,
+                    village: that.data.village,
+                    userOwerName: e.detail.value.userOwerName,
+                    userOwerPhoneNumber: e.detail.value.userOwerPhoneNumber,
                     // village: e.detail.value.village,
                     // usertype: that.data.usertype
                 },
                 header: {
-                    // 'Content-Type': 'application/json'
-                    'Content-Type': "application/x-www-form-urlencoded"
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': "application/x-www-form-urlencoded"
 
                 },
                 success: function (res) {

@@ -39,6 +39,15 @@
                 <input class="weui-input" maxlength="11" name="phoneNumber" placeholder="请输入手机号" />
                 <span class="iconfont icon-shouji iconColor"></span>
             </view>
+            <!-- 户主的姓名和电话 -->
+            <view wx:if="{{showOwntable}}" class="moren heightSss">
+                <input class="weui-input" name="userOwerName" placeholder="请输入户主姓名" />
+                <span class="iconfont icon-wode iconColor"></span>
+            </view> 
+            <view wx:if="{{showOwntable}}" class="moren heightSss">
+                <input class="weui-input" name="userOwerPhoneNumber" placeholder="请输入户主电话" />
+                 <span class="iconfont icon-shouji iconColor"></span>
+            </view> 
             <!-- <view class=" moren">
                 <input class="weui-input" maxlength="11" name="phonenumber" placeholder="请输入手机号">
                 </input>

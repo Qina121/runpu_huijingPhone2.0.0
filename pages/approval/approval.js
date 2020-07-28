@@ -227,7 +227,7 @@ Page({
             },
             data: {
             //    id:wx.getStorageSync('realNameone').id,
-               userId:detailItem.id,
+            //    userId:detailItem.id,
                realName:detailItem.realName,
                userState:2,
                phoneNumber:detailItem.phoneNumber
@@ -235,7 +235,29 @@ Page({
             },
             success: function (res) {
                 console.log(res)
-                
+                //通过之后刷新
+                wx.request({
+                    url: that.data.api +'auditInfo/getAuditInfo',
+                    method: "get",
+                    header: {
+                        'Content-Type': 'application/json'
+                        // 'Content-Type':"application/x-www-form-urlencoded"
+                    },
+                    data: {
+                       userId:wx.getStorageSync('realNameone').id
+                    },
+                    success: function (res) {
+                        console.log(res)
+                        that.setData({
+                            historylist : res.data.data
+                        })
+    
+                    },
+                    error: function (error) {
+                        console.log(error,"error")
+                    }
+    
+                })
 
             },
             error: function (error) {

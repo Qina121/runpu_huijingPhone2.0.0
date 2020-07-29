@@ -182,29 +182,31 @@ Page({
                   'Content-Type': 'application/json'
               },
               success: function (res) {
-                  
-                  if(res.data.data.attachment) {
-                  // 获取图片
-                  wx.request({
-                    url: that.data.api+'notice/selectPictureById/'+res.data.data.attachment,
-                    method: "get",
-                    data: {
-                        // id: options.id
-                    },
-                    header: {
-                        'Content-Type': 'application/json'
-                    },
-                    success: function (res) {
-                        imgArr.push({
-                          link: '/pages/notice/noticelist/noticelist?id='+that.data.IdSwiper[i],
-                          url: res.data.data.fileUrl
-                        })
-                        that.setData({
-                          imgUrls:imgArr
-                        })
+                  if(res.data.data) {
+                    if(res.data.data.attachment) {
+                      // 获取图片
+                      wx.request({
+                        url: that.data.api+'notice/selectPictureById/'+res.data.data.attachment,
+                        method: "get",
+                        data: {
+                            // id: options.id
+                        },
+                        header: {
+                            'Content-Type': 'application/json'
+                        },
+                        success: function (res) {
+                            imgArr.push({
+                              link: '/pages/notice/noticelist/noticelist?id='+that.data.IdSwiper[i],
+                              url: res.data.data.fileUrl
+                            })
+                            that.setData({
+                              imgUrls:imgArr
+                            })
+                        }
+                      })
                     }
-                  })
                   }
+
                 
               }
             })

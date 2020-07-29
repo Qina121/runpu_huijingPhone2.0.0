@@ -75,7 +75,7 @@ Page({
             var that = this;
             that.setData({
                 showtable: (!that.data.showtable),
-                showOwntable: (!that.data.showOwntable),
+                showOwntable: false,
                 userType: 1
             })
             console.log(this.data.showtable)

@@ -37,15 +37,15 @@
                     <span class="titlebEeizhu">停车车牌</span>
                     <span class="most">*</span>
                     <input maxlength="8" class="weui-input" bindblur='watchPhotoNumber' name="plateNumber"
-                      value="{{plateNumber}}"  placeholder="请输入停车车牌" />
+                      value="{{plateNumber}}"  placeholder="{{tenantParking? '请输入停车车牌': '出入证有效期为一年，为了保证您正常权益，请提前更换'}}" />
                 </view>
                  <!-- 目前是按照用户类型显示 -->
                  <!-- 用户类型为2或3 -->
-                 <view  wx:if="{{!tenantParking}}">
+                 <!-- <view  wx:if="{{!tenantParking}}">
                     <span class="titlebEeizhu">停车时间</span>
                     <span class="most">*</span>
                     <span class="titlebEeizhu">有效期一年,一年后换证</span>
-                 </view>
+                 </view> -->
                  <!-- 租户 -->
                  <view  wx:if="{{tenantParking}}">
                     <span class="titlebEeizhu">停车时间</span>

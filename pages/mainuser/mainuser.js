@@ -1,8 +1,11 @@
 Page({
     data:{
-        fuwuimg:"https://www.qy58.cn/upload/fuwu.png",
-        carguanliimg:"https://www.qy58.cn/upload/carguanli.png",
-        shijian:"https://www.qy58.cn/upload/shijian.png",
+        // fuwuimg:"https://www.qy58.cn/upload/fuwu.png",
+        // carguanliimg:"https://www.qy58.cn/upload/carguanli.png",
+        // shijian:"https://www.qy58.cn/upload/shijian.png",
+        fuwuimg:"https://api.huijingwuye6688.com/api/file/wxe09ab78e32c1cde1.o6zAJswoSVnxow4vnHVOonlp0XuA.WhdXrhjbY9woe605316a2c68b896b9e00a753bc54d41.png",
+        carguanliimg:"https://api.huijingwuye6688.com/api/file/wxe09ab78e32c1cde1.o6zAJswoSVnxow4vnHVOonlp0XuA.zXRQGKfvnc8y0a6c4bac1b63b00466afa9b2989edd84.png",
+        shijian:"https://api.huijingwuye6688.com/api/file/wxe09ab78e32c1cde1.o6zAJswoSVnxow4vnHVOonlp0XuA.ii0txX00MjCpd5a560a1fc3e1eca499ca75f4012cda6.png",
         
     },
     onLoad:function(options){

@@ -30,6 +30,14 @@ Page({
         //     str = '无'
         //     usercommonAddress = '无'
         // }
+        let town = ''
+        let village = ''
+        if(userInfo.town) {
+            town = userInfo.town
+        }
+        if(userInfo.village) {
+            village = userInfo.village
+        }
         this.setData({
             userimg: userInfo.headImage,
             minename:userInfo.realName,
@@ -38,8 +46,8 @@ Page({
             minephone:userInfo.phoneNumber,
             // minedizhi:usercommonAddress,
             minedizhi:userInfo.commonAddress,
-            town:userInfo.town,
-            village:userInfo.village
+            town: town,
+            village: village
         })
         wx.request({
             // url: 'http://www.qy58.cn/cgi-bin/webjsoninterface.exe/query?tableName=owner&queryString=ownername="' + e.detail.value.username + '" and ownerphone="' + e.detail.value.userphone + '"',

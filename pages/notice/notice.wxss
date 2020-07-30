@@ -138,6 +138,9 @@
     box-sizing: border-box;
     border-bottom: 4rpx solid #EEEEEE;
     margin-bottom: 16rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 .textEee {
     width:598rpx;

@@ -3,24 +3,43 @@
         <image class="bgImage" src='https://www.qy58.cn/upload/bgi.png'></image>
     </view>
     <!-- 审批 -->
-    <view wx:if="{{showsshenpi}}" class="pagefooter">
+    <view class="pagefooter">
         <span class="historyNotice">我的{{smalllefttitle}}</span>
 
         <view wx:for="{{historylist}}" class="allText">
             <view bindtap="jumpxinxi" data-item="{{item}}">
             <navigator url="/pages/repair/repairdetail/repairdetail?detailxinxi={{jump}}&userId={{item.userId}}&id={{item.id}}">
-                <span class="styleBlock textEee"  wx:if="{{showsmall}}">
-                    等待您的审批
+                <!-- 审批 -->
+                <span class="styleBlock textEee"  wx:if="{{showsshenpi}}">
+                    我的审批<!-- {{item.realName}} -->
                 </span>
-                 <span class="styleBlock textEee" wx:if="{{!showsmall}}">
-                    {{item.repairDesc}}
+                <!-- 申请 -->
+                <span class="styleBlock textEee" wx:if="{{showsshenqing}}">
+                    我的申请<!-- {{item.realName}} -->
+                </span>
+                <!-- 报修 -->
+                <span class="styleBlock textEee" wx:if="{{showsbaoxiu}}">
+                    我的报修<!-- {{item.name}} -->
+                </span>
+                <!-- 车辆 -->
+                <span class="styleBlock textEee" wx:if="{{showscheliang}}">
+                    <!-- {{item.applyUser}} -->
+                    车辆管理
                 </span>
             </navigator>
                 <span class="styleBlock">
                     <view class="rili" type="text-box">
                         <span class="iconfont icon-rili texts redstyle"></span>
                         <span class="texts">{{item.createTime}}</span>
-                        <span  wx:if="{{showsmall}}" class="passbut" catchtap="approved" data-item="{{item}}"> {{item.userState==1?"点击通过":"已通过"}}</span>
+                        <!-- 审批 -->
+                        <span  wx:if="{{showsshenpi}}" class="passbut" catchtap="approved" data-item="{{item}}"> {{item.userState==1?"点击通过":"已通过"}}</span>
+                        <!-- 申请 -->
+                        <!-- <span  wx:if="{{showsshenqing}}" class="passbut" catchtap="approved" data-item="{{item}}"> {{item.auditState==1?"点击通过":"已通过"}}</span> -->
+                        <!-- 报修 -->
+                        <!-- <span  wx:if="{{showsbaoxiu}}" class="passbut" catchtap="approved" data-item="{{item}}"> {{item.reapirState==1?"点击通过":"已通过"}}</span> -->
+                        <!-- 车辆 -->
+                        <!-- <span  wx:if="{{showscheliang}}" class="passbut" catchtap="approved" data-item="{{item}}"> {{item.auditState==1?"点击通过":"已通过"}}</span> -->
+
                         <!-- <span class="passbut colorss">已通过</span> -->
                     </view>
                 </span>

@@ -13,9 +13,9 @@
             <swiper class="boxHeight" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"
                 duration="{{duration}}" circular="true">
                 <view wx:for="{{imgUrls}}" wx:key="index">
-                    <swiper-item>
+                    <swiper-item class="imgItem">
                         <navigator url="{{item.link}}" hover-class="navigator-hover">
-                            <image mode='aspectFit' src="{{item.url}}" class="slide-image" height="300px" />
+                            <image src="{{item.url}}" class="slide-image" height="300px" />
                         </navigator>
                     </swiper-item>
                 </view>

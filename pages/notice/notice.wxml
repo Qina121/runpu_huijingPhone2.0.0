@@ -41,7 +41,7 @@
                 <view type="text-box">
                     <span class="iconfont icon-rili iconColor"></span>
                     <span class="texts">{{item.announceTime}}</span>
-                    <span class="iconfont icon-youjiantou iconColorright"></span>
+                    <span class="iconfont icon-youjiantou iconColorright" bindtap="goDetail" data-item="{{item}}"></span>
                 </view>
             </span>
         </view>

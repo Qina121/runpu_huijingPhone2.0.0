@@ -27,7 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -257,6 +257,20 @@
 					"id": -1,
 					"name": "pages/registered/registered",
 					"pathName": "pages/registered/registered",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/approval/approval",
+					"pathName": "pages/approval/approval",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
 					"scene": null
 				}
 			]

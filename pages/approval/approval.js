@@ -2,10 +2,11 @@ const app = getApp()
 Page({
     data:{
         api: app.globalData.api,
-        showsshenpi:true,
+        showsshenpi:false,
         showsmall:false,
-        showsshenqing:true,
-        showscheliang:true,
+        showsshenqing:false,
+        showsbaoxiu:false,
+        showscheliang:false,
         showsrapair:"",
         smalllefttitle:"",
         jump:"",
@@ -20,10 +21,10 @@ Page({
         if(options.detailxinxi == "showsshenpi") {
             that.setData({
                 showsshenpi: true,
-                showsmall:true,
-                // showsshenqing:false,
-                // showscheliang:false,
-                // showsrapair:false,
+                // showsmall:true,
+                showsshenqing:false,
+                showsbaoxiu:false,
+                showscheliang:false,
                 jump:"showsshenpi",
                 titlebig:"我 的 审 批",
                 smalllefttitle:"审批",
@@ -55,11 +56,11 @@ Page({
         }
         if(options.detailxinxi == "showsshenqing") {
             that.setData({
-                showsmall:false,
-                showsshenpi: true,
-                // showsshenqing:true,
-                // showscheliang:false,
-                // showsrapair:false,
+                showsshenpi: false,
+                // showsmall:true,
+                showsshenqing:true,
+                showsbaoxiu:false,
+                showscheliang:false,
                 titlebig:"我 的 申 请",
                 smalllefttitle:"申请",
                 englishTitle:"",
@@ -93,11 +94,11 @@ Page({
         }
         if(options.detailxinxi == "showscheliang") {
             that.setData({
-                showsshenpi: true,
-                showsmall:false,
-                // showsshenqing:false,
-                // showscheliang:true,
-                // showsrapair:false,
+                showsshenpi: false,
+                // showsmall:true,
+                showsshenqing:false,
+                showsbaoxiu:false,
+                showscheliang:true,
                 titlebig:"我 的 车 辆",
                 smalllefttitle:"车辆",
                 englishTitle:"",
@@ -129,11 +130,11 @@ Page({
         }
         if(options.detailxinxi == "showsrapair") {
             that.setData({
-                showsshenpi: true,
-                showsmall:false,
-                // showsshenqing:false,
-                // showscheliang:false,
-                // showsrapair:true,
+                showsshenpi: false,
+                // showsmall:true,
+                showsshenqing:false,
+                showsbaoxiu:true,
+                showscheliang:false,
                 titlebig:"我 的 报 修",
                 smalllefttitle:"报修",
                 englishTitle:"",

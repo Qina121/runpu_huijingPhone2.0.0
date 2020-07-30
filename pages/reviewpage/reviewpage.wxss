@@ -178,9 +178,16 @@
 .lunboone {
     position: relative;
 }
+.imgItem{
+    width:800rpx;
+    height:400rpx;
+    border-radius:20rpx;
+    overflow:hidden;
+}
 .slide-image{
-    height: 400rpx;
+    /* height: 400rpx; */
     width: 90%;
+    border-radius:20rpx;
     position: absolute;
     left:50%;
     transform: translateX(-50%);

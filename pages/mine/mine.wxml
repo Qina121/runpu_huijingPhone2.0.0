@@ -88,13 +88,13 @@
                 </navigator> -->
             </view>
         </view>
-        <navigator url="/pages/mine/mineset/mineset?detailxinxi=dizhi">
+        <!-- <navigator url="/pages/mine/mineset/mineset?detailxinxi=dizhi">
             <view class="xiangxi">
                 <span class="iconfont icon-weibiaoti-_huaban iconColor"></span>
                 <text class="mines">用户设置{{}}</text>
                 <span class="iconfont icon-youjiantou  iconright"></span>
             </view>
-        </navigator>
+        </navigator> -->
     </view>
     <view>
 

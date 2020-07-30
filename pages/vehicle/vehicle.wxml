@@ -48,7 +48,7 @@
                  </view> -->
                  <!-- 租户 -->
                  <view  wx:if="{{tenantParking}}">
-                    <span class="titlebEeizhu">停车时间</span>
+                    <span class="titlebEeizhu">车辆出入证申请有效期</span>
                     <span class="most">*</span>
                     <picker mode = "selector"   name="picker_hx" class="cybm_pic_1" value="{pic_index}}"  range="{{pic_array}}" 
                         bindchange="bindNumberChange">

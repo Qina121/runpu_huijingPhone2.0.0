@@ -5,7 +5,8 @@
     </view>
     <view class="page-header">
         <view class="logoImage">
-            <image class="backGround-box" src='https://www.qy58.cn/upload/header.png'></image>
+            <!-- <image class="backGround-box" src='https://www.qy58.cn/upload/header.png'></image> -->
+            <image class="backGround-box" src='https://api.huijingwuye6688.com/api/file/wxe09ab78e32c1cde1.o6zAJswoSVnxow4vnHVOonlp0XuA.TioSxijyEJDO164e43157255587ee4c6e52d2a061032.png'></image>
             <!-- <image class="center-box" src='../../image/logo.png'></image> -->
         </view>
         <view class="pageCenter">

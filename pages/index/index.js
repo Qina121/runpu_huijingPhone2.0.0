@@ -7,17 +7,17 @@ Page({
     show: true,
     plain: false,
     openid:"",
-    smallimgurl:"https://www.qy58.cn/upload/box.png",
+    smallimgurl:"https://api.huijingwuye6688.com/api/file/wxe09ab78e32c1cde1.o6zAJswoSVnxow4vnHVOonlp0XuA.94tj7BSYXhyAb98970fc0416a79e39f2646e00a061ef.png",
     imgUrls: [
       {
         link: '/pages/index/index',
-        url: 'https://www.qy58.cn/upload/lunboone.png'
+        url: 'https://api.huijingwuye6688.com/api/file/wxe09ab78e32c1cde1.o6zAJswoSVnxow4vnHVOonlp0XuA.CASESTTpKKvr91616d1fbc712f90a7b0701560950606.jpg'
       }, {
         link: '/pages/inedx/index',
-        url: 'https://www.qy58.cn/upload/lunbob.png'
+        url: 'https://api.huijingwuye6688.com/api/file/wxe09ab78e32c1cde1.o6zAJswoSVnxow4vnHVOonlp0XuA.nKU7yUef8rJc2cb1c7fbf62286c9d02f2febb7d142cb.jpg'
       }, {
         link: '/pages/index/index',
-        url: 'https://www.qy58.cn/upload/lunboa.png'
+        url: 'https://api.huijingwuye6688.com/api/file/wxe09ab78e32c1cde1.o6zAJswoSVnxow4vnHVOonlp0XuA.5HB7pV7gXYzOc4aff9afbf870f1c3e8a8632c7cdcf07.png'
       }
     ],
     indicatorDots: true,  //小点

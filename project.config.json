@@ -271,6 +271,125 @@
 					"id": -1,
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/approval/approval",
+					"pathName": "pages/approval/approval",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/mineupdate/mineupdate",
+					"pathName": "pages/mine/mineupdate/mineupdate",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/notice/notice",
+					"pathName": "pages/notice/notice",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/repair/repair",
+					"pathName": "pages/repair/repair",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/secondpage/secondpage",
+					"pathName": "pages/secondpage/secondpage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/vehicle/vehicle",
+					"pathName": "pages/vehicle/vehicle",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/approval/approval",
+					"pathName": "pages/approval/approval",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/minedizhi/minedizhi",
+					"pathName": "pages/mine/minedizhi/minedizhi",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/mineset/mineset",
+					"pathName": "pages/mine/mineset/mineset",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/mineupdate/mineupdate",
+					"pathName": "pages/mine/mineupdate/mineupdate",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/notice/notice",
+					"pathName": "pages/notice/notice",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/repair/repairdetail/repairdetail",
+					"pathName": "pages/repair/repairdetail/repairdetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/secondpage/secondpage",
+					"pathName": "pages/secondpage/secondpage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
 					"scene": null
 				}
 			]

@@ -1,7 +1,8 @@
 <view class="page">
     <view class="pageHeader">
 
-        <image class="bgImage" src='https://www.qy58.cn/upload/secondbgimage.jpg'></image>
+        <!-- <image class="bgImage" src='https://www.qy58.cn/upload/secondbgimage.jpg'></image> -->
+        <image class="bgImage" src='https://api.huijingwuye6688.com/api/file/wxe09ab78e32c1cde1.o6zAJswoSVnxow4vnHVOonlp0XuA.tdeRE1Zx65Awcd4141a853b7c7fdf1b63b80ad4a2b6c.jpg'></image>
         <span class=" same detaileng">REPAIR{{}}</span>
         <span class=" same detailchina">{{bigtitle}}</span>
         <span class=" same detailchinas"></span>

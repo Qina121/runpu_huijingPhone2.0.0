@@ -6,7 +6,7 @@
 			<view class="maskText" bindtap="change">欢迎使用</view>
 		</view> -->
         </view>
-        <view>主打歌</view>
+        <view></view>
 		<view class="page-header">
 			<view class="logoImage">
 				<image class="backGround-box" src='{{loginbg}}'></image>

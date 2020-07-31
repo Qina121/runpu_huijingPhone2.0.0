@@ -1,6 +1,7 @@
 <view class="page">
     <view class="pageHeader">
-        <image class="bgImage" src='https://www.qy58.cn/upload/bgi.png'></image>
+        <!-- <image class="bgImage" src='https://www.qy58.cn/upload/bgi.png'></image> -->
+        <image class="bgImage" src='https://api.huijingwuye6688.com/api/file/wxe09ab78e32c1cde1.o6zAJswoSVnxow4vnHVOonlp0XuA.lbKtimPcqrG00bd48898f52e360749891f5482d3a47d.jpg'></image>
     </view>
     <view>
         <view class="widths">

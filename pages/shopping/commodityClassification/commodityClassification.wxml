@@ -16,7 +16,11 @@
         </swiper-item>
     </swiper> -->
     <view class="container">
-  <view class="product-list">
+  <!-- 判断是否有对应商品 -->
+<view class="product-list"  wx:if="{{!productList.length>0}}">
+    <image src="../../../image/暂无图片.jpg" class="noyet-img" mode="widthFix" />
+</view>
+  <view class="product-list" wx:if="{{productList.length>0}}">
     <!--商品列表-->
     <view class="pro-item" bindtap="detail" wx:for="{{productList}}" wx:key="index" data-goodsId="{{item.goodsId}}">
       <!-- <navigator url="/pages/shopping/shoppingDetail/shoppingDetail?goodsId={{item.goodsId}}"> -->

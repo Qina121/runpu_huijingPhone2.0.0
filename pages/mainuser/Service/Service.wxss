@@ -3,6 +3,7 @@
 }
 .page{
     background-color: #fafafa;
+    overflow-x: hidden
 }
 .bgImage {
     width:750rpx;
@@ -180,6 +181,7 @@ button[type='warn']{
     margin-bottom: 20rpx;
     font-size:24rpx;
     color:rgba(102,102,102,1);
+    box-sizing: border-box;
 }
 .flright {
     text-align: right;

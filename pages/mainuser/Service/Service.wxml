@@ -14,8 +14,11 @@
 
 
         </textarea> -->
-
-         <textarea class="miaoshu" maxlength="300" name="descdetailss" id="" value="{{descdetailss}}"  bindblur="bindTextdescBlur"  placeholder="请输入事件描述(电瓶、煤气罐剧毒或其他大件垃圾,最多输入300字)" 
+         <textarea wx:if="{{showsjifen}}"  class="miaoshu" maxlength="300" name="descdetailss" id="" value="{{descdetailss}}"  bindblur="bindTextdescBlur"  placeholder="请输入事件描述" 
+        cols="20" rows="10" bindinput="inputgetName" data-name='descdetailss'>{{descdetailss}}</textarea>
+         <textarea wx:if="{{showsform}}"  class="miaoshu" maxlength="300" name="descdetailss" id="" value="{{descdetailss}}"  bindblur="bindTextdescBlur"  placeholder="请输入违章车辆车牌号" 
+        cols="20" rows="10" bindinput="inputgetName" data-name='descdetailss'>{{descdetailss}}</textarea>
+         <textarea wx:if="{{showsforms}}"  class="miaoshu" maxlength="300" name="descdetailss" id="" value="{{descdetailss}}"  bindblur="bindTextdescBlur"  placeholder="请输入事件描述(电瓶、煤气罐剧毒或其他大件垃圾,最多输入300字)" 
         cols="20" rows="10" bindinput="inputgetName" data-name='descdetailss'>{{descdetailss}}</textarea>
     </view>
     <view wx:if="{{showsrfid}}">
@@ -52,15 +55,15 @@
             <span class="titlebEeizhu">联系电话</span>
             <span class="most">*</span>
             <input maxlength="11" class="weui-input" bindblur='watchPhotoNumber' name="userphone"
-                placeholder="请输入您的联系电话" />
+                placeholder="请输入联系电话" />
         </view>
         <view wx:if="{{showsform}}" >
-            <span class="titlebEeizhu">您的车牌</span>
+            <span class="titlebEeizhu">车牌号</span>
             <span class="most">*</span>
             <input maxlength="8" class="weui-input"  name="userlicense"
                 placeholder="请输入车牌号" />
         </view>
-        <view wx:if="{{showsform}}" class="allInput">
+        <!-- <view wx:if="{{showsform}}" class="allInput">
             <span class="titlebEeizhu">起止时间</span>
             <span class="most">*</span>
             <view class="section">
@@ -71,8 +74,8 @@
                     </view>
                 </picker>
             </view>
-        </view>
-        <view wx:if="{{showsform}}" class="allInput">
+        </view> -->
+        <!-- <view wx:if="{{showsform}}" class="allInput">
             <span class="titlebEeizhu">结束时间</span>
             <span class="most">*</span>
             <view class="section">
@@ -83,7 +86,7 @@
                     </view>
                 </picker>
             </view>
-        </view>
+        </view> -->
         <view wx:if="{{showsforms}}">
             <view>
                 <span class="titlebEeizhu">您的位置</span>

@@ -266,14 +266,40 @@ garbage: function() {
 },
 
 notice: function() {
+  const that = this
   if(!wx.getStorageSync('login')) {
     wx.navigateTo({
       url: '../login/login'
     })
   } else {
-    wx.navigateTo({
-      url: '/pages/notice/notice'
-    })
+    // wx.navigateTo({
+    //   url: '/pages/notice/notice'
+    // })
+     //通知公告请求
+     wx.request({
+         url: that.data.api+'notice/selectAllNotice',
+         method: "get",
+         data: {
+             // id: options.id
+         },
+         header: {
+             'Content-Type': 'application/json'
+         },
+         success: function (res) {
+            //  console.log(res.data.data)
+             if(res.data.data.length>0) {
+                wx.navigateTo({
+                  url: '/pages/notice/notice'
+                })
+             } else {
+              wx.showToast({
+                title: '暂无通知公告',
+                icon: 'none',
+                duration: 2000//持续的时间
+              })
+             }
+         }
+     })
   }
 },
 serviceApplication: function() {

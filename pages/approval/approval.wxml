@@ -12,7 +12,7 @@
             <navigator url="/pages/repair/repairdetail/repairdetail?detailxinxi={{jump}}&userId={{item.userId}}&id={{item.id}}">
                 <!-- 审批 -->
                 <span class="styleBlock textEee"  wx:if="{{showsshenpi}}">
-                    我的审批<!-- {{item.realName}} -->
+                   {{item.userType==3? '住户:': '租户:'}} {{item.realName}}
                 </span>
                 <!-- 申请 -->
                 <span class="styleBlock textEee" wx:if="{{showsshenqing}}">
@@ -30,8 +30,9 @@
             </navigator>
                 <span class="styleBlock">
                     <view class="rili" type="text-box">
-                        <span class="iconfont icon-rili texts redstyle"></span>
-                        <span class="texts">{{item.createTime}}</span>
+                        <span class="iconfont icon-rili texts redstyle" wx:if="{{!showsshenpi}}"></span>
+                        <span class="texts" wx:if="{{!showsshenpi}}">{{item.createTime}}</span>
+                         <span class="texts" style="color:rgba(136,136,136,1);padding: 0rpx 35rpx" wx:if="{{showsshenpi}}">手机号:{{item.phoneNumber}}</span>
                         <!-- 审批 -->
                         <span  wx:if="{{showsshenpi}}" class="passbut" catchtap="approved" data-item="{{item}}"> {{item.userState==1?"点击通过":"已通过"}}</span>
                         <!-- 申请 -->

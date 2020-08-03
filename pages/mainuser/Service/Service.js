@@ -32,7 +32,7 @@ Page({
     },
     onLoad: function (options) {
         // 生命周期函数--监听页面加载
-
+        console.log(options)
         var that = this
         if (options.detailxinxi == "showsjifen") {
             that.setData({
@@ -421,22 +421,22 @@ Page({
                 })
                 return false
             }
-            if (this.data.startdata == "") {
-                wx.showToast({
-                    title: '请输入开始时间',
-                    icon: 'none',
-                    duration: 2000//持续的时间
-                })
-                return false
-            }
-            if (this.data.enddata == "") {
-                wx.showToast({
-                    title: '请输入结束时间',
-                    icon: 'none',
-                    duration: 2000//持续的时间
-                })
-                return false
-            }
+            // if (this.data.startdata == "") {
+            //     wx.showToast({
+            //         title: '请输入开始时间',
+            //         icon: 'none',
+            //         duration: 2000//持续的时间
+            //     })
+            //     return false
+            // }
+            // if (this.data.enddata == "") {
+            //     wx.showToast({
+            //         title: '请输入结束时间',
+            //         icon: 'none',
+            //         duration: 2000//持续的时间
+            //     })
+            //     return false
+            // }
             // if (this.data.startdata != "" & this.data.enddata != "") {
             //     this.tab(this.data.startdata, this.data.enddata);
             //     return false
@@ -471,12 +471,12 @@ Page({
                     attachment: that.data.uploadImageId.join(","),
                     // createTime: e.detail.value.creatTime,
                     // auditState: that.data.auditState,
-                    startTime: that.data.startdata,
-                    endTime: that.data.enddata,
+                    // startTime: that.data.startdata,
+                    // endTime: that.data.enddata,
                     details:that.data.descdetailss,
                     carCard: e.detail.value.userlicense,
                     rfidInfo: that.data.userxnix.rfid,
-                    parkingTime: '',
+                    // parkingTime: '',
                 },
                 success: function (res) {
                     console.log(res.data, "222")

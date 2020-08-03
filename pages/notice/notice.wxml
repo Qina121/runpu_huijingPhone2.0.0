@@ -16,9 +16,9 @@
                 <image class="sectionImage" src='../../image/noticesImg.png'></image>
             </view>
             <view class="pagecenterBottom">
-                <textarea name="" id="" cols="30" rows="10">
+                <!-- <textarea name="" id="" cols="30" rows="10"> -->
                 {{historylist[0].content}}
-            </textarea>
+            <!-- </textarea> -->
             </view>
             <view class="pagecenterEnd">
                 <!-- <navigator  url="/pages/notice/noticelist/noticelist"> -->

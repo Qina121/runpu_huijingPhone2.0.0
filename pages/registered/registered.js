@@ -314,18 +314,18 @@ Page({
                     console.log(res.data)
                     if(res.data.success) {
                         wx.showToast({
-                            title: res.data.message,
+                            title: '注册成功',
                             icon: 'none',
-                            duration: 2000//持续的时间
+                            duration: 3000//持续的时间
                         })
                         wx.navigateTo({
                             url: '../login/login'
                           })
                     } else {
                         wx.showToast({
-                            title: res.data.message,
+                            title: '注册失败',
                             icon: 'none',
-                            duration: 2000//持续的时间
+                            duration: 3000//持续的时间
                         })
                     }
 

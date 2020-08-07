@@ -20,6 +20,11 @@
 					<input class="weui-input" maxlength="11" bindinput='watchPhotoNumber' name="userphone" value="{{phoneValue}}" placeholder="请输入手机号" />
 					<span class="iconfont icon-shouji iconColor"></span>
 				</view>
+				<!-- 添加短信验证 -->
+				<!-- <view class="moren">
+					<input class="weui-input" maxlength="11" bindinput='watchPhotoNumber' name="userphone" value="{{phoneValue}}" placeholder="请输入短信验证码" />
+					<view class="send-code">发送验证码</view>
+				</view> -->
 				<!-- 登录授权 -->
 				<button class="submit-login" bindgetUserInfo="getUserInfo" open-type="getUserInfo" type="primary" formType="submit">登录</button>
 				<navigator url="pages/registered/registered">

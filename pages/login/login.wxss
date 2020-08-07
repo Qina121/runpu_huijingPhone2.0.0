@@ -57,6 +57,20 @@
     padding-left: 5%;
 
 }
+.send-code{
+    width: 270rpx;
+    height: 65rpx;
+    line-height: 65rpx;
+    color: #fff;
+    background-color: #A60001;
+    border-radius: 30rpx;
+    text-align: center;
+    font-size: 28rpx;
+    position: absolute;
+    top:2rpx;
+    right:5%;
+    z-index: 21;
+}
 .submit-login{
     background-color: #A60001 !important;
     color: white;

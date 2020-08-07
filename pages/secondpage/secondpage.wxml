@@ -10,7 +10,7 @@
         <span class="historyNotice">垃圾等事件上传</span>
     </view>
     <view>
-        <image class="bgImages" src='../../image/jifen.jpg'></image>
+        <!-- <image class="bgImages" src='../../image/jifen.jpg'></image> -->
     </view>
     <view>
         <!-- 垃圾分类 -->

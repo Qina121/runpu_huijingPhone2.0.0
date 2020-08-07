@@ -24,7 +24,7 @@
     <!--商品列表-->
     <view class="pro-item" bindtap="detail" wx:for="{{productList}}" wx:key="index" data-goodsId="{{item.goodsId}}">
       <!-- <navigator url="/pages/shopping/shoppingDetail/shoppingDetail?goodsId={{item.goodsId}}"> -->
-          <image src="{{item.goodsPicture}}" class="pro-img"  />
+          <image src="{{item.goodsPicture}}" class="pro-img" mode="aspectFill" />
           <view class="pro-content">
             <text class="goodsName">{{item.goodsName}}</text>
             <text class="goodsDescribe">{{item.goodsDescribe}}</text>
